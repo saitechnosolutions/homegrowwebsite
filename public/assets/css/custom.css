@@ -1,0 +1,454 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,700&display=swap');
+
+ @font-face {
+    font-family: "Neutra Text";
+    src: url(../font/NeutraText-Bold.otf);
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+.footing-icons{
+    color: #670066;
+    font-size: 18px;
+}
+.footer-icon{
+    padding: 10px 0;
+}
+.second-nav{
+    justify-content: space-evenly;
+}
+.art{
+    background: #fff;
+    border-radius: 100px;
+    padding: 15px 15px;
+}
+.hd{
+    color: #670066;
+}
+.head_max_head1{
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 700;
+    color: #5CA904;
+    font-size: 50px;
+}
+.head_max_head3{
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 700;
+    color: #670066;
+    font-size: 50px;
+}
+.nav-link{
+    font-weight: 600;
+    color: #670066 !important;
+}
+
+.intro {
+    box-shadow: 0px 6px 10px rgb(0 0 0 / 12%);
+    background-color: #fff !important;
+}
+.login-nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-up {
+    top: -169px;
+}
+.darks-logo {
+    display: none;
+}
+.footer_section{
+    background: #670066;
+    padding: 70px 0;
+}
+.footer_list {
+    list-style-type: none;
+    padding: 0px;
+    line-height: 1.8;
+}
+.footer_anc {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.4s;
+    font-family: Neutra Text;
+}
+.FOOT_NUMs{
+    list-style-type: none;
+    padding: 0px;
+    text-align: center;
+}
+.foot_br{
+    color: #FFFFFF;
+    font-weight: 400;
+    padding: 10px 0;
+}
+.foot_num {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.4s;
+    font-size: 21px;
+}
+
+/* .footer_anc:hover {
+    margin-left: 7px;
+    color: #FF524E;
+} */
+.foot_head {
+    color: #ffffff;
+    /* text-align: center; */
+    font-family: Neutra Text;
+    font-size: 21px;
+
+}
+.foot_head1 {
+    color: #ffffff;
+    font-family: Neutra Text;
+    font-size: 21px;
+    text-align: center;
+
+}
+.foot_para{
+    color: #ffffff;
+    text-align: center;
+    font-family: Neutra Text;
+    padding-top: 10px;
+}
+.gro{
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 400;
+}
+.first{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.gro{
+    padding: 20px 0;
+}
+.first_slick{
+    padding: 30px 0 0 0;
+    margin: 0 20px;
+}
+.vie_al{
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+
+}
+.rtt{
+    animation: range infinite 2.4s;
+}
+
+@keyframes range {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(20px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.home_full {
+    position: relative !important;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 95vh !important;
+}
+.home_banner_section{
+    position: relative;
+    top: 40%;
+}
+.apointers_action{
+    display: flex;
+    background: #5CA904;
+    justify-content: space-evenly;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.crer{
+    background: #5CA904;
+}
+.navbar-section {
+    position: fixed;
+    padding: 15px 0;
+    width: 100%;
+    z-index: 100;
+    background:  linear-gradient(180deg, #FFFFFF 5.93%, rgba(71, 71, 71, -0.719739) 75.58%, rgba(0, 0, 0, 0) 25.68%);
+}
+
+.home_main_section {
+    position: relative !important;
+    z-index: 1;
+}
+.categories_section{
+    background: url('../images/dow.png');
+    background-size: cover;
+    /* height: 40vh; */
+    position: relative;
+    margin-top: -100px;
+    z-index: 9;
+}
+.scr_full{
+    position: relative;
+    cursor: pointer;
+    top:-97px;
+}
+
+.down1{
+    position: absolute;
+    top: 46px;
+    font-size: 19px;
+    color: #670066;
+    animation: scrolls2 3s linear infinite ;
+}
+@keyframes scrolls2 {
+    0% {
+     opacity: 0;
+     transform: translateY(-10px);
+   }
+
+   100% {
+     opacity: 1;
+     transform: translateY(10px);
+   }
+ }
+.down2{
+    position: absolute;
+    top: 55px;
+    font-size: 19px;
+    color: #670066;
+    animation: scrolls1 3s linear infinite ;
+}
+@keyframes scrolls1 {
+    0% {
+     /* opacity: 0; */
+     transform: translateY(-10px);
+   }
+
+   100% {
+     /* opacity: 1; */
+     transform: translateY(10px);
+   }
+ }
+
+
+.scroll-down-btn {
+    display: inline-flex;
+    justify-content: center;
+    width: 2rem;
+    height: 3rem;
+    background-color: transparent;
+    padding: 0.75rem;
+    border: 2px solid #670066;
+    border-radius: 100px;
+    position: relative;
+    left: 49.6%;
+    top: 17px;
+  }
+  .scroll-down-btn::after {
+    position: absolute;
+    content: "";
+    width: 5px;
+      height:10px;
+    aspect-ratio: 1;
+    border-radius: inherit;
+    background-color: #670066;
+    animation: scroll 3s linear infinite ;
+  }
+  @keyframes scroll {
+     0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(20px);
+    }
+  }
+
+.over{
+    color: #670066;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.social-media-side {
+    position: fixed;
+    bottom: 5%;
+    z-index: 99;
+    width: 50px;
+    right: -218px;
+
+}
+
+.social-media-side ul {
+    padding: 0px;
+    transform: translate(-245px, 0);
+
+
+}
+
+.social-media-side ul li {
+    display: block;
+    margin: 14px;
+    background: #FFFFFF;
+    width: 310px;
+
+    padding: 4px;
+    border-radius: 30px 0px 0px 30px;
+    transition: all 1.5s;
+}
+
+.social-media-side ul li:hover {
+
+    transform: translate(-110px, 0);
+    background: #ffffff;
+    transition: all 1.5s;
+}
+
+.social-media-side ul li:hover a {
+    color: #000000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-media-side ul li:hover img {
+    color: #c44a73;
+    background: white;
+    transform: rotate(360deg);
+    transition: all 1.5s;
+}
+
+.social-media-side ul li img {
+
+    /*margin-left: 10px;*/
+    color: #000;
+    background: white;
+
+    border-radius: 50%;
+    width: 60;
+    height: 60px;
+    transform: rotate(0deg);
+    text-align: center;
+    font-size: 25px;
+
+}
+
+.callu {
+    text-decoration: none;
+}
+
+.cats{
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+.categories_section{
+    padding: 100px 0;
+}
+
+.scr{
+    position: absolute;
+    left: 46%;
+    top: 1%;
+}
+
+
+.first_slick .slick-dots li button {
+    background: #E7E7E7;
+    border-radius: 50px;
+    width: 10px;
+    height: 10px;
+}
+.first_slick .slick-dots{
+    bottom: -35px;
+}
+.first_slick li.slick-active button {
+    background: #5CA904  !important;
+    border-radius: 50px;
+}
+.first_slick .slick-dots li button:before{
+    opacity: 0 !important;
+}
+.first_slick .slick-dots li.slick-active button:before{
+    opacity: 0 !important;
+}
+
+
+
+
+@media only screen and (max-width: 990px) {
+    .darks-logo {
+        display: block;
+        width: 22%;
+        position: absolute;
+        z-index: 999;
+        left: 78px;
+        top: 22px !important;
+    }
+    .darks-logo {
+        display: block;
+    }
+
+    .white-logo {
+        display: none;
+    }
+    .introcbhd {
+        background: linear-gradient(181deg, #FFFFFF 71.93%, rgba(71, 71, 71, -1.719739) 107.58%, rgba(0, 0, 0, 0) 0.68%);
+
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .darks-logo {
+        display: block;
+        width: 27%;
+        position: absolute;
+        z-index: 999;
+        left: 10px;
+        top: 3px;
+    }
+
+    .darks-logo {
+        display: block;
+    }
+
+    .white-logo {
+        display: none;
+    }
+}
