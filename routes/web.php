@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::view('/','pages.home');
+Route::view('privacy_policy','pages.privacy');
+Route::view('allproducts','pages.allproduct');
+Route::view('contact','pages.contact');

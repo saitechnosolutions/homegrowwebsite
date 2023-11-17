@@ -18,20 +18,18 @@
                                         <p class="head_max_para" data-animation="fadeInRight" data-delay="0.5s">*Applicable
                                             on
                                             selective products</p>
-                                        {{-- <button id="cust_btn" class="merit apointerses btn" type="button "
-                                        data-bs-toggle="modal" data-bs-target="#exampleModl" data-animation="fadeInUp"
-                                        data-delay="1s"> --}}
-                                        <div class="row">
 
-                                            <div class="col-lg-4 col-12">
-                                                <a class=" apointers_action btn" data-animation="fadeInUp" data-delay="1s">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-5">
+                                                {{-- <a class="  btn home-btn  shaded1" data-animation="fadeInUp" data-delay="1s">
                                                     <img src="assets/images/basket_fill.png" width="30px" alt="">
-                                                    Order
-                                                    Now</a>
+                                                    Order Now</a> --}}
+                                                <a class="  btn home-btn  shaded1" >
+                                                    <img src="assets/images/basket_fill.png" width="30px" alt="">
+                                                    Order Now</a>
                                             </div>
                                         </div>
 
-                                        {{-- </button> --}}
                                     </div>
 
                                 </div>
@@ -51,7 +49,7 @@
                 <i class="fa fa-chevron-down down2" aria-hidden="true"></i>
             </div>
         </div>
-        <h5 class="cats"> Our Categories </h5>
+        <h5 class="cats" data-aos="fade-up" data-aos-duration="800"> Our Categories </h5>
         <div class="container-fluid">
             <div class="row align-items-center" id="cat11">
                 <div class="col-lg-1"></div>
@@ -122,12 +120,579 @@
         </div>
     </section>
 
+    <section class="combo_section">
+        <div class="container">
+            <h5 class="combohead"  data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
+            <div class="row num_weerr" >
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Smart</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Savings</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Mini</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one"data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Smart</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Savings</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Mini</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        {{-- <div class="bt_linear"></div> --}}
+    </section>
+
+
+    <section class="nutri_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
+                    <img src="/assets/images/nut1.svg" class="img-fluid" alt="">
+                    <h5 class="nut_head">High Nutritonal Value</h5>
+                    <p class="nut_para">Organic foods preserves for more
+                        natural vitamins and minarals</p>
+                </div>
+                <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
+                    <img src="/assets/images/nut2.svg" class="img-fluid" alt="">
+                    <h5 class="nut_head">Preserves the
+                        Environment</h5>
+                    <p class="nut_para">Organic foods preserves for more
+                        natural vitamins and minarals</p>
+                </div>
+                <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
+                    <img src="/assets/images/nut3.svg" class="img-fluid" alt="">
+                    <h5 class="nut_head">Certified Orgonic
+                        Sources</h5>
+                    <p class="nut_para">Organic foods preserves for more
+                        natural vitamins and minarals</p>
+                </div>
+                <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
+                    <img src="/assets/images/nut4.svg" class="img-fluid" alt="">
+                    <h5 class="nut_head">No Chemical &
+                        Pestisides</h5>
+                    <p class="nut_para">Organic foods preserves for more
+                        natural vitamins and minarals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hot_section">
+        <div class="container">
+            <h5 class="combohead">Hot Deals</h5>
+            <div class="row num_weerr">
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one">
+                        <div class="produs_img" data-aos="fade-right" data-aos-duration="800">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product_one"  data-aos="fade-right" data-aos-duration="800">
+                        <div class="produs_img">
+                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                        </div>
+                        <h5 class="he_head">Combo Delight</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <div class="prd_inp">
+                            <div class="ful_po">
+                                <div class="prds_inr">
+                                    <button class="btn_min">-</button>
+                                    <input type="text" class="input_poo">
+                                    <button class="btn_plus">+</button>
+                                </div>
+                                <div class="add_to_cart">
+                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="green"></div>
 
     <section class="testimonial_section">
-        <h5 class="over">Over 10000+ Customers <span> love Us</span></h5>
+        <h5 class="over">Over 10000+ Customers <span class="love"> love Us</span></h5>
         <div class="container">
-
+            <div class="rsr">
+                <div>
+                    <div class="row  gapses">
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row  gapses">
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first_testimonials">
+                                <div class="imgs">
+                                    <div class="img111">
+                                        <img src="/assets/images/user.png" class="img-fluid" alt="">
+                                        <h5 class="ctns1">Bharani</h5>
+                                    </div>
+                                    <ul class="restts">
+                                        <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star  rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star rest" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="ctns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse qui
+                                    odit,
+                                    animi voluptate doloribus cum nemo incidunt, amet id laboriosam itaque quidem, minima
+                                    accusantium ea nulla sequi! Eos, nulla?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

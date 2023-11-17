@@ -89,12 +89,52 @@
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
 
 
-
-
-
     <script>
         // members
 
+        $('.rsr').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 6,
+            touchThreshold: 100,
+            // centerMode: true,
+            // autoplay: true,
+            arrows: false,
+            autoplaySpeed: 1000,
+            margin: 10,
+            speed: 3000,
+            focusOnSelect: true,
+            pauseOnHover: true,
+            cssEase: 'linear',
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    </script>
+
+
+    <script>
         $('.first_slick').slick({
             dots: true,
             infinite: true,
@@ -136,58 +176,212 @@
     </script>
 
 
-<script>
-    $(document).ready(function() {
-        $('.home_ban_sec').on('init', function(e, slick) {
-            var $firstAnimatingElements = $('div.home_full:first-child').find('[data-animation]');
-            doAnimations($firstAnimatingElements);
-        });
-        $('.home_ban_sec').on('beforeChange', function(e, slick, currentSlide, nextSlide) {
-            var $animatingElements = $('div.home_full[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
-            doAnimations($animatingElements);
-        });
-        $('.home_ban_sec').slick({
-            dots: false,
-            infinite: true,
-            arrows: false,
-            speed: 300,
-            autoplay: true,
-            autoplaySpeed: 5000,
-            slidesToShow: 1,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear'
-        });
-
-        function doAnimations(elements) {
-            var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-            elements.each(function() {
-                var $this = $(this);
-                var $animationDelay = $this.data('delay');
-                var $animationType = 'animated ' + $this.data('animation');
-                $this.css({
-                    'animation-delay': $animationDelay,
-                    '-webkit-animation-delay': $animationDelay
-                });
-                $this.addClass($animationType).one(animationEndEvents, function() {
-                    $this.removeClass($animationType);
-                });
+    <script>
+        $(document).ready(function() {
+            $('.home_ban_sec').on('init', function(e, slick) {
+                var $firstAnimatingElements = $('div.home_full:first-child').find('[data-animation]');
+                doAnimations($firstAnimatingElements);
             });
+            $('.home_ban_sec').on('beforeChange', function(e, slick, currentSlide, nextSlide) {
+                var $animatingElements = $('div.home_full[data-slick-index="' + nextSlide + '"]').find(
+                    '[data-animation]');
+                doAnimations($animatingElements);
+            });
+            $('.home_ban_sec').slick({
+                dots: false,
+                infinite: true,
+                arrows: false,
+                speed: 300,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                slidesToShow: 1,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+
+            function doAnimations(elements) {
+                var animationEndEvents =
+                    'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                elements.each(function() {
+                    var $this = $(this);
+                    var $animationDelay = $this.data('delay');
+                    var $animationType = 'animated ' + $this.data('animation');
+                    $this.css({
+                        'animation-delay': $animationDelay,
+                        '-webkit-animation-delay': $animationDelay
+                    });
+                    $this.addClass($animationType).one(animationEndEvents, function() {
+                        $this.removeClass($animationType);
+                    });
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Add a click event to the element with the class "scr_full"
+            $(".scr_full").click(function() {
+                // Scroll to the element with the id "cat11" using jQuery
+                $('html, body').animate({
+                    scrollTop: $("#cat11").offset().top
+                }, 500); // Adjust the duration as needed
+            });
+        });
+    </script>
+
+
+
+    <script>
+        AOS.init();
+    </script>
+
+
+<script>
+    $('#send-message').on("click", function() {
+        checkusername();
+        checkmessage();
+        checkemail();
+        checkphonenumber();
+        checkselect();
+
+
+        if (checkusername() == true && checkmessage() == true && checkphonenumber() == true && checkselect() ==
+            true) {
+            $('#send-message').attr('type', 'submit');
+        } else {
+            $('#send-message').attr('type', 'button');
         }
+
+
     });
+
+
+    $(".name").on('input', function() {
+        checkusername();
+    })
+    $(".email").on('input', function() {
+        checkemail();
+    })
+    $(".products").on('input', function() {
+        checkselect();
+    })
+    $(".phone").on('input', function() {
+        checkphonenumber();
+    })
+    $(".comments").on('input', function() {
+        checkmessage();
+    })
+
+    function checkusername() {
+        let username = $('.name').val();
+        var pattern = /^[a-zA-Z ]{4,}$/;
+
+        if (username == '') {
+            $("#message1").html("*Please fill the name");
+            $("#message1").show();
+            return false
+        } else if (!pattern.test(username)) {
+            $('#message1').html("*Please enter a valid name");
+            $('#message1').show();
+            return false
+        } else {
+            $('#message1').hide();
+            return true
+        }
+
+    }
+
+    function checkselect() {
+        let username = $('.products').val();
+
+        if (username == '') {
+            $("#message5").html("*Please fill the name");
+            $("#message5").show();
+            return false
+        } else {
+            $('#message5').hide();
+            return true
+        }
+
+    }
+
+    function checkmessage() {
+
+
+        let username = $('.comments').val();
+        var pattern = /^[a-zA-Z ]{4,}$/;
+
+        if (username == '') {
+
+            $("#message4").hide();
+            return false
+        } else if (!pattern.test(username)) {
+            $('#message4').html("*Please enter a valid Message");
+            $('#message4').show();
+            return false
+        } else {
+            $('#message4').hide();
+            return true
+        }
+
+    }
+
+    function checkemail() {
+        let email = $(".email").val();
+        var regex = /^([A-Za-z0-9_.])+\@([a-z])+\.([a-z])+$/;
+
+        // list of email addresses to reject
+        var blacklist = [
+            "example@domain.com",
+            "user@example.com",
+            "test@domain.com",
+            "email@domain.c",
+            "email@domain.co"
+        ];
+
+        if (email == "") {
+            $('#message2').html("*Please fill the email id");
+            $('#message2').show();
+            return false;
+        } else if (!(regex.test(email))) {
+            $('#message2').html("Enter a valid email id");
+            $('#message2').show();
+            return false;
+        } else if (blacklist.includes(email)) {
+            $('#message2').html("This email address is not allowed");
+            $('#message2').show();
+            return false;
+        } else {
+            $('#message2').hide();
+            return true;
+        }
+    }
+
+    function checkphonenumber() {
+        let Phonenumber = $(".phone").val();
+        var Pattern = /^(?!.*(\d)\1{9})[6-9]\d{9}$/;
+
+        if (Phonenumber == "") {
+            $('#message3').html("*Please fill the Phone number");
+            $('#message3').show();
+            return false;
+        } else if (Phonenumber.length != 10) {
+            $('#message3').html("*Please enter a 10-digit phone number");
+            $('#message3').show();
+            return false;
+        } else if (!Pattern.test(Phonenumber)) {
+            $('#message3').html("*Please enter a valid phone number");
+            $('#message3').show();
+            return false;
+        } else {
+            $('#message3').hide();
+            return true;
+        }
+    }
 </script>
 
-<script>
-    $(document).ready(function () {
-        // Add a click event to the element with the class "scr_full"
-        $(".scr_full").click(function () {
-            // Scroll to the element with the id "cat11" using jQuery
-            $('html, body').animate({
-                scrollTop: $("#cat11").offset().top
-            }, 500); // Adjust the duration as needed
-        });
-    });
-    </script>
 
 </body>
 
