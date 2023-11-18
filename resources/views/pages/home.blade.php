@@ -130,7 +130,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -151,7 +151,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Smart</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -172,7 +172,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Savings</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -193,7 +193,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Mini</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -214,7 +214,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -235,7 +235,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Smart</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -256,7 +256,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Savings</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -277,7 +277,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Mini</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -343,7 +343,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -364,7 +364,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -385,7 +385,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -406,7 +406,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -427,7 +427,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -448,7 +448,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -469,7 +469,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">
@@ -490,7 +490,7 @@
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
                         <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span> </h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
                         <div class="prd_inp">
                             <div class="ful_po">
                                 <div class="prds_inr">

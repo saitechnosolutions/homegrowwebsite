@@ -127,30 +127,38 @@
             </div>
         </div>
 
+
+
+    </section>
+
+    <div class="follow-img">
         <div class="container">
             <div class="row allos">
-
-                <div class="footer-icon11">
-                    <h5 class="foot_head">Follow Us</h5>
-                    <div class="asstrs">
-                        <a href=" " target="_blank"><i class="fab fa-instagram  footing-icons"
-                                aria-hidden="true"></i></a>
-                        <a href="" target="_blank"><i class="fab fa-whatsapp  footing-icons"
-                                aria-hidden="true"></i></a>
-                        <a href="" target="_blank"><i class="fab fa-facebook-f  footing-icons"
-                                aria-hidden="true"></i></a>
-                        <!--<a href="" target="_blank"><i class="fab fa-twitter  footing-icons"-->
-                        <!--        aria-hidden="true"></i></a>-->
-                        <!--<a href="" target="_blank"><i class="fab fa-youtube  footing-icons"-->
-                        <!--        aria-hidden="true"></i></a>-->
+                <div class="col-lg-4">
+                    <div class="footer-icon11">
+                        <h5 class="foot_head11">Follow Us</h5>
+                        <div class="asstrs">
+                            <a href=" " target="_blank" class="yue"><i class="fab fa-instagram  footing-icons"
+                                    aria-hidden="true"></i></a>
+                            <a href="" target="_blank" class="yue"><i class="fab fa-whatsapp  footing-icons"
+                                    aria-hidden="true"></i></a>
+                            <a href="" target="_blank" class="yue"><i class="fab fa-facebook-f  footing-icons"
+                                    aria-hidden="true"></i></a>
+                            <!--<a href="" target="_blank"><i class="fab fa-twitter  footing-icons"-->
+                            <!--        aria-hidden="true"></i></a>-->
+                            <!--<a href="" target="_blank"><i class="fab fa-youtube  footing-icons"-->
+                            <!--        aria-hidden="true"></i></a>-->
+                        </div>
                     </div>
-
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="col-lg-12 text-end">
+                    <p class="rersesr">© 2023 Homegrow All Rights Reserved.</p>
+                </div>
+            </div>
 
         </div>
-
-    </section>
+    </div>
 @endsection

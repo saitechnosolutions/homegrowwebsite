@@ -47,8 +47,10 @@
 
         @yield('main-content')
 
-        @include('layouts.footer')
-
+        @unless (request()->is('contact'))
+            {{-- Exclude footer if the current route is 'contact' --}}
+            @include('layouts.footer')
+        @endunless
     </div>
 
 
@@ -87,6 +89,52 @@
     <script src="https://alexandrebuffet.fr/codepen/slider/slick-animation.min.js"></script>
 
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+
+    <script>
+        // range value
+
+        const rangeInput = document.querySelectorAll(".range-input input"),
+            priceInput = document.querySelectorAll(".price-input input"),
+            range = document.querySelector(".slider .progress");
+        let priceGap = 1000;
+
+        priceInput.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minPrice = parseInt(priceInput[0].value),
+                    maxPrice = parseInt(priceInput[1].value);
+
+                if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+                    if (e.target.className === "input-min") {
+                        rangeInput[0].value = minPrice;
+                        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+                    } else {
+                        rangeInput[1].value = maxPrice;
+                        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                    }
+                }
+            });
+        });
+
+        rangeInput.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minVal = parseInt(rangeInput[0].value),
+                    maxVal = parseInt(rangeInput[1].value);
+
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap;
+                    } else {
+                        rangeInput[1].value = minVal + priceGap;
+                    }
+                } else {
+                    priceInput[0].value = minVal;
+                    priceInput[1].value = maxVal;
+                    range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                }
+            });
+        });
+    </script>
 
 
     <script>
@@ -238,149 +286,149 @@
     </script>
 
 
-<script>
-    $('#send-message').on("click", function() {
-        checkusername();
-        checkmessage();
-        checkemail();
-        checkphonenumber();
-        checkselect();
+    <script>
+        $('#send-message').on("click", function() {
+            checkusername();
+            checkmessage();
+            checkemail();
+            checkphonenumber();
+            checkselect();
 
 
-        if (checkusername() == true && checkmessage() == true && checkphonenumber() == true && checkselect() ==
-            true) {
-            $('#send-message').attr('type', 'submit');
-        } else {
-            $('#send-message').attr('type', 'button');
+            if (checkusername() == true && checkmessage() == true && checkphonenumber() == true && checkselect() ==
+                true) {
+                $('#send-message').attr('type', 'submit');
+            } else {
+                $('#send-message').attr('type', 'button');
+            }
+
+
+        });
+
+
+        $(".name").on('input', function() {
+            checkusername();
+        })
+        $(".email").on('input', function() {
+            checkemail();
+        })
+        $(".products").on('input', function() {
+            checkselect();
+        })
+        $(".phone").on('input', function() {
+            checkphonenumber();
+        })
+        $(".comments").on('input', function() {
+            checkmessage();
+        })
+
+        function checkusername() {
+            let username = $('.name').val();
+            var pattern = /^[a-zA-Z ]{4,}$/;
+
+            if (username == '') {
+                $("#message1").html("*Please fill the name");
+                $("#message1").show();
+                return false
+            } else if (!pattern.test(username)) {
+                $('#message1').html("*Please enter a valid name");
+                $('#message1').show();
+                return false
+            } else {
+                $('#message1').hide();
+                return true
+            }
+
         }
 
+        function checkselect() {
+            let username = $('.products').val();
 
-    });
+            if (username == '') {
+                $("#message5").html("*Please fill the name");
+                $("#message5").show();
+                return false
+            } else {
+                $('#message5').hide();
+                return true
+            }
 
-
-    $(".name").on('input', function() {
-        checkusername();
-    })
-    $(".email").on('input', function() {
-        checkemail();
-    })
-    $(".products").on('input', function() {
-        checkselect();
-    })
-    $(".phone").on('input', function() {
-        checkphonenumber();
-    })
-    $(".comments").on('input', function() {
-        checkmessage();
-    })
-
-    function checkusername() {
-        let username = $('.name').val();
-        var pattern = /^[a-zA-Z ]{4,}$/;
-
-        if (username == '') {
-            $("#message1").html("*Please fill the name");
-            $("#message1").show();
-            return false
-        } else if (!pattern.test(username)) {
-            $('#message1').html("*Please enter a valid name");
-            $('#message1').show();
-            return false
-        } else {
-            $('#message1').hide();
-            return true
         }
 
-    }
+        function checkmessage() {
 
-    function checkselect() {
-        let username = $('.products').val();
 
-        if (username == '') {
-            $("#message5").html("*Please fill the name");
-            $("#message5").show();
-            return false
-        } else {
-            $('#message5').hide();
-            return true
+            let username = $('.comments').val();
+            var pattern = /^[a-zA-Z ]{4,}$/;
+
+            if (username == '') {
+
+                $("#message4").hide();
+                return false
+            } else if (!pattern.test(username)) {
+                $('#message4').html("*Please enter a valid Message");
+                $('#message4').show();
+                return false
+            } else {
+                $('#message4').hide();
+                return true
+            }
+
         }
 
-    }
+        function checkemail() {
+            let email = $(".email").val();
+            var regex = /^([A-Za-z0-9_.])+\@([a-z])+\.([a-z])+$/;
 
-    function checkmessage() {
+            // list of email addresses to reject
+            var blacklist = [
+                "example@domain.com",
+                "user@example.com",
+                "test@domain.com",
+                "email@domain.c",
+                "email@domain.co"
+            ];
 
-
-        let username = $('.comments').val();
-        var pattern = /^[a-zA-Z ]{4,}$/;
-
-        if (username == '') {
-
-            $("#message4").hide();
-            return false
-        } else if (!pattern.test(username)) {
-            $('#message4').html("*Please enter a valid Message");
-            $('#message4').show();
-            return false
-        } else {
-            $('#message4').hide();
-            return true
+            if (email == "") {
+                $('#message2').html("*Please fill the email id");
+                $('#message2').show();
+                return false;
+            } else if (!(regex.test(email))) {
+                $('#message2').html("Enter a valid email id");
+                $('#message2').show();
+                return false;
+            } else if (blacklist.includes(email)) {
+                $('#message2').html("This email address is not allowed");
+                $('#message2').show();
+                return false;
+            } else {
+                $('#message2').hide();
+                return true;
+            }
         }
 
-    }
+        function checkphonenumber() {
+            let Phonenumber = $(".phone").val();
+            var Pattern = /^(?!.*(\d)\1{9})[6-9]\d{9}$/;
 
-    function checkemail() {
-        let email = $(".email").val();
-        var regex = /^([A-Za-z0-9_.])+\@([a-z])+\.([a-z])+$/;
-
-        // list of email addresses to reject
-        var blacklist = [
-            "example@domain.com",
-            "user@example.com",
-            "test@domain.com",
-            "email@domain.c",
-            "email@domain.co"
-        ];
-
-        if (email == "") {
-            $('#message2').html("*Please fill the email id");
-            $('#message2').show();
-            return false;
-        } else if (!(regex.test(email))) {
-            $('#message2').html("Enter a valid email id");
-            $('#message2').show();
-            return false;
-        } else if (blacklist.includes(email)) {
-            $('#message2').html("This email address is not allowed");
-            $('#message2').show();
-            return false;
-        } else {
-            $('#message2').hide();
-            return true;
+            if (Phonenumber == "") {
+                $('#message3').html("*Please fill the Phone number");
+                $('#message3').show();
+                return false;
+            } else if (Phonenumber.length != 10) {
+                $('#message3').html("*Please enter a 10-digit phone number");
+                $('#message3').show();
+                return false;
+            } else if (!Pattern.test(Phonenumber)) {
+                $('#message3').html("*Please enter a valid phone number");
+                $('#message3').show();
+                return false;
+            } else {
+                $('#message3').hide();
+                return true;
+            }
         }
-    }
-
-    function checkphonenumber() {
-        let Phonenumber = $(".phone").val();
-        var Pattern = /^(?!.*(\d)\1{9})[6-9]\d{9}$/;
-
-        if (Phonenumber == "") {
-            $('#message3').html("*Please fill the Phone number");
-            $('#message3').show();
-            return false;
-        } else if (Phonenumber.length != 10) {
-            $('#message3').html("*Please enter a 10-digit phone number");
-            $('#message3').show();
-            return false;
-        } else if (!Pattern.test(Phonenumber)) {
-            $('#message3').html("*Please enter a valid phone number");
-            $('#message3').show();
-            return false;
-        } else {
-            $('#message3').hide();
-            return true;
-        }
-    }
-</script>
+    </script>
 
 
 </body>
