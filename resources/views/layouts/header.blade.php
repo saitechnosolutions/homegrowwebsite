@@ -1,5 +1,5 @@
 <header class="section-header" id="navi">
-    <a href="/"> <img src="/assets/images/logo.png" class="darks-logo img-fluid"> </a>
+    <a href="/"> <img src="/assets/images/logo.svg" class="darks-logo img-fluid"> </a>
     <nav class="navbar navbar-expand-lg navbar-light  navbar-section ">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -13,7 +13,7 @@
                     <div class="col-lg-3 col-xl-3">
 
                         <a class="nav-logo" href="/">
-                            <img src="/assets/images/logo.png" class="white-logo  img-fluid" alt="">
+                            <img src="/assets/images/logo.svg" class="white-logo  img-fluid" alt="">
 
                         </a>
                     </div>

@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="row qty_lit">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4  lent">
                                 <h5 class="qtys">Select </h5>
                                 <div class="litre">
                                     <button class="price_ty">Qty: 50g <br> <span class="price_twe">Price: ₹22</span>
@@ -41,12 +41,14 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <h5 class="qtys">Select Qty</h5>
-                                <div class="prds_inr">
-                                    <button class="btn_min">-</button>
-                                    <input type="text" class="input_poo">
-                                    <button class="btn_plus">+</button>
+                            <div class="col-lg-4 lent1">
+                                <div class="atrt">
+                                    <h5 class="qtys">Select Qty</h5>
+                                    <div class="prds_inr">
+                                        <button class="btn_min1">-</button>
+                                        <input type="number" class="input_poo1" id="input_poo1" value="1" min="1"  max="100">
+                                        <button class="btn_plus1">+</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,15 +73,15 @@
                                 <div class="sharess">
                                     <h5>Share </h5>
                                     <ul class="uit">
-                                        <li><a href=""><img src="/assets/images/msg.png" class="img-fluid"
+                                        <li><a href=""><img src="/assets/images/msg.png" class="img-fluid ghg"
                                                     alt=""></a></li>
-                                        <li><a href=""><img src="/assets/images/fac.png" class="img-fluid"
+                                        <li><a href=""><img src="/assets/images/fac.png" class="img-fluid ghg"
                                                     alt=""></a></li>
-                                        <li><a href=""><img src="/assets/images/wha.png" class="img-fluid"
+                                        <li><a href=""><img src="/assets/images/wha.png" class="img-fluid ghg"
                                                     alt=""></a></li>
-                                        <li><a href=""><img src="/assets/images/ins.png" class="img-fluid"
+                                        <li><a href=""><img src="/assets/images/ins.png" class="img-fluid ghg"
                                                     alt=""></a></li>
-                                        <li><a href=""><img src="/assets/images/ex.png" class="img-fluid"
+                                        <li><a href=""><img src="/assets/images/ex.png" class="img-fluid ghg"
                                                     alt=""></a></li>
                                     </ul>
                                 </div>
@@ -95,7 +97,7 @@
         <div class="container thuyu">
             <h5 class="ptio_ead">Description <i class="fa fa-chevron-down gree" aria-hidden="true"></i>
             </h5>
-            <div class="row">
+            <div class="row aresa">
                 <div class="col-lg-12">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -107,11 +109,37 @@
 
                 </div>
                 <div class="col-lg-12">
+                    <table class="table table-bordered table-striped table-seller">
+                        <tbody>
+                            <tr>
+                                <td class="tab_he">Model</td>
+                                <td class="tab_td">#8786867</td>
+                            </tr>
+                            <tr>
+                                <td class="tab_he">Qty</td>
+                                <td class="tab_td">#8786867</td>
+                            </tr>
+                            <tr>
+                                <td class="tab_he">Mfg Date</td>
+                                <td class="tab_td">#8786867</td>
+                            </tr>
+                            <tr>
+                                <td class="tab_he">Batch No.</td>
+                                <td class="tab_td">#8786867</td>
+                            </tr>
+                            <tr>
+                                <td class="tab_he">Weight</td>
+                                <td class="tab_td">#8786867</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-12">
                     <ul class="juju">
-                        <li><i class="fa fa-check" aria-hidden="true"></i> Some great feature name here</li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i> Some great feature name here</li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i> Some great feature name here</li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i> Some great feature name here</li>
+                        <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>
+                        <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>
+                        <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>
+                        <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>
                     </ul>
                 </div>
             </div>

@@ -52,7 +52,7 @@
                 <ul class="footer_list">
                     <li> <a href="/" class="footer_anc"> Shipping Policy </a></li>
                     <li> <a href="/about" class="footer_anc"> Returtn Policy </a></li>
-                    <li> <a href="/products" class="footer_anc"> Privacy Policy </a></li>
+                    <li> <a href="/privacy" class="footer_anc"> Privacy Policy </a></li>
                     <li> <a href="/gallery" class="footer_anc"> Terms and Condition </a></li>
                 </ul>
             </div>

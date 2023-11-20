@@ -133,7 +133,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -155,7 +155,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -177,7 +177,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -199,7 +199,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -221,7 +221,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -243,7 +243,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -265,7 +265,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -287,7 +287,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">
@@ -309,7 +309,7 @@
                                     <div class="ful_po">
                                         <div class="prds_inr">
                                             <button class="btn_min">-</button>
-                                            <input type="text" class="input_poo">
+                                            <input type="number" class="input_poo">
                                             <button class="btn_plus">+</button>
                                         </div>
                                         <div class="add_to_cart">

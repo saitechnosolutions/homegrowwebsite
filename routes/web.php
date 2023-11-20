@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','pages.home');
 Route::view('privacy_policy','pages.privacy');
 Route::view('allproducts','pages.allproduct');
-Route::view('contact','pages.contact');
+Route::view('mycart','pages.mycart');
+Route::view('checkout','pages.checkout');
 
+Route::view('contact','pages.contact');
+Route::view('terms','pages.terms');
 route::view('single_products','pages.singleproduct');
 
 
