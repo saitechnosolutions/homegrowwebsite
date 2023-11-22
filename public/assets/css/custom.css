@@ -17,6 +17,9 @@
      box-sizing: border-box;
      font-family: 'Inter', sans-serif;
  }
+ .sticky-top{
+    top: 100px;
+ }
 
  .footing-icons {
      color: #670066;
@@ -25,6 +28,7 @@
 
  .footer-icon {
      padding: 10px 0;
+     text-align: center;
  }
 
  .second-nav {
@@ -32,9 +36,8 @@
  }
 
  .art {
-     background: #fff;
+     background: #670066;
      border-radius: 100px;
-     padding: 15px 15px;
  }
 
  .hd {
@@ -92,9 +95,10 @@
  .footer_anc {
      text-decoration: none;
      color: #ffffff;
-     font-weight: 500;
+     font-weight: 200;
+    font-size: 15px;
      transition: all 0.4s;
-     font-family: Neutra Text;
+     font-family: inter;
  }
 
  .FOOT_NUMs {
@@ -117,10 +121,10 @@
      font-size: 21px;
  }
 
- /* .footer_anc:hover {
+ .footer_anc:hover {
     margin-left: 7px;
-    color: #FF524E;
-} */
+    color: #fff;
+}
  .foot_head {
      color: #ffffff;
      /* text-align: center; */
@@ -698,7 +702,7 @@
 
  .prd_inp {
      position: absolute;
-     top: 10%;
+     top: 72%;
      left: 0.5%;
      transition: .5s linear;
  }
@@ -1156,6 +1160,40 @@
      color: #fff !important;
      border: 0px;
  }
+
+
+ .home-btn5::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #670066;
+    border-radius: 17px;
+    transform-origin: left;
+    transition: transform 0.5s;
+    transform: scaleX(0);
+}
+
+.home-btn5:hover::before {
+    transform-origin: bottom;
+    transform: scaleX(1);
+}
+
+.home-btn5 {
+    background: #5CA904;
+    animation: btn 2s ease-in-out infinite;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+    border-radius: 17px !important;
+    padding: 8px 60px;
+    font-weight: 700;
+    color: #fff !important;
+    border: 0px;
+}
 
  .cont_cd .input-group-text {
      line-height: 2;
@@ -1785,6 +1823,7 @@
  .go_chec {
      border: 1px solid #DEE2E7;
      position: sticky;
+     border-radius: 5px;
  }
 
  .sub_to {
@@ -1792,6 +1831,13 @@
      justify-content: space-between;
      padding: 22px 0px;
  }
+
+ .sub_to1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
 
  .dasdd {
      padding: 0 50px;
@@ -1889,6 +1935,137 @@
 
 .date_dfj{
     justify-content: space-between;
+}
+.label_ui{
+    color: #585858;
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 30px;
+}
+.ruyt{
+    justify-content: center;
+}
+
+.tree .btn:hover{
+    color: #ffffff;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+
+.thyju{
+    padding: 50px 0;
+    align-items: center;
+    justify-content: center;
+}
+.about_page_section{
+    position: relative;
+    padding: 100px 0;
+}
+
+.about_page_section p{
+    text-align: justify;
+}
+.abt_hed{
+    font-family: "Neutra Text";
+    font-size: 45px;
+    font-weight: 600;
+}
+.yuyuy{
+    border-radius: 5px;
+}
+.reet{
+    list-style-type: decimal;
+}
+.leth{
+    text-transform: lowercase;
+}
+
+.kad{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.text_re{
+    color: #FA3434;
+}
+.text_gre{
+    color: #00B517;
+}
+.trtt{
+    row-gap: 15px;
+}
+.coup_label{
+    font-weight: 400;
+    color: #505050;
+}
+.basic{
+    background-color: #fff;
+    color: #00908D;
+}
+.pays span{
+    padding: 0  20px;
+    color: #CCCCCC;
+}
+.pays i{
+    color: #CCCCCC;
+    font-size: 16px;
+}
+.payww{
+    font-size: 16px;
+    font-weight: 500;
+    color: #CCCCCC;
+}
+.input-group-text{
+    background-color: #fff;
+}
+
+
+/* =============================register page =========================== */
+.register_section{
+    background: url('../images/regbg.jpg');
+    background-size: cover;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.regst_sec{
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 9px;
+}
+.wel_re{
+        color: #670066;
+        font-size: 36px;
+        font-weight: 600;
+}
+.paswer{
+    display: flex;
+    align-items: center;
+}
+.paswer .input-group{
+    width: 77%;
+}
+.pind{
+    padding: 0 20px;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
+    color: #66676B;
+}
+.bnub{
+    border-right: 0px;
+}
+.secdrt{
+    row-gap: 20px;
+    justify-content: center;
+}
+
+.roboto{
+    color: #0C1421;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
 }
 
 
@@ -2023,12 +2200,25 @@
      left: 46%;
      top: 1%;
  }
+.li.active{
+    color: #5CA904;
+}
+/* .product_one:hover  img{
+    transform: scale(1.1);
+    transition: 1.1s ease-in-out re;
+} */
 
 
 
 
 
 
+ @media only screen and (max-width: 990px) {
+    .scroll-down-btn{
+        left: 49%;
+    }
+
+ }
 
 
 

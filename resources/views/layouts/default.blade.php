@@ -278,7 +278,7 @@
             });
         });
     </script>
-   
+
 
 
     <script>
@@ -429,6 +429,35 @@
             }
         }
     </script>
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("myInput");
+            var passwordIcon = document.querySelector(".toggle-password i");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.classList.remove("fa-eye-slash");
+                passwordIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.classList.remove("fa-eye");
+                passwordIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+
 
 
 </body>

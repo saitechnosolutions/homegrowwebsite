@@ -4,7 +4,7 @@
  --}}
 
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         {{-- <div class="modal-header">
@@ -43,17 +43,19 @@
                 <ul class="footer_list">
                     <li> <a href="/" class="footer_anc"> Home </a></li>
                     <li> <a href="/about" class="footer_anc"> About </a></li>
-                    <li> <a href="/products" class="footer_anc"> Products </a></li>
-                    <li> <a href="/gallery" class="footer_anc"> Gallery </a></li>
+                    <li> <a href="/allproducts" class="footer_anc"> Products </a></li>
+                     <li> <a href="/contact" class="footer_anc"> Contact </a></li>
+                    {{-- <li> <a href="/gallery" class="footer_anc"> Gallery </a></li> --}}
                 </ul>
             </div>
             <div class="col-lg-3">
                 <h5 class="foot_head">Information</h5>
                 <ul class="footer_list">
-                    <li> <a href="/" class="footer_anc"> Shipping Policy </a></li>
-                    <li> <a href="/about" class="footer_anc"> Returtn Policy </a></li>
-                    <li> <a href="/privacy" class="footer_anc"> Privacy Policy </a></li>
-                    <li> <a href="/gallery" class="footer_anc"> Terms and Condition </a></li>
+                    <li> <a href="/cancellation" class="footer_anc"> Cancellation & Refund Policy </a></li>
+                    <li> <a href="/faq" class="footer_anc"> FAQs </a></li>
+                    <li> <a href="/privacy_policy" class="footer_anc"> Privacy Policy </a></li>
+                    <li> <a href="/terms" class="footer_anc"> Terms and Condition </a></li>
+                    <li> <a href="/shipping" class="footer_anc"> Shipping & Return Policy </a></li>
                 </ul>
             </div>
             {{-- <div class="col-lg-4">
@@ -76,13 +78,13 @@
                 <h5 class="foot_head1">Follow Us</h5>
 
                 <div class="footer-icon">
-                    {{-- <a href=" " target="_blank" class="art"><i class="fa fa-instagram  footing-icons" aria-hidden="true"></i></a>
-                    <a href="" target="_blank"  class="art"><i class="fa fa-facebook  footing-icons" aria-hidden="true"></i></a>
-                    <a href="" target="_blank"  class="art"><i class="fa fa-youtube-play footing-icons" aria-hidden="true"></i></a> --}}
+                    <a href=" " target="_blank" class="art"><img src="/assets/images/fas.png" class="img-fluid" alt=""></a>
+                    <a href="" target="_blank"  class="art"><img src="/assets/images/ins1.png" class="img-fluid" alt=""></a>
+                    <a href="" target="_blank"  class="art"><img src="/assets/images/you.png" class="img-fluid" alt=""></a>
                 </div>
                 <h5 class="foot_head1">For Queries</h5>
                 <ul class="FOOT_NUMs">
-                    <li> <a href="tel:+91-9864732510 " class="foot_num">+91-9864732510</a> </li>
+                    <li> <a href="tel:+91-7788996891 " class="foot_num">+91-7788996891</a> </li>
                 </ul>
             </div>
         </div>

@@ -417,7 +417,7 @@
 
                     <h5 class="billss">For Home Grow:
                     </h5>
-                    <p>E-mail: support@homegrow.in
+                    <p>E-mail: support@homegrow.co.in
                     </p>
                     <p>The details of the business support officer may be changed by us from time to time by updating this
                         Privacy Policy.

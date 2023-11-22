@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-one text-center" data-aos="fade-up" data-aos-duration="500">
-                                    <button type="submit" class="btn home-btn4" id="send-message">Submit</button>
+                                    <button type="submit" class="btn home-btn5" id="send-message">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -95,9 +95,8 @@
                     <img src="assets/images/maic.png">
 
                     <h3 class="foic">Address</h3>
-                    <p class="foicp1">No. 205-06260, northeast of the
-                        intersection of Yihe 2nd Road and Mengshan 2nd Road, Comprehensive Bonded Zone, Linyi City,
-                        Shandong Province</p>
+                    <p class="foicp1">Home Grow Enterprises - Vadavalli, Coimbatore.
+</p>
 
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-12 sds11 aos-init" data-aos="fade-down"
@@ -108,7 +107,7 @@
 
 
 
-                    <a href="tel:+91-9876543210" style="text-decoration: none;">+91 9876543210</a> <br>
+                    <a href="tel:+91-7788996891" style="text-decoration: none;"> +91 7788996891</a> <br>
                     {{-- <a href="tel:+91-8976523410" style="text-decoration: none;">+91 8976523410</a>  --}}
 
 
@@ -121,7 +120,7 @@
 
 
                     <h3 class="foic">Email Us</h3>
-                    <p class="foicp">service@homegrow.in</p>
+                    <p class="foicp">support@homegrow.co.in</p>
 
                 </div>
             </div>

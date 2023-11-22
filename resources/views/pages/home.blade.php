@@ -3,7 +3,7 @@
     <section class="home_main_section">
         <div class="home_ban_sec">
             <div class="home_full"
-                style="background: linear-gradient(180deg, #FFFFFF 11.46%, rgba(244, 244, 242, 0.523636) 30.64%, rgba(232, 231, 227, 0) 51.66%), url('assets/images/banner1.jpg') ;">
+                style="background: linear-gradient(180deg, #FFFFFF 11.46%, rgba(244, 244, 242, 0.523636) 30.64%, rgba(232, 231, 227, 0) 51.66%), url('assets/images/banner1.png') ;">
                 <div class="home_banner_section">
                     <div class="container">
                         <div class="row">

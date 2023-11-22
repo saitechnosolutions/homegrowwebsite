@@ -16,13 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::view('/','pages.home');
+Route::view('about','pages.about');
+Route::view('cancellation','pages.cancellation');
 Route::view('privacy_policy','pages.privacy');
+Route::view('register','pages.register');
+
+Route::view('terms','pages.terms');
+Route::view('shipping','pages.shipping');
+Route::view('faq','pages.faq');
 Route::view('allproducts','pages.allproduct');
 Route::view('mycart','pages.mycart');
 Route::view('checkout','pages.checkout');
 
 Route::view('contact','pages.contact');
-Route::view('terms','pages.terms');
 route::view('single_products','pages.singleproduct');
 
 

@@ -19,14 +19,14 @@
                     </div>
                     <div class="col-lg-6 col-xl-6">
                         <ul class="navbar-nav me-auto  mb-lg-0 second-nav ">
-                            <li class="nav-item navbar-lists   @if (Request::segment(1) == '') active @endif  ">
+                            <li class="nav-item navbar-lists   @if (Request::segment(1) == '/') active @endif  ">
                                 <a class="nav-link  " aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item navbar-lists    @if (Request::segment(1) == 'about') active @endif  ">
 
-                                <a class="nav-link " href="/about">All Categories</a>
+                                <a class="nav-link " href="/allproducts">All Categories</a>
                             </li>
-                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'products') active @endif   ">
+                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'allproducts') active @endif   ">
 
 
                                 <a class="nav-link " href="/products">Combo Products</a>
