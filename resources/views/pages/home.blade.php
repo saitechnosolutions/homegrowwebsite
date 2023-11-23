@@ -21,10 +21,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-4 col-5">
-                                                {{-- <a class="  btn home-btn  shaded1" data-animation="fadeInUp" data-delay="1s">
-                                                    <img src="assets/images/basket_fill.png" width="30px" alt="">
-                                                    Order Now</a> --}}
-                                                <a class="  btn home-btn  shaded1" >
+                                                <a class="  btn home-btn  shaded1">
                                                     <img src="assets/images/basket_fill.png" width="30px" alt="">
                                                     Order Now</a>
                                             </div>
@@ -39,6 +36,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <section class="categories_section">
@@ -122,10 +120,10 @@
 
     <section class="combo_section">
         <div class="container">
-            <h5 class="combohead"  data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
-            <div class="row num_weerr" >
+            <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
+            <div class="row num_weerr">
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -139,8 +137,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,8 +159,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,8 +181,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,8 +203,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -223,8 +225,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,8 +247,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,8 +269,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -286,8 +291,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -338,7 +344,7 @@
             <h5 class="combohead">Hot Deals</h5>
             <div class="row num_weerr">
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -352,8 +358,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -373,8 +380,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -394,14 +402,15 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-right" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -415,14 +424,15 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -436,14 +446,15 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-left" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -457,8 +468,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -478,14 +490,15 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="product_one"  data-aos="fade-right" data-aos-duration="800">
+                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>
@@ -499,8 +512,9 @@
                                     <button class="btn_plus">+</button>
                                 </div>
                                 <div class="add_to_cart">
-                                <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
-                            </div>
+                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>

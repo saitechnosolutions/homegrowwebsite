@@ -21,6 +21,14 @@ Route::view('cancellation','pages.cancellation');
 Route::view('privacy_policy','pages.privacy');
 Route::view('register','pages.register');
 
+Route::view('mywishlist','pages.mywishlist');
+Route::view('myaccount','pages.myaccount');
+Route::view('accountsetting','pages.accountsetting');
+Route::view('editaddress','pages.editaddress');
+Route::view('add_addres','pages.add_addres');
+Route::view('edit_manage_addres','pages.edit_manage_addres');
+Route::view('my_order_status','pages.my_order_status');
+
 Route::view('terms','pages.terms');
 Route::view('shipping','pages.shipping');
 Route::view('faq','pages.faq');
