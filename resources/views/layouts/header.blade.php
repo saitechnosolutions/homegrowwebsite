@@ -33,7 +33,6 @@
                             </li>
                             <li class="nav-item navbar-lists    @if (Request::segment(1) == 'gallery') active @endif    ">
 
-
                                 <a class="nav-link " href="/gallery">Hot Deals</a>
                             </li>
 
@@ -47,13 +46,206 @@
                             <a href="contact"><i class="fa fa-search hd" aria-hidden="true"></i></a>
                             <a href="contact"><i class="fa fa-heart hd" aria-hidden="true"></i></a>
                             <a href="contact"><i class="fa fa-shopping-cart hd" aria-hidden="true"></i></a>
-                            <a href="contact"><i class="fa fa-user hd" aria-hidden="true"></i></a>
+                            <div class=" dropstart">
+                                <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i class="fa fa-user hd" aria-hidden="true"></i></a>
+                                <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                    <li class="droplink"><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal">Login</a></li>
+                                    <li class="droplink"><a class="dropdown-item active" href="#">Register</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">My Account</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
     </nav>
 </header>
+
+
+{{-- ====================login modal ======================== --}}
+
+<div class="modal fade   loginform" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            {{-- <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> --}}
+            <div class="modal-body">
+                <div class="container reg_container">
+                    <div class="row">
+                        <div class="col-lg-6  loher">
+                            <div class="logses_ful">
+                                <h5 class="wel_log">Welcome Back <img src="/assets/images/hand.png" class="img-fluid"
+                                        width="23px" alt=""></h5>
+                                <p class="groce">Welcome to your Healthy store! Sign in now to explore the
+                                    Fresh & healthier groceries </p>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="" class="roboto">Email</label>
+                                                <input type="text" class="form-control emil">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="" class="roboto">Password</label>
+                                                <div class="loginssss">
+                                                    <div class="input-group">
+                                                        <input class="form-control  mert" id="myInput"
+                                                            type="password" name="password" required=""
+                                                            placeholder="Password" autocomplete="off">
+                                                        <div class="input-group-append">
+                                                            <span
+                                                                class="input-group-text toggle-password form-control  login_pass_ide"
+                                                                onclick="togglePassword()">
+                                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <a class="pind" href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#forgotModal">Forgot Pin ?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 pt-4">
+                                            <div class="tree text-center">
+                                                <a href="" class="btn  home-btn3">
+                                                    Sign Up</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 pt-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="line1"></div>
+                                                <div class="orser">or</div>
+                                                <div class="line1"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <p class="yiuo">Don't you have an account? <a href="/register"
+                                                    class="sign_ups">Register</a> </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/assets/images/login.jpg" class="img-fluid  logs_img" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Login</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+
+{{-- ================forget modal  ===================== --}}
+<div class="modal fade  loginform" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container reg_container">
+                    <div class="row  align-items-center ">
+                        <div class="col-lg-6 loher">
+                            <div class="logses_ful">
+                                <h5 class="wel_log">Forgot Pin    <img src="/assets/images/forpin.png" class="img-fluid"
+                                        width="25px" alt=""></h5>
+                                <p class="groce">Enter your email address to change
+                                    your password</p>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-lg-12 pt-5">
+                                            <div class="form-group">
+                                                <label for="" class="roboto">Email</label>
+                                                <input type="text" class="form-control emil">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 pt-4">
+                                            <div class="tree text-center">
+                                                <a href="" class="btn  home-btn3">
+                                                    Reset Password</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 pt-3">
+                                            <button type="button" class="btn killer_cop" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/assets/images/for.png" class="img-fluid  logs_img" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{-- ================================Add to Cart ===================== --}}
+
+<div class="modal fade  loginform1" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container reg_container">
+                    <div class="row  align-items-center ">
+                        <div class="col-lg-6">
+                            <div class="logses_ful">
+                                <h5 class="wel_log">Forgot Pin    <img src="/assets/images/forpin.png" class="img-fluid"
+                                        width="25px" alt=""></h5>
+                                <p class="groce">Enter your email address to change
+                                    your password</p>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-lg-12 pt-5">
+                                            <div class="form-group">
+                                                <label for="" class="roboto">Email</label>
+                                                <input type="text" class="form-control emil">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 pt-4">
+                                            <div class="tree text-center">
+                                                <a href="" class="btn  home-btn3">
+                                                    Reset Password</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 pt-3">
+                                            <button type="button" class="btn killer_cop" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/assets/images/for.png" class="img-fluid  logs_img" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 <nav class="social-media-side">
@@ -68,11 +260,11 @@
 
 
 
-@if (Session::has('success'))
+{{-- @if (Session::has('success'))
     <div class="alert alert-success alert-dismissible fade show " role="alert">
         Email has been sent.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-@endif
+@endif --}}

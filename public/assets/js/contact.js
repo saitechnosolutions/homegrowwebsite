@@ -9,6 +9,13 @@ $('#send-message').on("click", function() {
     if (checkusername() == true && checkmessage() == true && checkphonenumber() == true && checkselect() ==
         true) {
         $('#send-message').attr('type', 'submit');
+        $(document).on('click', '#send-message', function(e) {
+			swal(
+				'Success',
+				'You Mail has been send successfully',
+				'success'
+			)
+		});
     } else {
         $('#send-message').attr('type', 'button');
     }

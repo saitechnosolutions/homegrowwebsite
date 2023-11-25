@@ -1,27 +1,58 @@
-{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
- --}}
+<button type="button" class="btn btn-primary  ofers"  hidden data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<button type="button" class="btn btn-primary  ofers"   hidden   data-bs-toggle="modal" data-bs-target="#add_to_carts"></button>
+<!-- ========================== ADD TO CART  ================================== -->
+<div class="modal fade  add_to_carts" id="add_to_carts" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        {{-- <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div> --}}
-        <div class="modal-body gf">
+      <div class="modal-content ">
+        <div class="modal-body addses_cart">
           <div class="container">
-            <div class="row">
-
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <img src="/assets/images/succes.png" class="isod" alt="">
+                   <p class="addes_csrtr">Item Added To Cart !</p>
+                   <div class="weight">
+                    <img src="/assets/images/small.png" class="img-fluid" alt="">
+                    <div class="pricre">
+                        <h5 class="product_name">Combo Smart</h5>
+                        <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span></h5>
+                    </div>
+                   </div>
+                    <a href="" class=" btn home-btn3  vaseji">Proceed to Checkout</a>
+                    <a href="" class="kalart">Back to Shopping</a>
+                </div>
             </div>
           </div>
         </div>
-        {{-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> --}}
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================offer ================================== -->
+  <div class="modal fade  offer_zone" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content sunber">
+        <div class="closed_opo">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+          <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="/assets/images/comp.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 text-center">
+                    <p class="tolog">Login to</p>
+                    <h5 class="rozha">Get 15% OFF Now</h5>
+                    <div class="ofer_full">
+                        <p class="code">Use code at checkout <a href="" class="btn home-btn6">GET MY 15% OFF</a> </p>
+                    </div>
+                    <a href="" class="xsd btn home-btn7">Login</a>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

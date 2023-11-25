@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\mailcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,15 @@ Route::view('checkout','pages.checkout');
 
 Route::view('contact','pages.contact');
 route::view('single_products','pages.singleproduct');
+
+
+
+Route::post('/mail',[mailcontroller::class,"mail"]);
+
+
+
+
+
 
 
 ?>

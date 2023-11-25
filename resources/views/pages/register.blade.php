@@ -38,7 +38,8 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <a class="pind">Forgot Pin ?</a>
+                                        <a class="pind" data-bs-toggle="modal"
+                                        data-bs-target="#forgotModal">Forgot Pin ?</a>
                                     </div>
                                 </div>
                             </div>

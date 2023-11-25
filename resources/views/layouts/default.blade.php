@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Grow</title>
 
-    <link rel="shortcut icon" href="/assets/images/favss.svg">
+    <link rel="shortcut icon" href="/assets/images/favou.png">
 
     <link rel="stylesheet" href="/assets/css/animate.min.css">
 
@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css">
 </head>
 
 <body>
@@ -95,6 +97,8 @@
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
 
     <script src="/assets/js/slider.js"></script>
+
+    <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
 
     <script>
         // range value
@@ -242,7 +246,11 @@
         }
     </script>
 
-
+    <script>
+        // $(document).ready(function(){
+        //     $('.ofers').trigger('click');
+        // });
+    </script>
 </body>
 
 </html>
