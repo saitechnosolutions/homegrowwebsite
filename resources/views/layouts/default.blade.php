@@ -98,7 +98,28 @@
 
     <script src="/assets/js/slider.js"></script>
 
+    <script src="/assets/js/register.js"></script>
+
     <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
+
+
+
+    {{-- ================== water effects =================== --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+    <script>
+        $(".nutri_section").ripples({
+            resolution: 260,
+            perturbance: 0.01,
+        });
+    </script>
+    <script>
+        $(".home_full").ripples({
+            resolution: 260,
+            perturbance: 0.01,
+        });
+    </script>
 
     <script>
         // range value
@@ -196,7 +217,34 @@
 
 
     <script>
+        function myFunction() {
+            var x = document.getElementById("myInput1");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
+    <script>
+        function togglePassword1() {
+            var passwordInput = document.getElementById("myInput1");
+            var passwordIcon = document.querySelector(".toggle-password1 i");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.classList.remove("fa-eye-slash");
+                passwordIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.classList.remove("fa-eye");
+                passwordIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+
+
+    <script>
         // track order
         const progress = document.getElementById('progress')
         const back = document.getElementById('back')

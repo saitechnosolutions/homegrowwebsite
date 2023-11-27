@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\mailcontroller;
+use App\Http\Controllers\registercontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +44,8 @@ route::view('single_products','pages.singleproduct');
 
 
 Route::post('/mail',[mailcontroller::class,"mail"]);
-
-
+Route::POST('/register',[registercontroller::class,'register']);
+Route::get('/city/{id}',[registercontroller::class,"city"])
 
 
 

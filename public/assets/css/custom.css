@@ -35,6 +35,11 @@
     font-size: 34px;
     font-weight: 400;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .tolog{
     font-size: 16px;
     font-weight: 400;
@@ -121,7 +126,7 @@
 
  .login_pass_ide {
      position: absolute;
-     right: 3px;
+     right: 5px;
      width: 31px;
      top: 4px;
      background: none !important;
@@ -457,9 +462,13 @@
  .home_full {
      position: relative !important;
      background-size: cover !important;
-     background-repeat: no-repeat;
-     background-position: center;
+     background-repeat: no-repeat !important;
+     background-position: center !important;
      height: 95vh !important;
+ }
+
+ .first_slick a{
+    text-decoration: none;
  }
 
  .home_banner_section {
@@ -475,6 +484,31 @@
      font-size: 18px;
      font-weight: 700;
  }
+
+ .rsr  .slick-dots li button {
+    background: #670066;
+    border-radius: 50px;
+    width: 10px;
+    height: 10px;
+}
+
+.rsr  .slick-dots {
+    bottom: -35px;
+}
+
+.rsr  li.slick-active button {
+    background: #5CA904 !important;
+    border-radius: 50px;
+}
+
+.rsr  .slick-dots li button:before {
+    opacity: 0 !important;
+}
+
+.rsr  .slick-dots li.slick-active button:before {
+    opacity: 0 !important;
+}
+
 
 
  .crer {
@@ -658,6 +692,7 @@
      row-gap: 20px;
      padding-top: 50px;
      padding-bottom: 50px;
+     margin: auto;
  }
 
  .first_slick .slick-dots li button {
@@ -852,7 +887,7 @@
      /* background: linear-gradient(64deg, #5DAA05 3%, #B0D078 38.15%, #FFF4E6 88.81%); */
      background: url('../images/combo.png');
      background-size: cover;
-     padding: 50px 0;
+     padding: 50px 0 100px;
      position: relative;
      /* box-shadow: 0 -206px 97px rgba(255, 245, 231, 0.9) inset, 0 0 20px rgba(255, 245, 231, 0.2), 0px -50px 36px -28px rgba(0, 0, 0, 0.35) inset; */
 
@@ -875,11 +910,13 @@
  }
 
  .produs_img {
+    position: relative;
      background: #fff;
      text-align: center;
      border-radius: 10px;
-     padding: 40px 20px;
+     padding: 40px 0px;
  }
+
 
  .he_head {
      color: #1C1C1C;
@@ -909,7 +946,10 @@
 
  .ful_po {
      display: flex;
-     justify-content: space-evenly;
+     justify-content: space-between;
+     background: #3a6d00;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
  }
 
  .prds_inr {
@@ -952,7 +992,7 @@
 
  .num_weerr {
      padding: 50px 0;
-     row-gap: 45px;
+     row-gap: 100px;
  }
 
  .prd_inp {
@@ -960,21 +1000,31 @@
  }
 
  .prd_inp {
-     position: absolute;
-     top: 72%;
-     left: 0.5%;
+     position: relative;
+     /* top: 72%;
+     left: 0.5%; */
      transition: .5s linear;
+     margin-top: -100px;
  }
 
  .product_one:hover .prd_inp {
      opacity: 1;
      top: 66.5%;
+     margin-top: -125px;
  }
 
  .product_one:hover .produs_img {
      box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
      transition: 2s;
  }
+ .produs_img img{
+    transition: all 0.9s ease-in-out;
+ }
+
+ .product_one:hover .produs_img img {
+   transform: scale(1.2);
+
+}
 
  input[type=text]:focus {
      outline: none;
@@ -1567,7 +1617,10 @@
  }
 
  .drdrrrr {
-     row-gap: 20px;
+     row-gap: 70px;
+ }
+ .toggle-password1{
+    padding: 10px;
  }
 
  .all_cat_section .accordion-item {
@@ -2421,7 +2474,7 @@
  }
 
  .paswer .input-group {
-     width: 77%;
+     width: 100%;
  }
 
  .pind {

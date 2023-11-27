@@ -164,7 +164,7 @@
                         shall not collect any penalty from the Buyer.</p>
 
 
-                    <h5 class="billss">3. Cancellation policy for Supermarkets / Dryfruits and Nuts / Organic/ Bakery and
+                    <h5 class="billss">3. Cancellation policy for Supermarkets / Dryfruits and Nuts / Bakery and
                         Sweets</h5>
                     <ul class="reet">
                         <li> The Orders placed by Buyers using the Platform are non-cancellable and non-refundable except if

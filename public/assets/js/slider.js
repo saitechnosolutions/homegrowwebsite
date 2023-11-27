@@ -1,9 +1,9 @@
 $('.rsr').slick({
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
-    slidesToScroll: 6,
+    slidesToScroll: 1,
     touchThreshold: 100,
     // centerMode: true,
     // autoplay: true,

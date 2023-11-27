@@ -53,61 +53,61 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     <div class="first_slick">
-                        <div>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr1.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
-                        </div>
+                        </a>
 
-                        <div>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr2.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr3.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr4.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr5.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr6.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr1.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
 
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr2.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-1">
@@ -122,7 +122,7 @@
         <div class="container">
             <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
             <div class="row num_weerr">
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -232,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one"data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -254,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -276,7 +276,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -311,28 +311,28 @@
                 <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
                     <img src="/assets/images/nut1.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">High Nutritonal Value</h5>
-                    <p class="nut_para">Organic foods preserves for more
+                    <p class="nut_para"> foods preserves for more
                         natural vitamins and minarals</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
                     <img src="/assets/images/nut2.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">Preserves the
                         Environment</h5>
-                    <p class="nut_para">Organic foods preserves for more
+                    <p class="nut_para"> foods preserves for more
                         natural vitamins and minarals</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
                     <img src="/assets/images/nut3.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">Certified Orgonic
                         Sources</h5>
-                    <p class="nut_para">Organic foods preserves for more
+                    <p class="nut_para"> foods preserves for more
                         natural vitamins and minarals</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
                     <img src="/assets/images/nut4.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">No Chemical &
                         Pestisides</h5>
-                    <p class="nut_para">Organic foods preserves for more
+                    <p class="nut_para"> foods preserves for more
                         natural vitamins and minarals</p>
                 </div>
             </div>
@@ -343,7 +343,7 @@
         <div class="container">
             <h5 class="combohead">Hot Deals</h5>
             <div class="row num_weerr">
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -365,7 +365,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -387,7 +387,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -409,7 +409,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -431,7 +431,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -453,7 +453,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -475,7 +475,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one">
                         <div class="produs_img" data-aos="fade-right" data-aos-duration="800">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -497,7 +497,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
