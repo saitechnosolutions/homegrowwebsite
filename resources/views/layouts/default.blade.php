@@ -9,12 +9,13 @@
 
     <link rel="shortcut icon" href="/assets/images/favou.png">
 
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    {{-- <link rel="stylesheet" href="/assets/css/animate.min.css"> --}}
 
     <link rel="stylesheet" href="/assets/Bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="/assets/css/custom.css">
 
+    <link rel="stylesheet" href="/assets/css/responsive.css">
 
     <link href="/assets/css/magnific-popup.css" rel="stylesheet" />
     <!-- ===================font awesome ================-->

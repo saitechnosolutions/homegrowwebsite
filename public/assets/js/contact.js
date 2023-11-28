@@ -146,3 +146,16 @@ function checkphonenumber() {
         return true;
     }
 }
+
+function checkPhoneNumberLength(input) {
+    const value = input.value;
+    if (value.length > 10) {
+        input.value = value.slice(0, 10); // Truncate input to 10 digits
+    }
+}
+
+
+
+
+
+

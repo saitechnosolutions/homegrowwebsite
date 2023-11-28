@@ -36,9 +36,6 @@
                                 <a class="nav-link " href="/gallery">Hot Deals</a>
                             </li>
 
-
-
-
                         </ul>
                     </div>
                     <div class="col-lg-3 col-xl-3">
@@ -50,11 +47,28 @@
                                 <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                     aria-expanded="false"><i class="fa fa-user hd" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                                    <li class="droplink"><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#loginModal">Login</a></li>
-                                    <li class="droplink"><a class="dropdown-item active" href="#">Register</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">My Account</a></li>
+
+                                    {{-- <li class="droplink"><a class="dropdown-item" href="#"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                                        <li class="droplink"><a class="dropdown-item active"
+                                                href="/register">Register</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="/myaccount">My Account</a></li>
+
+                                        <li><a class="dropdown-item" href="/logout">Logout</a></li> --}}
+                                    @if (Auth::check())
+                                        <!-- User is logged in -->
+                                        <li><a class="dropdown-item  @if (Request::segment(1) == 'myaccount') active @endif " href="/myaccount">My Account</a></li>
+                                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                    @else
+                                        <!-- User is not logged in -->
+                                        <li class="droplink"><a class="dropdown-item " href="#"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                                        <li class="droplink"><a class="dropdown-item @if (Request::segment(1) == 'register') active @endif "
+                                                href="/register">Register</a></li>
+                                    @endif
+
+
                                 </ul>
                             </div>
                         </div>
@@ -83,12 +97,13 @@
                                         width="23px" alt=""></h5>
                                 <p class="groce">Welcome to your Healthy store! Sign in now to explore the
                                     Fresh & healthier groceries </p>
-                                <form action="">
+                                <form action="/login" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label for="" class="roboto">Email</label>
-                                                <input type="text" class="form-control emil">
+                                                <label for="" class="roboto">Mobile Number</label>
+                                                <input type="text" class="form-control emil" name="login_mblnum">
                                             </div>
                                         </div>
                                         <div class="col-lg-12 pt-3">
@@ -97,7 +112,7 @@
                                                 <div class="loginssss">
                                                     <div class="input-group">
                                                         <input class="form-control  mert" id="myInput"
-                                                            type="password" name="password" required=""
+                                                            type="password" name="login_passwrd" required=""
                                                             placeholder="Password" autocomplete="off">
                                                         <div class="input-group-append">
                                                             <span
@@ -114,8 +129,8 @@
                                         </div>
                                         <div class="col-lg-12 pt-4">
                                             <div class="tree text-center">
-                                                <a href="" class="btn  home-btn3">
-                                                    Sign Up</a>
+                                                <button class="btn  home-btn3">
+                                                    Sign Up</button>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 pt-2">
@@ -150,7 +165,8 @@
 
 
 {{-- ================forget modal  ===================== --}}
-<div class="modal fade  loginform" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade  loginform" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl modal-lg">
         <div class="modal-content">
             <div class="modal-body">
@@ -158,7 +174,7 @@
                     <div class="row  align-items-center ">
                         <div class="col-lg-6 loher">
                             <div class="logses_ful">
-                                <h5 class="wel_log">Forgot Pin    <img src="/assets/images/forpin.png" class="img-fluid"
+                                <h5 class="wel_log">Forgot Pin <img src="/assets/images/forpin.png" class="img-fluid"
                                         width="25px" alt=""></h5>
                                 <p class="groce">Enter your email address to change
                                     your password</p>
@@ -178,7 +194,8 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 pt-3">
-                                            <button type="button" class="btn killer_cop" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn killer_cop"
+                                                data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
                                 </form>
@@ -199,7 +216,8 @@
 
 {{-- ================================Add to Cart ===================== --}}
 
-<div class="modal fade  loginform1" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade  loginform1" id="forgotModal" tabindex="-1" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
@@ -207,7 +225,7 @@
                     <div class="row  align-items-center ">
                         <div class="col-lg-6">
                             <div class="logses_ful">
-                                <h5 class="wel_log">Forgot Pin    <img src="/assets/images/forpin.png" class="img-fluid"
+                                <h5 class="wel_log">Forgot Pin <img src="/assets/images/forpin.png" class="img-fluid"
                                         width="25px" alt=""></h5>
                                 <p class="groce">Enter your email address to change
                                     your password</p>
@@ -227,7 +245,8 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 pt-3">
-                                            <button type="button" class="btn killer_cop" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn killer_cop"
+                                                data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
                                 </form>

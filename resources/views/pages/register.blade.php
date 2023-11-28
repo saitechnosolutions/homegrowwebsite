@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-lg-5 pt-4">
                                     <div class="tree text-center">
-                                        <button type="submit" name="register_btn" class="btn m-auto d-block home-btn3">
+                                        <button type="submit" name="register_btn" id="register_btn" class="btn m-auto d-block home-btn3">
                                             Register</button>
                                     </div>
                                 </div>

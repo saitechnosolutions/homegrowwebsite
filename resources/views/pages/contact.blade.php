@@ -31,7 +31,7 @@
                                             </div>
                                             <input type="text" class="form-control phone" id="PhoneNumber" name="phone"
                                                 placeholder="Enter Your Phone Number Here" maxlength="10" required
-                                                onkeypress="return phone2(event);">
+                                                onkeypress="return phone2(event);"  oninput="checkPhoneNumberLength(this)">
                                         </div>
                                         <span id="message3" class="text-danger"></span>
                                     </div>

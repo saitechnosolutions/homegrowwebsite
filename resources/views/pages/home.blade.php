@@ -20,7 +20,7 @@
                                             selective products</p>
 
                                         <div class="row">
-                                            <div class="col-lg-4 col-5">
+                                            <div class="col-lg-4 col-md-8 col-5">
                                                 <a class="  btn home-btn  shaded1">
                                                     <img src="assets/images/basket_fill.png" width="30px" alt="">
                                                     Order Now</a>
@@ -110,7 +110,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-1">
+                <div class="col-lg-1  soloi">
                     <a href="" class="vie_al">View All <i class="fa fa-chevron-right rtt" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -122,7 +122,7 @@
         <div class="container">
             <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
             <div class="row num_weerr">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -232,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one"data-aos="fade-left" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -254,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
@@ -276,7 +276,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="product_one" data-aos="fade-right" data-aos-duration="800">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">

@@ -18,3 +18,15 @@ $(document).on('click', '.state', function () {
         }
     });
 });
+
+
+
+
+
+$(document).on('click', '#register_btn', function(e) {
+    swal(
+        'Success',
+        'Your form has been registerd',
+        'success'
+    )
+});

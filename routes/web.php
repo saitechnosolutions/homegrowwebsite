@@ -45,9 +45,9 @@ route::view('single_products','pages.singleproduct');
 
 Route::post('/mail',[mailcontroller::class,"mail"]);
 Route::POST('/register',[registercontroller::class,'register']);
-Route::get('/city/{id}',[registercontroller::class,"city"])
-
-
+Route::get('/city/{id}',[registercontroller::class,"city"]);
+Route::post('/login',[registercontroller::class,'login']);
+Route::GET('/logout',[registercontroller::class,'logout']);
 
 
 
