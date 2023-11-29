@@ -12,12 +12,12 @@
     <section class="description_section">
         <div class="container">
             <div class="row sdfjk">
-                <div class="col-lg-6 text-center">
+                <div class="col-lg-6 col-md-6 col-12 text-center">
                     <div class="alva">
                         <img src="/assets/images/lit1.png" class="img-fluid" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-6 col-12">
                     <div class="in_stock">
                         <p class="gree"><i class="fa fa-check" aria-hidden="true"></i> In stock </p>
                         <h5 class="smar">Combo Smart</h5>
@@ -45,9 +45,9 @@
                                 <div class="atrt">
                                     <h5 class="qtys">Select Qty</h5>
                                     <div class="prds_inr">
-                                        <button class="btn_min1">-</button>
-                                        <input type="number" class="input_poo1" id="input_poo1" value="1" min="1"  max="100">
-                                        <button class="btn_plus1">+</button>
+                                        <button class="btn_min1" onclick="decreaseValue('hair-henna15')">-</button>
+                                        <input type="number" class="input_poo1" id="hair-henna15-number" min="1" max="100" value="1" name="productqty">
+                                        <button class="btn_plus1" onclick="increaseValue('hair-henna15')">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
             <h5 class="ptio_ead">Description <i class="fa fa-chevron-down gree" aria-hidden="true"></i>
             </h5>
             <div class="row aresa">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-12">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -108,7 +108,7 @@
                         dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
 
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-12">
                     <table class="table table-bordered table-striped table-seller">
                         <tbody>
                             <tr>
@@ -134,7 +134,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12  col-12">
                     <ul class="juju">
                         <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>
                         <li><i class="fa fa-check cheeee" aria-hidden="true"></i> Some great feature name here</li>

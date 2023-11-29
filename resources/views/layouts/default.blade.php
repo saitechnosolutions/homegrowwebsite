@@ -183,10 +183,9 @@
 
 
 
-    <script>
-        AOS.init();
-    </script>
-
+<script>
+    AOS.init();
+</script>
 
 
     <script>
@@ -300,6 +299,60 @@
         //     $('.ofers').trigger('click');
         // });
     </script>
+
+<script>
+    // $(document).ready(function () {
+    //   $('.btn_plus').on('click', function () {
+    //     var inputElement = $('.input_poo');
+    //     var currentValue = parseInt(inputElement.val(), 10);
+    //     if (currentValue < 100) {
+    //       inputElement.val(currentValue + 1);
+    //     }
+    //   });
+
+    //   $('.btn_min').on('click', function () {
+    //     var inputElement = $('.input_poo');
+    //     var currentValue = parseInt(inputElement.val(), 10);
+    //     if (currentValue > 1) {
+    //       inputElement.val(currentValue - 1);
+    //     }
+    //   });
+
+    //   $('.btn_plus1').on('click', function () {
+    //     var inputElement = $('.input_poo1');
+    //     var currentValue = parseInt(inputElement.val(), 10);
+    //     if (currentValue < 100) {
+    //       inputElement.val(currentValue + 1);
+    //     }
+    //   });
+
+    //   $('.btn_min1').on('click', function () {
+    //     var inputElement = $('.input_poo1');
+    //     var currentValue = parseInt(inputElement.val(), 10);
+    //     if (currentValue > 1) {
+    //       inputElement.val(currentValue - 1);
+    //     }
+    //   });
+
+
+    // });
+    function increaseValue(id) {
+        var value = parseInt(document.getElementById(id + '-number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById(id + '-number').value = value;
+    }
+
+    function decreaseValue(id) {
+        var value = parseInt(document.getElementById(id + '-number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value < 1 ? value = 1 : '';
+        value--;
+        document.getElementById(id + '-number').value = value;
+    }
+  </script>
+
+
 </body>
 
 </html>

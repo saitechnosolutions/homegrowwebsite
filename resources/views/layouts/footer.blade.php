@@ -82,11 +82,13 @@
             <div class="col-lg-3">
                 <h5 class="foot_head">Information</h5>
                 <ul class="footer_list">
-                    <li> <a href="/cancellation" class="footer_anc"> Cancellation & Refund Policy </a></li>
-                    <li> <a href="/faq" class="footer_anc"> FAQs </a></li>
+                    <!--<li> <a href="/cancellation" class="footer_anc"> Cancellation  </a></li>-->
+                    <!--<li> <a href="/faq" class="footer_anc"> FAQs </a></li>-->
+
+                    <li> <a href="/terms" class="footer_anc"> Terms and Conditions </a></li>
                     <li> <a href="/privacy_policy" class="footer_anc"> Privacy Policy </a></li>
-                    <li> <a href="/terms" class="footer_anc"> Terms and Condition </a></li>
-                    <li> <a href="/shipping" class="footer_anc"> Shipping & Return Policy </a></li>
+                    <li> <a href="/shipping" class="footer_anc"> Shipping  Policy </a></li>
+                    <li> <a href="/replacement" class="footer_anc"> Replacement and Return Policy </a></li>
                 </ul>
             </div>
             {{-- <div class="col-lg-4">

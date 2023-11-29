@@ -21,6 +21,8 @@ Route::view('/','pages.home');
 Route::view('about','pages.about');
 Route::view('cancellation','pages.cancellation');
 Route::view('privacy_policy','pages.privacy');
+Route::view('replacement','pages.replacement');
+
 Route::view('register','pages.register');
 
 Route::view('mywishlist','pages.mywishlist');

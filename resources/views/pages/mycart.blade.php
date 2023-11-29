@@ -28,10 +28,10 @@
                                 <div class="car2">
                                     <h5 class="rubee">₹249</h5>
                                     <div class="prds_inr">
-                                        <button class="btn_min1">-</button>
-                                        <input type="number" class="input_poo1" id="input_poo1" value="1"
+                                        <button class="btn_min1"  onclick="decreaseValue('hair-henna15')">-</button>
+                                        <input type="number" class="input_poo1"   id="hair-henna15-number"   value="1"
                                             min="1" max="100">
-                                        <button class="btn_plus1">+</button>
+                                        <button class="btn_plus1" onclick="increaseValue('hair-henna15')">+</button>
                                     </div>
                                 </div>
                             </div>

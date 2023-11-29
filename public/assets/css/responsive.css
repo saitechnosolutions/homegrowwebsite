@@ -15,7 +15,65 @@
         background-size: 100% 82% !important;
         height: 75vh !important;
     }
-
+    .tyty{
+        row-gap: 20px;
+    }
+    .qty_lit{
+        justify-content: center;
+        row-gap: 10px;
+    }
+    .lent{
+        text-align: center;
+        border-right: 0px;
+    }
+    .lent1{
+        text-align: center;
+    }
+    .atrt{
+        text-align: center;
+        padding-left: 0px;
+    }
+    .prds_inr{
+        justify-content: center;
+    }
+    .sdfjk{
+        align-items: center;
+    }
+    .foot_head1{
+        text-align: left;
+    }
+    .footer-icon{
+        text-align: left;
+    }
+    .foot_head1{
+        text-align: left;
+    }
+    .FOOT_NUMs{
+        text-align: left;
+    }
+    .reddd{
+        font-size: 160px;
+    }
+    .heer{
+        font-size: 30px;
+    }
+    .heer1{
+        font-size: 30px;
+    }
+    .rersesr{
+        bottom: -358px;
+    }
+    .gvfg{
+        row-gap: 20px;
+    }
+    .login-nav{
+        display: none;
+    }
+    .login-nav1{
+        width: 400px;
+        position: relative;
+        display: block !important;
+    }
 }
 
 
@@ -49,10 +107,29 @@
     }
 }
 
+@media only screen and (max-width: 776px) {
+    .login-nav1{
+        width: 200px;
+    }
+    .darks-logo{
+        width: 30%;
+    }
+    .scr_full{
+        display: none;
+    }
+    .input_poo {
+        width: 274px;
+    }
+}
+
+
+
+
+
 @media only screen and (max-width: 430px) {
     .darks-logo {
         display: block;
-        width: 27%;
+        width: 43%;
         position: absolute;
         z-index: 999;
         left: 10px;
@@ -65,5 +142,20 @@
 
     .white-logo {
         display: none;
+    }
+    .input_poo {
+        width: 109px;
+    }
+    .all1{
+        left: 15%;
+    }
+    .login-nav1 {
+        position: relative;
+        top: -38px;
+        display: block !important;
+        right: -73px;
+    }
+    .over{
+        font-size: 18px;
     }
 }

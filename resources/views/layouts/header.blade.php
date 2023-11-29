@@ -2,6 +2,39 @@
     <a href="/"> <img src="/assets/images/logo.svg" class="darks-logo img-fluid"> </a>
     <nav class="navbar navbar-expand-lg navbar-light  navbar-section ">
 
+        <div class="login-nav1">
+            <div class="loger">
+                <button type="button" class="iconses_one rit" data-bs-toggle="modal" data-bs-target="#search"><i
+                        class="fa fa-search hd" aria-hidden="true"></i> </button>
+                <a href="#" class="iconses_one">
+                    <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="iconses_one">
+                    <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
+                </a>
+
+                <div class=" dropstart">
+                    <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fa fa-user hd" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                        @if (Auth::check())
+                            <li><a class="dropdown-item  @if (Request::segment(1) == 'myaccount') active @endif "
+                                    href="/myaccount">My Account</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        @else
+                            <li class="droplink"><a class="dropdown-item " href="#" data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">Login</a></li>
+                            <li class="droplink"><a
+                                    class="dropdown-item @if (Request::segment(1) == 'register') active @endif "
+                                    href="/register">Register</a></li>
+                        @endif
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,31 +73,28 @@
                     </div>
                     <div class="col-lg-3 col-xl-3">
                         <div class="login-nav">
-                            <a href="contact"><i class="fa fa-search hd" aria-hidden="true"></i></a>
-                            <a href="contact"><i class="fa fa-heart hd" aria-hidden="true"></i></a>
-                            <a href="contact"><i class="fa fa-shopping-cart hd" aria-hidden="true"></i></a>
+                            <button type="button" class="iconses_one rit" data-bs-toggle="modal"
+                                data-bs-target="#search"><i class="fa fa-search hd" aria-hidden="true"></i> </button>
+                            <a href="#" class="iconses_one">
+                                <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="iconses_one">
+                                <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
+                            </a>
+
                             <div class=" dropstart">
                                 <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                     aria-expanded="false"><i class="fa fa-user hd" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-
-                                    {{-- <li class="droplink"><a class="dropdown-item" href="#"
-                                                data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                                        <li class="droplink"><a class="dropdown-item active"
-                                                href="/register">Register</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="/myaccount">My Account</a></li>
-
-                                        <li><a class="dropdown-item" href="/logout">Logout</a></li> --}}
                                     @if (Auth::check())
-                                        <!-- User is logged in -->
-                                        <li><a class="dropdown-item  @if (Request::segment(1) == 'myaccount') active @endif " href="/myaccount">My Account</a></li>
+                                        <li><a class="dropdown-item  @if (Request::segment(1) == 'myaccount') active @endif "
+                                                href="/myaccount">My Account</a></li>
                                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                     @else
-                                        <!-- User is not logged in -->
                                         <li class="droplink"><a class="dropdown-item " href="#"
                                                 data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                                        <li class="droplink"><a class="dropdown-item @if (Request::segment(1) == 'register') active @endif "
+                                        <li class="droplink"><a
+                                                class="dropdown-item @if (Request::segment(1) == 'register') active @endif "
                                                 href="/register">Register</a></li>
                                     @endif
 
@@ -79,9 +109,73 @@
 </header>
 
 
+
+
+
+{{-- =============================search modal ================== --}}
+
+<div class="search_engine  modal right fade" id="search" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="myModalLabel2">SEARCH OUR SITE</h4>
+            </div>
+
+            <div class="modal-body">
+                <form action="" method="post">
+                    <div class="input-group mb-3 ">
+                        <input type="text" class="form-control" placeholder="Search"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search hd"
+                                aria-hidden="true"></i> </span>
+                    </div>
+                </form>
+
+                <h5 class="fdjjee">Search Results</h5>
+                <div class="full_sided_head">
+                    <div class="first_node">
+                        <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
+                        <div class="para_ht">
+                            <h5 class="gro1">Grocery</h5>
+                            <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
+                        </div>
+                    </div>
+                    <div class="first_node">
+                        <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
+                        <div class="para_ht">
+                            <h5 class="gro1">Grocery</h5>
+                            <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {{-- ====================login modal ======================== --}}
 
-<div class="modal fade   loginform" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade   loginform" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl modal-lg">
         <div class="modal-content">
             {{-- <div class="modal-header">
@@ -129,7 +223,7 @@
                                         </div>
                                         <div class="col-lg-12 pt-4">
                                             <div class="tree text-center">
-                                                <button class="btn  home-btn3">
+                                                <button class="btn  home-btn3  logins">
                                                     Sign Up</button>
                                             </div>
                                         </div>

@@ -2,11 +2,11 @@
 @section('main-content')
     <section class="contact_section">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-6 dffsrds">
+            <div class="row align-items-center  gvfg">
+                <div class="col-lg-6 col-md-6  dffsrds">
                     <img src="/assets/images/Frame97.jpg" height="700px" class="img-fluid" alt="">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-6 ">
                     <form action="/mail" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="tps">
@@ -90,7 +90,7 @@
         </div>
         <div class="container">
             <div class="row  bagggw" id="address">
-                <div class="col-lg-5 col-md-5 col-sm-4 col-12 sds11 aos-init" data-aos="fade-up" data-aos-duration="500">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-12 sds11 aos-init" data-aos="fade-up" data-aos-duration="500">
 
                     <img src="assets/images/maic.png">
 

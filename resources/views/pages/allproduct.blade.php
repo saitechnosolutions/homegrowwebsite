@@ -132,9 +132,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna16')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna16-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna16')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -154,9 +154,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna17')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna17-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna17')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -176,9 +176,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna18')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna18-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna18')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -198,9 +198,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna19')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna19-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna19')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -220,9 +220,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna20')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna20-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna20')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -242,9 +242,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna21')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna21-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna21')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -264,9 +264,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna22')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna15-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna22')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -286,9 +286,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna23')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna23-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna23')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
@@ -308,9 +308,9 @@
                                 <div class="prd_inp">
                                     <div class="ful_po">
                                         <div class="prds_inr">
-                                            <button class="btn_min">-</button>
-                                            <input type="number" class="input_poo">
-                                            <button class="btn_plus">+</button>
+                                            <button class="btn_min"   onclick="decreaseValue('hair-henna24')">-</button>
+                                            <input type="number" class="input_poo"   id="hair-henna24-number"   min="1" max="100" value="1" name="productqty">
+                                            <button class="btn_plus"  onclick="increaseValue('hair-henna24')">+</button>
                                         </div>
                                         <div class="add_to_cart">
                                             <a href="" class="btn theme-btn1">Add to cart <i
