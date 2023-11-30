@@ -26,7 +26,7 @@
                             <img src="/assets/images/usr.png" alt="">
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
-                                <h5 class="hel2">Bharani Dharan</h5>
+                                <h5 class="hel2">{{ Auth::user()->first_name }}</h5>
                             </div>
                         </div>
 
@@ -42,29 +42,34 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="orders1">
-                        <form action="">
+                        <form action="/update_user" method="post" id="update_user">
                             @csrf
                             <div class="row ac_sett">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="" class="roboto_set">Full Name</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id">
+                                        <label class="roboto_set">Full Name</label>
+                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}"
+                                            name="first_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group  pt-3">
-                                        <label for="" class="roboto_set">Email</label>
-                                        <input type="text" class="form-control" >
+                                        <label class="roboto_set">Email</label>
+                                        <input type="text" class="form-control" value="{{ Auth::user()->email }}"
+                                            name="email">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group  pt-3">
-                                        <label for="" class="roboto_set">Mobile Number</label>
-                                        <input type="text" class="form-control" >
+                                        <label class="roboto_set">Mobile Number</label>
+                                        <input type="text" class="form-control" value="{{ Auth::user()->phone_number }}"
+                                            onkeypress="return phone2(event);" oninput="checkPhoneNumberLength(this)"
+                                            name="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <a href="" class="btn home-btn3 mt-4">Update </a>
+                                    <button type="button" id="updateButton" class="btn home-btn3 mt-4">Update </button>
                                 </div>
                             </div>
                         </form>
@@ -74,8 +79,11 @@
                             <a href="/editaddress" class=" fcdin">Edit</a>
                         </div>
                         <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
-                        <p class="def_del">Delivery at <strong>Home - 13-1, PSG-GRD Bhavan,Thaneer pandal,
-                            Vilankurichi Road, Peelamedu, Coimbatore-641004</strong> </p>
+                        <p class="def_del">Delivery at <strong>
+                                @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->first())
+                                    {{ $add->address_line_one }}
+                                @endif
+                            </strong> </p>
                     </div>
                 </div>
             </div>

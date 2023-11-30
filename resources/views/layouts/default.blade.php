@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Home Grow</title>
 
     <link rel="shortcut icon" href="/assets/images/favou.png">
@@ -101,6 +102,8 @@
 
     <script src="/assets/js/register.js"></script>
 
+    <script src="/assets/js/accountajax.js"></script>
+
     <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
 
 
@@ -183,9 +186,9 @@
 
 
 
-<script>
-    AOS.init();
-</script>
+    <script>
+        AOS.init();
+    </script>
 
 
     <script>
@@ -300,57 +303,60 @@
         // });
     </script>
 
-<script>
-    // $(document).ready(function () {
-    //   $('.btn_plus').on('click', function () {
-    //     var inputElement = $('.input_poo');
-    //     var currentValue = parseInt(inputElement.val(), 10);
-    //     if (currentValue < 100) {
-    //       inputElement.val(currentValue + 1);
-    //     }
-    //   });
+    <script>
+        // $(document).ready(function () {
+        //   $('.btn_plus').on('click', function () {
+        //     var inputElement = $('.input_poo');
+        //     var currentValue = parseInt(inputElement.val(), 10);
+        //     if (currentValue < 100) {
+        //       inputElement.val(currentValue + 1);
+        //     }
+        //   });
 
-    //   $('.btn_min').on('click', function () {
-    //     var inputElement = $('.input_poo');
-    //     var currentValue = parseInt(inputElement.val(), 10);
-    //     if (currentValue > 1) {
-    //       inputElement.val(currentValue - 1);
-    //     }
-    //   });
+        //   $('.btn_min').on('click', function () {
+        //     var inputElement = $('.input_poo');
+        //     var currentValue = parseInt(inputElement.val(), 10);
+        //     if (currentValue > 1) {
+        //       inputElement.val(currentValue - 1);
+        //     }
+        //   });
 
-    //   $('.btn_plus1').on('click', function () {
-    //     var inputElement = $('.input_poo1');
-    //     var currentValue = parseInt(inputElement.val(), 10);
-    //     if (currentValue < 100) {
-    //       inputElement.val(currentValue + 1);
-    //     }
-    //   });
+        //   $('.btn_plus1').on('click', function () {
+        //     var inputElement = $('.input_poo1');
+        //     var currentValue = parseInt(inputElement.val(), 10);
+        //     if (currentValue < 100) {
+        //       inputElement.val(currentValue + 1);
+        //     }
+        //   });
 
-    //   $('.btn_min1').on('click', function () {
-    //     var inputElement = $('.input_poo1');
-    //     var currentValue = parseInt(inputElement.val(), 10);
-    //     if (currentValue > 1) {
-    //       inputElement.val(currentValue - 1);
-    //     }
-    //   });
+        //   $('.btn_min1').on('click', function () {
+        //     var inputElement = $('.input_poo1');
+        //     var currentValue = parseInt(inputElement.val(), 10);
+        //     if (currentValue > 1) {
+        //       inputElement.val(currentValue - 1);
+        //     }
+        //   });
 
 
-    // });
-    function increaseValue(id) {
-        var value = parseInt(document.getElementById(id + '-number').value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        document.getElementById(id + '-number').value = value;
-    }
+        // });
+        function increaseValue(id) {
+            var value = parseInt(document.getElementById(id + '-number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById(id + '-number').value = value;
+        }
 
-    function decreaseValue(id) {
-        var value = parseInt(document.getElementById(id + '-number').value, 10);
-        value = isNaN(value) ? 0 : value;
-        value < 1 ? value = 1 : '';
-        value--;
-        document.getElementById(id + '-number').value = value;
-    }
-  </script>
+        function decreaseValue(id) {
+            var value = parseInt(document.getElementById(id + '-number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value < 1 ? value = 1 : '';
+            value--;
+            document.getElementById(id + '-number').value = value;
+        }
+    </script>
+
+
+
 
 
 </body>

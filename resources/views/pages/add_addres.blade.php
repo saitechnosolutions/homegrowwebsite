@@ -42,53 +42,73 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="orders1">
-                        <form action="">
+                        <form action="/add_address" method="post" class="add_usering">
                             @csrf
                             <div class="row ac_sett justify-content-center">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}" id="">
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="" class="roboto_set">Flat/House no.</label>
-                                        <input type="text" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group  pt-3">
+                                    <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Address</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="address">
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6">
-                                    <div class="form-group  pt-3">
-                                        <label for="" class="roboto_set">City</label>
-                                        <input type="text" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group  pt-3">
+                                    <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">State</label>
-                                        <input type="text" class="form-control" >
+                                        <select name="state" id="" class="form-select state">
+                                            <option value="" hidden>Select State</option>
+                                            @if ($states = App\models\state::all())
+                                                @foreach ($states as $st)
+                                                    <option value="{{ $st->id }}">{{ $st->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group  pt-2">
+                                        <label for="" class="roboto_set">City</label>
+                                        <select name="city" id="" class="form-select city">
+                                            <option value="" hidden>Select City</option>
+                                            @if ($states = App\models\city::all())
+                                                @foreach ($states as $st)
+                                                    <option value="{{ $st->id }}">{{ $st->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group  pt-3">
+                                    <div class="toors">
+                                        <div class="form-group">
+                                            <label for="" class="roboto_set">Phone Number</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">+91</span>
+                                                </div>
+                                                <input type="text" class="form-control phone" id="PhoneNumber" name="phone"
+                                                    placeholder="Enter Your Phone Number Here" maxlength="10" required
+                                                    onkeypress="return phone2(event);"  oninput="checkPhoneNumberLength(this)">
+                                            </div>
+                                            <span id="message3" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Pincode</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="pincode">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group  pt-3">
+                                {{-- <div class="col-lg-6">
+                                    <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Landmark</label>
                                         <input type="text" class="form-control" >
                                     </div>
-                                </div>
-                                <div class="col-lg-12 pt-3">
-                                    <div class="form-group  ">
-                                        <input class="form-check-input" type="checkbox" name="status" id="exampleCheckbox">
-                                        <label class="form-check-label" for="exampleCheckbox">My shipping and Billing
-                                            address are the same
-                                        </label>
-                                    </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-12 pt-2">
                                     <div class="form-group">
                                         <input class="form-check-input" type="checkbox" name="status" id="exampleCheckbox">
@@ -97,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <a href="" class="btn home-btn3 mt-4">Add Address </a>
+                                    <button type="button"  id="add_adress" class="btn home-btn3 mt-4">Add Address </button>
                                 </div>
                             </div>
                         </form>

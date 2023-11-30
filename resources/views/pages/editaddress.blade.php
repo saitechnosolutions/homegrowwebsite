@@ -16,14 +16,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-8">
-                   <div class="row">
-                    <div class="col-lg-10">
-                        <div class="managers">
-                            <h5><strong> Manage</strong> Addresses</h5>
-                            <a href="/add_addres" class="fcdin">Add Address + </a>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="managers">
+                                <h5><strong> Manage</strong> Addresses</h5>
+                                <a href="/add_addres" class="fcdin">Add Address + </a>
+                            </div>
                         </div>
                     </div>
-                   </div>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -48,31 +48,37 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="orders2">
-                        <div class="text-end">
-                            <a href="/edit_manage_addres" class=" fcdin">Edit</a>
-                        </div>
-                        <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
-                        <p class="def_del">Delivery at <strong>Home - 13-1, PSG-GRD Bhavan,Thaneer pandal,
-                                Vilankurichi Road, Peelamedu, Coimbatore-641004</strong> </p>
-                              <div class="rergff">
-                                <a href="" class="make_as">Make as Default</a>
-                              </div>
-                    </div>
+                    @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->get())
+                        @foreach ($add as $ad)
+                            <div class="orders2">
+                                <div class="text-end">
+                                    <a href="/edit_manage_addres" class=" fcdin">Edit</a>
+                                </div>
+                                <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
+                                <p class="def_del">Delivery at <strong>
 
-                    <div class="orders2">
-                        <div class="text-end">
-                            <a href="/edit_manage_addres" class=" fcdin">Edit</a>
-                        </div>
-                        <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
-                        <p class="def_del">Delivery at <strong>Home - 13-1, PSG-GRD Bhavan,Thaneer pandal,
-                                Vilankurichi Road, Peelamedu, Coimbatore-641004</strong> </p>
-                              <div class="rergff">
-                                <a href="" class="make_as">Make as Default</a>
-                              </div>
-                    </div>
+                                        {{ $ad->address_line_one }}
 
-                    <div class="orders2">
+                                    </strong> </p>
+                                {{-- <div class="rergff">
+                                    <a href="" class="make_as">Make as Default</a>
+                                </div> --}}
+                            </div>
+                        @endforeach
+                    @endif
+                    {{-- <div class="orders2">
+                        <div class="text-end">
+                            <a href="/edit_manage_addres" class=" fcdin">Edit</a>
+                        </div>
+                        <h5 class="def_addrer"><strong>Address</strong> <span> </span> </h5>
+                        <p class="def_del">Delivery at <strong>Home - 13-1, PSG-GRD Bhavan,Thaneer pandal,
+                                Vilankurichi Road, Peelamedu, Coimbatore-641004</strong> </p>
+                              <div class="rergff">
+                                <a href="" class="make_as">Make as Default</a>
+                              </div>
+                    </div> --}}
+
+                    {{-- <div class="orders2">
                         <div class="text-end">
                             <a href="/edit_manage_addres" class=" fcdin">Edit</a>
                         </div>
@@ -82,7 +88,7 @@
                               <div class="rergff">
                                 <a href="" class="make_as">Make as Default</a>
                               </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

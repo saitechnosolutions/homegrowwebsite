@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ajaxcontroller;
 use App\Http\Controllers\mailcontroller;
 use App\Http\Controllers\registercontroller;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +52,13 @@ Route::POST('/register',[registercontroller::class,'register']);
 Route::get('/city/{id}',[registercontroller::class,"city"]);
 Route::post('/login',[registercontroller::class,'login']);
 Route::GET('/logout',[registercontroller::class,'logout']);
+
+
+
+Route::post('/update_product',[ajaxcontroller::class,'updateuser']);
+Route::post('/add_adress',[ajaxcontroller::class,'add_adress']);
+
+
 
 
 
