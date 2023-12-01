@@ -57,6 +57,9 @@ Route::GET('/logout',[registercontroller::class,'logout']);
 
 Route::post('/update_product',[ajaxcontroller::class,'updateuser']);
 Route::post('/add_adress',[ajaxcontroller::class,'add_adress']);
+Route::get('/makedefault/{id}',[ajaxcontroller::class,'make_default_address']);
+Route::get('/edit_manage_addres/{id}',[ajaxcontroller::class,'edit_manage_addres']);
+Route::post('/edit_manage_ajax',[ajaxcontroller::class,'edit_update_managae_address']);
 
 
 

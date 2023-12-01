@@ -22,8 +22,20 @@ $(document).on('click', '.state', function () {
 
 
 
+// default address
+// $(document).ready(function () {
+//     $(document).on('click', '.make_as', function (e) {
+//         swal(
+//             'Success',
+//             'Your form has been registerd',
+//             'success'
+//         )
+//     });
+// });
 
-$(document).on('click', '#register_btn', function(e) {
+
+
+$(document).on('click', '#register_btn', function (e) {
     swal(
         'Success',
         'Your form has been registerd',
@@ -31,25 +43,29 @@ $(document).on('click', '#register_btn', function(e) {
     )
 });
 
-var toastMixin = Swal.mixin({
-    toast: true,
-    icon: 'success',
-    title: 'General Title',
-    animation: false,
-    position: 'top-right',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
 
-document.querySelector(".logins").addEventListener('click', function(){
-    alert()
-    toastMixin.fire({
-      animation: true,
-      title: 'Signed in Successfully'
+
+document.querySelector(".logins").addEventListener('click', function () {
+    var toastMixin = Swal.mixin({
+        toast: true,
+        icon: 'success',
+        title: 'General Title',
+        animation: false,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
     });
-  });
+    toastMixin.fire({
+        animation: true,
+        title: 'Signed in Successfully'
+    });
+});
+
+
+
+

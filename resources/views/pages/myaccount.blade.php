@@ -26,7 +26,7 @@
                             <img src="/assets/images/usr.png" alt="">
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
-                                <h5 class="hel2">Bharani Dharan</h5>
+                                <h5 class="hel2">{{ Auth::user()->name }}</h5>
                             </div>
                         </div>
 

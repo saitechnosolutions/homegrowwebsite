@@ -103,12 +103,12 @@
                                         <input type="text" class="form-control" name="pincode">
                                     </div>
                                 </div>
-                                {{-- <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Landmark</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="landmark">
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="col-lg-12 pt-2">
                                     <div class="form-group">
                                         <input class="form-check-input" type="checkbox" name="status" id="exampleCheckbox">

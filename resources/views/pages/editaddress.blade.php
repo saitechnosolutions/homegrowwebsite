@@ -33,7 +33,7 @@
                             <img src="/assets/images/usr.png" alt="">
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
-                                <h5 class="hel2">Bharani Dharan</h5>
+                                <h5 class="hel2">{{ Auth::user()->name }}</h5>
                             </div>
                         </div>
 
@@ -48,36 +48,33 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->get())
+                    @if ($adds = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', Auth::user()->user_default_address_id)->first())
+                        <div class="orders2">
+                            <div class="text-end">
+                                <a href="/edit_manage_addres/{{ $adds->id }}" class=" fcdin">Edit</a>
+                            </div>
+                            <h5 class="def_addrer"><strong>Default</strong> Address<span> </span> </h5>
+                            <p class="def_del">Delivery at <strong>{{ $adds->address_line_one }}</strong> </p>
+                        </div>
+                    @endif
+                    @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', '!=', Auth::user()->user_default_address_id)->get())
                         @foreach ($add as $ad)
                             <div class="orders2">
                                 <div class="text-end">
-                                    <a href="/edit_manage_addres" class=" fcdin">Edit</a>
+                                    <a href="/edit_manage_addres/{{ $ad->id }}" class=" fcdin">Edit</a>
                                 </div>
-                                <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
+                                <h5 class="def_addrer"><strong>Address</strong>{{ $loop->iteration }} <span> </span> </h5>
                                 <p class="def_del">Delivery at <strong>
-
                                         {{ $ad->address_line_one }}
-
                                     </strong> </p>
-                                {{-- <div class="rergff">
-                                    <a href="" class="make_as">Make as Default</a>
-                                </div> --}}
+
+                                    <div class="rergff">
+                                        <a href="/makedefault/{{ $ad->id }}" type="submit" class="make_as">Make as Default</a>
+                                    </div>
+
                             </div>
                         @endforeach
                     @endif
-                    {{-- <div class="orders2">
-                        <div class="text-end">
-                            <a href="/edit_manage_addres" class=" fcdin">Edit</a>
-                        </div>
-                        <h5 class="def_addrer"><strong>Address</strong> <span> </span> </h5>
-                        <p class="def_del">Delivery at <strong>Home - 13-1, PSG-GRD Bhavan,Thaneer pandal,
-                                Vilankurichi Road, Peelamedu, Coimbatore-641004</strong> </p>
-                              <div class="rergff">
-                                <a href="" class="make_as">Make as Default</a>
-                              </div>
-                    </div> --}}
-
                     {{-- <div class="orders2">
                         <div class="text-end">
                             <a href="/edit_manage_addres" class=" fcdin">Edit</a>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\city;
+use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
 use Illuminate\Http\Request;
@@ -44,32 +46,131 @@ class ajaxcontroller extends Controller
     {
         $user_id = $request->input("user_id");
         $address = $request->input("address");
-        $state = $request->input("state");
-        $city = $request->input("city");
+        $stateId = $request->input("state");
+
+        $state = state::find($stateId);
+        $stateName = $state->name;
+
+        $cityId = $request->input("city");
+        $city = city::find($cityId);
+        $cityName = $city->name;
+
         $phone = $request->input("phone");
         $pincode = $request->input("pincode");
+        $landmark = $request->input("landmark");
 
-dd();
+        $defaultAddress = $request->has('status');
+
+
         $add_user = new user_addres;
+
 
         if (!$add_user) {
             return response()->json(['error' => 'User not found'], 404);
         }
 
+        $add_user->user_id = $user_id;
         $add_user->address_line_one = $address;
-        $add_user->state = $state;
-        $add_user->city = $city;
+        $add_user->state_id = $stateId;
+        $add_user->state = $stateName;
+        $add_user->city_id = $cityId;
+        $add_user->city = $cityName;
         $add_user->address_phone_number = $phone;
         $add_user->pincode = $pincode;
+        $add_user->landmark = $landmark;
 
         // Save changes
         if ($add_user->save()) {
+            if ($defaultAddress) {
+                 $user = User::where('user_id', $user_id)->first();
+
+                //  dd( $user);
+                if ($user) {
+                    $user->user_default_address_id = $add_user->id;
+                    $user->save();
+                }
+            }
+
             return back()->with('success', 'User updated successfully');
         } else {
             return back()->with('error', 'Error updating user');
         }
 
     }
+
+
+
+
+
+    public function make_default_address($id){
+
+        $newDefaultAddressId = $id;
+
+        $user_one = auth()->user();
+
+        if ($user_one) {
+            $user_one->user_default_address_id = $newDefaultAddressId;
+
+            if ($user_one->save()) {
+                return back()->with('success', 'User default address updated successfully.');
+            } else {
+                return back()->with('error', 'Failed to update the user default address.');
+            }
+        } else {
+            return back()->with('error', 'User not authenticated');
+        }
+    }
+
+
+
+    public function edit_manage_addres($id){
+
+        $editaddres = user_addres::where('id', $id)->first();
+
+        return view('pages.edit_manage_addres', compact('editaddres'));
+
+    }
+
+
+    public function edit_update_managae_address(Request $request){
+
+        $user_adress_id = $request->user_address_id;
+        $address = $request->address;
+
+        $stateId = $request->state;
+        $state = state::find($stateId);
+        $stateName = $state->name;
+
+        $cityId = $request->city;
+        $city = city::find($cityId);
+        $cityName = $city->name;
+
+        $phone = $request->phone;
+        $pincode = $request->pincode;
+        $landmark = $request->landmark;
+
+
+        $edit_user =  user_addres::find($user_adress_id);
+
+
+        $edit_user->address_line_one = $address;
+        $edit_user->state_id = $stateId;
+        $edit_user->state = $stateName;
+        $edit_user->city_id = $cityId;
+        $edit_user->city = $cityName;
+        $edit_user->address_phone_number = $phone;
+        $edit_user->pincode = $pincode;
+        $edit_user->landmark = $landmark;
+
+        if($edit_user->save()){
+            return back()->with('Success','User updated successfully');
+        }
+        else{
+            return back()->with('error','Error updating user');
+        }
+
+    }
+
 
 
 
