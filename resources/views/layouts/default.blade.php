@@ -106,7 +106,7 @@
     <script src="/assets/js/accountajax.js"></script>
 
 
-
+    <script src="/assets/js/kenburns.js"></script>
 
     {{-- ================== water effects =================== --}}
 
@@ -119,10 +119,10 @@
         });
     </script>
     <script>
-        $(".home_full").ripples({
-            resolution: 260,
-            perturbance: 0.01,
-        });
+        // $(".home_full").ripples({
+        //     resolution: 260,
+        //     perturbance: 0.01,
+        // });
     </script>
 
     <script>

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cart;
 use App\Models\city;
+use App\Models\product;
 use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ajaxcontroller extends Controller
 {
@@ -170,6 +174,59 @@ class ajaxcontroller extends Controller
         }
 
     }
+
+
+    public function searchword(Request $request){
+
+        $searchWord = $request->input;
+
+        $products = product::where('product_name', 'like', '%' . $searchWord . '%')->get();
+
+    return view('ajaxpages.search')->with('products', $products);
+    }
+
+
+    public function add_cart(Request $request){
+
+        $user_id = $request->input("user_id");
+        $product_main_id = $request->input("product_main_id");
+        $productqty = $request->input("productqty");
+        $prd_varient_id = $request->input("prd_varient_id");
+
+
+        $existingCart = cart::where('user_id', $user_id)
+        ->where('product_id', $product_main_id)
+        ->first();
+
+        if ($existingCart) {
+            // $existingCart->product_quantity += $productqty;
+            // $existingCart->save();
+
+            return response()->json(['error' => 'Already Added']);
+        }else{
+            $cart = new cart();
+
+            $cart->user_id = $user_id;
+            $cart->product_id = $product_main_id;
+            $cart->product_varient_id = $prd_varient_id;
+            $cart->product_quantity = $productqty;
+
+            if ($cart->save()) {
+                $product = product::find($product_main_id);
+                return response()->json([
+                    'success' => true,
+                'product_name' => $product->product_name,
+                // 'product_price' => '₹' . number_format($product->price, 2),
+                ]);
+            } else {
+                return response()->json(['error' => 'Failed to add to cart']);
+            }
+        }
+
+    }
+
+
+
 
 
 

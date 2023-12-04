@@ -78,9 +78,18 @@
                             <a href="#" class="iconses_one">
                                 <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="iconses_one">
-                                <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
-                            </a>
+                            @if (Auth::check())
+                                @php $cartCount = \App\Models\cart::where('user_id', Auth::user()->user_id)->count(); @endphp
+                                <a href="/mycart" class="iconses_one" id="cartIcon">
+                                    <div class="num_couny  add_to_cart_num">{{ $cartCount }}</div><i class="fa fa-shopping-cart hd"
+                                        aria-hidden="true"></i>
+                                </a>
+                            @else
+                                <a href="#" class="iconses_one" id="cartIcon"     data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    <div class="num_couny">0</div><i class="fa fa-shopping-cart hd"
+                                        aria-hidden="true"></i>
+                                </a>
+                            @endif
 
                             <div class=" dropstart">
                                 <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -127,8 +136,8 @@
             <div class="modal-body">
                 <form action="" method="post">
                     <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" placeholder="Search"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Search" name="searchwordsss"
+                            id="searchwordsss" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-search hd"
                                 aria-hidden="true"></i> </span>
                     </div>
@@ -136,20 +145,30 @@
 
                 <h5 class="fdjjee">Search Results</h5>
                 <div class="full_sided_head">
-                    <div class="first_node">
-                        <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
-                        <div class="para_ht">
-                            <h5 class="gro1">Grocery</h5>
-                            <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
+                    <div id="search_group"></div>
+                    {{-- @foreach ($products as $product)
+                        <div class="first_node" id="search_group">
+                            <img src="/assets/images/{{ $product->image }}" class="img-fluid" width="70px"
+                                alt="">
+                            <div class="para_ht">
+                                <h5 class="gro1">{{ $product->product_name }}</h5>
+                                <h5 class="he_para11">{{ $product->unit_value }} <span
+                                        class="he_para12">{{ $product->unit_value }}</span> </h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="first_node">
-                        <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
-                        <div class="para_ht">
-                            <h5 class="gro1">Grocery</h5>
-                            <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
-                        </div>
-                    </div>
+                    @endforeach --}}
+                    @if ($products = App\Models\product::all())
+                        @foreach ($products as $pr)
+                            <div class="first_node  ghh">
+                                <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
+                                <div class="para_ht">
+                                    <h5 class="gro1">{{ $pr->product_name }}</h5>
+                                    <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
 
                 </div>
             </div>

@@ -2,8 +2,11 @@
 @section('main-content')
     <section class="home_main_section">
         <div class="home_ban_sec">
+            {{-- <div class="home_full"
+                style="background: linear-gradient(180deg, #FFFFFF 11.46%, rgba(244, 244, 242, 0.523636) 30.64%, rgba(232, 231, 227, 0) 51.66%);"> --}}
             <div class="home_full"
                 style="background: linear-gradient(180deg, #FFFFFF 11.46%, rgba(244, 244, 242, 0.523636) 30.64%, rgba(232, 231, 227, 0) 51.66%), url('assets/images/banner1.png') ;">
+                {{-- <canvas id="kenburns" class="myVideo"></canvas> --}}
                 <div class="home_banner_section">
                     <div class="container">
                         <div class="row">
@@ -122,182 +125,52 @@
         <div class="container">
             <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
             <div class="row num_weerr">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min" onclick="decreaseValue('hair-henna')">-</button>
-                                    <input type="number" class="input_poo" id="hair-henna-number" min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna')">+</button>
+                @if ($products = App\Models\product::where('category_id', 42)->get())
+                @foreach ($products as $pr)
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="product_one" data-aos="fade-up" data-aos-duration="800">
+                            <a href="/single_products/{{ $pr->id }}" class="las_pro">
+                                <div class="produs_img">
+                                    <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                 </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
+                            </a>
+                            <h5 class="he_head">{{ $pr->id }}</h5>
+                            <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
+                            <div class="prd_inp">
+                                <form class="ads_carts">
+                                    @csrf
+                                    <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id"
+                                        class="user_id">
+                                    <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
+                                        class="product_main_id">
+                                    <div class="ful_po">
+                                        <div class="prds_inr">
+                                            <button type="button" class="btn_min"
+                                                onclick="decreaseValue('hair-{{ $pr->product_name }}')">-</button>
+                                            <input type="number" class="input_poo  productqty"
+                                                id="hair-{{ $pr->product_name }}-number" min="1"
+                                                max="100" value="1" name="productqty">
+                                            <button type="button" class="btn_plus"
+                                                onclick="increaseValue('hair-{{ $pr->product_name }}')">+</button>
+                                        </div>
+                                        @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
+                                            <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
+                                                class="prd_varient_id">
+                                        @endif
+                                        <div class="add_to_cart">
+                                            <button type="button" class="btn theme-btn1 add_new_cart_submit"
+                                                data-bs-toggle="modal" data-bs-target="add_new_cart_submit">Add to
+                                                cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Smart</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna1')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna1-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna1')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Savings</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna2')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna2-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna2')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Mini</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna3')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna3-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna3')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna4')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna4-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna4')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one"data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Smart</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna5')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna5-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna5')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Savings</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna6')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna6-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna6')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Mini</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna7')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna7-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna7')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            @endif
 
             </div>
         </div>
@@ -343,182 +216,53 @@
         <div class="container">
             <h5 class="combohead">Hot Deals</h5>
             <div class="row num_weerr">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna8')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna8-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna8')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna9')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna9-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna9')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna10')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna10-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna10')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
+                @if ($products = App\Models\product_varient::where('hot_deals', 1)->get())
+                    @foreach ($products as $pr)
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+
+                            <div class="product_one" data-aos="fade-up" data-aos-duration="800">
+                                <a href="/single_products/{{ $pr->id }}" class="las_pro">
+                                    <div class="produs_img">
+                                        <img src="/assets/images/gt1.png" class="img-fluid" alt="">
+                                    </div>
+                                </a>
+                                <h5 class="he_head">{{ $pr->id }}</h5>
+                                <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
+                                <div class="prd_inp">
+                                    <form class="ads_carts">
+                                        @csrf
+                                        <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id"
+                                            class="user_id">
+                                        <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
+                                            class="product_main_id">
+                                        <div class="ful_po">
+                                            <div class="prds_inr">
+                                                <button type="button" class="btn_min"
+                                                    onclick="decreaseValue('hair-{{ $pr->product_name }}')">-</button>
+                                                <input type="number" class="input_poo  productqty"
+                                                    id="hair-{{ $pr->product_name }}-number" min="1"
+                                                    max="100" value="1" name="productqty">
+                                                <button type="button" class="btn_plus"
+                                                    onclick="increaseValue('hair-{{ $pr->product_name }}')">+</button>
+                                            </div>
+                                            @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
+                                                <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
+                                                    class="prd_varient_id">
+                                            @endif
+                                            <div class="add_to_cart">
+                                                <button type="button" class="btn theme-btn1 add_new_cart_submit"
+                                                    data-bs-toggle="modal" data-bs-target="add_new_cart_submit">Add to
+                                                    cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna11')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna11-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna11')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna12')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna12-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna12')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna13')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna13-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna13')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one">
-                        <div class="produs_img" data-aos="fade-right" data-aos-duration="800">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna14')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna14-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna14')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="product_one" data-aos="fade-right" data-aos-duration="800">
-                        <div class="produs_img">
-                            <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                        </div>
-                        <h5 class="he_head">Combo Delight</h5>
-                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                        <div class="prd_inp">
-                            <div class="ful_po">
-                                <div class="prds_inr">
-                                    <button class="btn_min"  onclick="decreaseValue('hair-henna15')">-</button>
-                                    <input type="number" class="input_poo"  id="hair-henna15-number"  min="1" max="100" value="1" name="productqty" >
-                                    <button class="btn_plus"  onclick="increaseValue('hair-henna15')">+</button>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" class="btn theme-btn1">Add to cart <i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
 
             </div>
         </div>

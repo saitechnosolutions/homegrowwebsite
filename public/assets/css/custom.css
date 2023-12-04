@@ -30,6 +30,57 @@
  .sticky-top {
      top: 100px;
  }
+
+
+
+
+/* ======================active navbar ================== */
+
+
+ .section-header .navbar-nav>li:hover>a:before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+.nav-item {
+    position: relative;
+}
+.section-header li.active>a:before {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+.section-header .navbar-nav>li>a:before {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #5ca904;
+    bottom: -4px;
+    content: "";
+    transform: scaleX(0.5);
+    opacity: 0;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+
+
+
+
+.poster:hover{
+    color: #ffffff;
+}
+
+.swal2-popup .swal2-content{
+    font-size: 24px !important;
+    font-weight: 700 !important;
+}
+
+
+
+
+
 .rozha{
     font-family: 'Rozha One', serif;
     font-size: 34px;
@@ -460,6 +511,8 @@ input::-webkit-inner-spin-button {
      }
  }
 
+
+
  .home_full {
      position: relative !important;
      background-size: 100% !important;
@@ -475,6 +528,12 @@ input::-webkit-inner-spin-button {
  .home_banner_section {
      position: relative;
      top: 40%;
+     /* top: -70%; */
+
+     /* position: absolute;
+     top: 10%;
+     left: 19px;
+     width: 100%; */
  }
 
  .apointers_action {
@@ -949,6 +1008,9 @@ input::-webkit-inner-spin-button {
 
  .product_one {
      position: relative;
+ }
+ .las_pro{
+    text-decoration: none;
  }
 
  .ful_po {
@@ -2567,8 +2629,11 @@ input::-webkit-inner-spin-button {
      display: flex;
      justify-content: space-evenly;
      border-radius: 10px;
+     text-decoration: none;
  }
-
+ .modal-backdrop{
+    background-color: #868686BF !important;
+ }
  .hel2 {
      font-weight: 500;
      font-size: 16px;
@@ -2952,6 +3017,17 @@ input::-webkit-inner-spin-button {
 
 
 
+.no-product-message{
+    text-align: center;
+    padding-top: 50px;
+}
+
+
+/* .myVideo {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+} */
 
 
 

@@ -29,13 +29,13 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3 ">
                     <div class="sticky-top">
-                        <div class="accounting ">
+                        <a href="/myaccount" class="accounting ">
                             <img src="/assets/images/usr.png" alt="">
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
                                 <h5 class="hel2">{{ Auth::user()->name }}</h5>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="accounting2">
                             <ul class="manages">
@@ -44,7 +44,7 @@
                                 <li class="listers"><a href="/editaddress" class="vart active">Manage Addresses</a></li>
                             </ul>
                         </div>
-                        <a href="" class="btn logout_btn">Logout</a>
+                        <a href="/logout" class="btn logout_btn">Logout</a>
                     </div>
                 </div>
                 <div class="col-lg-7">
