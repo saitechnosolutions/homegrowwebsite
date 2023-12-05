@@ -43,6 +43,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+    {{-- <link rel="stylesheet" href="/assets/css/sweetalert2.min.css"> --}}
 </head>
 
 <body>
@@ -62,18 +64,15 @@
 
     <script src="/assets/Bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="/assets/js/main.js"></script>
 
     <script src="/assets/js/contact.js"></script>
 
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
 
     {{-- <script src="assets/customjs/isotope.pkgd.min.js"></script>     --}}
 
@@ -82,8 +81,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- template scripts -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script> --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
@@ -111,6 +110,51 @@
     {{-- ================== water effects =================== --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+    <script src="https://isotope.metafizzy.co/isotope.pkgd.js"></script>
+
+    {{-- <script src="/assets/js/sweetalert2.all.min.js"></script> --}}
+
+    <script>
+        $(document).ready(function() {
+            var customContainer = jQuery(".iso-container");
+            customContainer.isotope({
+                filter: "*",
+                transitionDuration: "2s",
+                animationOptions: {
+                    duration: 7500,
+                    queue: false
+                },
+
+                layoutMode: "fitRows",
+                fitRows: {
+                    gutter: 0
+                }
+            });
+
+            jQuery("#custom-filter li:first-child > a").addClass("is-checked");
+
+            jQuery("#custom-filter a").click(function() {
+                jQuery("#custom-filter .is-checked").removeClass("is-checked");
+                jQuery(this).addClass("is-checked");
+
+                var customSelector = jQuery(this).attr("data-filter");
+                customContainer.isotope({
+                    filter: customSelector,
+                    transitionDuration: "2s",
+                    animationOptions: {
+                        duration: 7500,
+                        queue: false
+                    },
+                    layoutMode: "fitRows",
+                    fitRows: {
+                        gutter: 0
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 
     <script>
         $(".nutri_section").ripples({
@@ -353,11 +397,76 @@
             value--;
             document.getElementById(id + '-number').value = value;
         }
+
+        function increaseValue1(id) {
+            var value = parseInt(document.getElementById(id + '-number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById(id + '-number').value = value;
+        }
+
+        function decreaseValue1(id) {
+            var value = parseInt(document.getElementById(id + '-number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value < 1 ? value = 1 : '';
+            value--;
+            document.getElementById(id + '-number').value = value;
+        }
     </script>
 
 
 
+    <script>
+        $(document).ready(function() {
+            updateTotal();
+        });
 
+        function increaseValue1(offerPrice) {
+            const input = $(`#hair-${offerPrice}-number`);
+            input.val(parseInt(input.val()) + 1);
+            updatePriceAndTotal(offerPrice);
+        }
+
+        function decreaseValue1(offerPrice) {
+            const input = $(`#hair-${offerPrice}-number`);
+            if (parseInt(input.val()) > 1) {
+                input.val(parseInt(input.val()) - 1);
+                updatePriceAndTotal(offerPrice);
+            }
+        }
+
+        function updatePrice(offerPrice) {
+            const input = $(`#hair-${offerPrice}-number`);
+            const priceElement = $(`#price-${offerPrice}`);
+            const quantity = parseInt(input.val());
+            const price = quantity * parseInt(offerPrice);
+            priceElement.text(`₹${price}`);
+        }
+
+        function updateTotal() {
+            let totalAmount = 0;
+
+            // Loop through all product prices and quantities
+            $('[id^="price-"]').each(function() {
+                const priceText = $(this).text().replace('₹', '');
+                const price = !isNaN(parseFloat(priceText)) ? parseFloat(priceText) : 0;
+
+                const productId = $(this).attr('id').split('-')[1]; // Extract the product ID
+                const input = $(`#hair-${productId}-number`);
+                const quantity = !isNaN(parseInt(input.val())) ? parseInt(input.val()) : 0;
+
+                totalAmount += price  // Consider both price and quantity
+            });
+
+            // Update the total amount
+            $('#totalAmount').text(`₹${totalAmount.toFixed(2)}`);
+        }
+
+        function updatePriceAndTotal(offerPrice) {
+            updatePrice(offerPrice);
+            updateTotal();
+        }
+    </script>
 
 </body>
 

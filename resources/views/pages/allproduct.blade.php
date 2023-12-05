@@ -12,9 +12,9 @@
         <div class="container">
             <div class="row  rte">
                 <div class="col-lg-8">
-                    <ul class="oilss_cat">
-                        <li><a href="" class="grocry">All category</a></li>
-                        <li><a href="" class="grocry">Grocery</a></li>
+                    <ul class="oilss_cat iso_one"  id="custom-filter">
+                        <li><a href="" data-filter="*" class="all " class="grocry">All category</a></li>
+                        <li><a href="" data-filter=".on" class="grocry">Grocery</a></li>
                         <li><a href=""class="grocry">Rice</a></li>
                         <li><a href=""class="grocry">Edible Oils</a></li>
                         <li><a href=""class="grocry">House Hold</a></li>
@@ -121,18 +121,21 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="row  drdrrrr">
-                        @if ($products = App\Models\product::all())
+                    <div class="row  iso-container drdrrrr">
+                        @if ($products = App\Models\product_varient::all())
                             @foreach ($products as $pr)
-                                <div class="col-lg-4">
-                                    <div class="product_one" data-aos="fade-left" data-aos-duration="800">
-                                        <a href="/single_products/{{ $pr->product_name }}" class="las_pro">
+                                <div class="col-lg-4  ">
+                                    <div class="product_one" data-aos="fade-up" data-aos-duration="800">
+                                        <a href="/single_products/{{ $pr->id }}" class="las_pro">
                                             <div class="produs_img">
                                                 <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                             </div>
                                         </a>
-                                        <h5 class="he_head">{{ $pr->product_name }}</h5>
-                                        <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
+                                        @if ($vrs = App\Models\product::where('id', $pr->id)->first())
+                                            <h5 class="he_head">{{ $vrs->product_name }}</h5>
+                                        @endif
+                                        <h5 class="he_para">₹{{ $pr->offer_price }} <span class="he_para1">
+                                                ₹{{ $pr->mrp_price }}</span> </h5>
                                         <div class="prd_inp">
                                             <form class="ads_carts">
                                                 @csrf
@@ -143,12 +146,12 @@
                                                 <div class="ful_po">
                                                     <div class="prds_inr">
                                                         <button type="button" class="btn_min"
-                                                            onclick="decreaseValue('hair-{{ $pr->product_name }}')">-</button>
+                                                            onclick="decreaseValue('hair-{{ $pr->id }}')">-</button>
                                                         <input type="number" class="input_poo  productqty"
-                                                            id="hair-{{ $pr->product_name }}-number" min="1"
+                                                            id="hair-{{ $pr->id }}-number" min="1"
                                                             max="100" value="1" name="productqty">
                                                         <button type="button" class="btn_plus"
-                                                            onclick="increaseValue('hair-{{ $pr->product_name }}')">+</button>
+                                                            onclick="increaseValue('hair-{{ $pr->id }}')">+</button>
                                                     </div>
                                                     @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
                                                         <input type="hidden" name="prd_varient_id"
@@ -169,6 +172,8 @@
                             @endforeach
                         @endif
                     </div>
+
+
                 </div>
             </div>
         </div>

@@ -310,6 +310,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding-bottom: 20px;
 }
 .vaseji:hover{
     color: #ffffff !important;
@@ -2054,11 +2055,21 @@ input::-webkit-inner-spin-button {
  .qty_lit {
      padding: 25px 0;
  }
+ .all{
+    color: #670066;
+    text-decoration: none;
+    font-weight: 600;
+ }
 
+ .is-checked{
+    color: #670066;
+    text-decoration: none;
+    font-weight: 600;
+ }
  .price_ty {
      background: #fff;
      padding: 10px;
-     border: 1px solid #5CA904;
+     border: 1px solid #D5D5D5;
      border-radius: 8px;
      font-size: 14px;
      font-weight: 700;
@@ -3023,6 +3034,18 @@ input::-webkit-inner-spin-button {
 }
 
 
+.content_section .accordion-button:not(.collapsed){
+    color: #000000;
+    background-color: #fff;
+    width: 200px;
+    margin-left: 21px;
+    border-bottom: 3px solid #5CA904;
+}
+
+
+.cheeee{
+    color: #5CA904;
+}
 /* .myVideo {
     position: relative;
     width: 100%;

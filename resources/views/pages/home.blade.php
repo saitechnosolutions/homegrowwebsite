@@ -56,14 +56,19 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     <div class="first_slick">
-                        <a href="">
-                            <div class="first">
-                                <img src="/assets/images/pr1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <h5 class="gro">Grocery</h5>
-                        </a>
+                        @if ($cat = App\Models\category::all())
+                            @foreach ($cat as $ca)
+                                <a href="">
+                                    <div class="first">
+                                        <img src="/assets/images/pr1.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <h5 class="gro">{{ $ca->category_name }}</h5>
+                                </a>
+                            @endforeach
+                        @endif
 
-                        <a href="">
+
+                        {{-- <a href="">
                             <div class="first">
                                 <img src="/assets/images/pr2.jpg" class="img-fluid" alt="">
                             </div>
@@ -110,7 +115,7 @@
                                 <img src="/assets/images/pr2.jpg" class="img-fluid" alt="">
                             </div>
                             <h5 class="gro">Grocery</h5>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
                 <div class="col-lg-1  soloi">
@@ -125,52 +130,62 @@
         <div class="container">
             <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
             <div class="row num_weerr">
-                @if ($products = App\Models\product::where('category_id', 42)->get())
-                @foreach ($products as $pr)
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="product_one" data-aos="fade-up" data-aos-duration="800">
-                            <a href="/single_products/{{ $pr->id }}" class="las_pro">
-                                <div class="produs_img">
-                                    <img src="/assets/images/gt1.png" class="img-fluid" alt="">
-                                </div>
-                            </a>
-                            <h5 class="he_head">{{ $pr->id }}</h5>
-                            <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
-                            <div class="prd_inp">
-                                <form class="ads_carts">
-                                    @csrf
-                                    <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id"
-                                        class="user_id">
-                                    <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
-                                        class="product_main_id">
-                                    <div class="ful_po">
-                                        <div class="prds_inr">
-                                            <button type="button" class="btn_min"
-                                                onclick="decreaseValue('hair-{{ $pr->product_name }}')">-</button>
-                                            <input type="number" class="input_poo  productqty"
-                                                id="hair-{{ $pr->product_name }}-number" min="1"
-                                                max="100" value="1" name="productqty">
-                                            <button type="button" class="btn_plus"
-                                                onclick="increaseValue('hair-{{ $pr->product_name }}')">+</button>
-                                        </div>
-                                        @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
-                                            <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
-                                                class="prd_varient_id">
-                                        @endif
-                                        <div class="add_to_cart">
-                                            <button type="button" class="btn theme-btn1 add_new_cart_submit"
-                                                data-bs-toggle="modal" data-bs-target="add_new_cart_submit">Add to
-                                                cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
+                @if (
+                    $products = App\Models\product_varient::join('products', 'products.id', '=', 'product_varient.product_id')->where('products.category_id', 42)->select(
+                            'product_varient.id as product_varient_id',
+                            'products.id as product_id',
+                            'product_varient.*',
+                            'products.*')->get())
+                    @foreach ($products as $pr)
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="product_one" data-aos="fade-up" data-aos-duration="800">
+                                <a href="/single_products/{{ $pr->id }}" class="las_pro">
+                                    <div class="produs_img">
+                                        <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                     </div>
-                                </form>
-                            </div>
-                        </div>
+                                </a>
+                                @if ($vrs = App\Models\product::where('id', $pr->id)->first())
+                                    <h5 class="he_head">{{ $vrs->product_name }}</h5>
+                                @endif
+                                <h5 class="he_para">₹{{ $pr->offer_price }} <span class="he_para1">
+                                        ₹{{ $pr->mrp_price }}</span> </h5>
+                                <div class="prd_inp">
+                                    <form class="ads_carts">
+                                        @csrf
+                                        <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id"
+                                            class="user_id">
 
-                    </div>
-                @endforeach
-            @endif
+                                        <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
+                                            class="product_main_id">
+
+                                        <input type="hidden" name="prd_varient_id" value="{{ $pr->product_varient_id }}"
+                                            class="prd_varient_id">
+
+                                        <div class="ful_po">
+                                            <div class="prds_inr">
+                                                <button type="button" class="btn_min"
+                                                    onclick="decreaseValue('hair-{{ $pr->product_varient_id }}')">-</button>
+                                                <input type="number" class="input_poo  productqty"
+                                                    id="hair-{{ $pr->product_varient_id }}-number" min="1" max="100"
+                                                    value="1" name="productqty">
+                                                <button type="button" class="btn_plus"
+                                                    onclick="increaseValue('hair-{{ $pr->product_varient_id }}')">+</button>
+                                            </div>
+
+                                            <div class="add_to_cart">
+                                                <button type="button" class="btn theme-btn1 add_new_cart_submit"
+                                                    data-bs-toggle="modal" data-bs-target="add_new_cart_submit">Add to
+                                                    cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                @endif
 
             </div>
         </div>
@@ -226,8 +241,13 @@
                                         <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                     </div>
                                 </a>
-                                <h5 class="he_head">{{ $pr->id }}</h5>
-                                <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span> </h5>
+                                @if ($vrs = App\Models\product::where('id', $pr->id)->first())
+                                    <h5 class="he_head">{{ $vrs->product_name }}</h5>
+                                @endif
+
+                                <h5 class="he_para">₹{{ $pr->offer_price }} <span class="he_para1">
+                                        ₹{{ $pr->mrp_price }}</span> </h5>
+
                                 <div class="prd_inp">
                                     <form class="ads_carts">
                                         @csrf
@@ -235,20 +255,23 @@
                                             class="user_id">
                                         <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
                                             class="product_main_id">
+
+                                        @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
+                                            <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
+                                                class="prd_varient_id">
+                                        @endif
+
                                         <div class="ful_po">
                                             <div class="prds_inr">
                                                 <button type="button" class="btn_min"
-                                                    onclick="decreaseValue('hair-{{ $pr->product_name }}')">-</button>
+                                                    onclick="decreaseValue('hair-{{ $pr->id }}')">-</button>
                                                 <input type="number" class="input_poo  productqty"
-                                                    id="hair-{{ $pr->product_name }}-number" min="1"
-                                                    max="100" value="1" name="productqty">
+                                                    id="hair-{{ $pr->id }}-number" min="1" max="100"
+                                                    value="1" name="productqty">
                                                 <button type="button" class="btn_plus"
-                                                    onclick="increaseValue('hair-{{ $pr->product_name }}')">+</button>
+                                                    onclick="increaseValue('hair-{{ $pr->id }}')">+</button>
                                             </div>
-                                            @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
-                                                <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
-                                                    class="prd_varient_id">
-                                            @endif
+
                                             <div class="add_to_cart">
                                                 <button type="button" class="btn theme-btn1 add_new_cart_submit"
                                                     data-bs-toggle="modal" data-bs-target="add_new_cart_submit">Add to

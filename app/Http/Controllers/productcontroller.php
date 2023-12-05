@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
+use App\Models\product_varient;
 use Illuminate\Http\Request;
 
 class productcontroller extends Controller
@@ -12,8 +13,8 @@ class productcontroller extends Controller
 
         $productid = product::select('*')->where('id', $id)->first();
         // $descid = description::select('*')->where('productid', $Id)->first();
-        // $product = subcat::all();
-        return view("pages.singleproduct", compact("productid",));
+        $product = product_varient::all();
+        return view("pages.singleproduct", compact("productid","product"));
     }
 
 }

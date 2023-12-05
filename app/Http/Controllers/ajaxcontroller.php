@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cart;
 use App\Models\city;
 use App\Models\product;
+use App\Models\product_varient;
 use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
@@ -195,7 +196,7 @@ class ajaxcontroller extends Controller
 
 
         $existingCart = cart::where('user_id', $user_id)
-        ->where('product_id', $product_main_id)
+        ->where('product_varient_id', $prd_varient_id)
         ->first();
 
         if ($existingCart) {
@@ -213,10 +214,13 @@ class ajaxcontroller extends Controller
 
             if ($cart->save()) {
                 $product = product::find($product_main_id);
+                $product_varient = product_varient::find($prd_varient_id);
+
                 return response()->json([
                     'success' => true,
                 'product_name' => $product->product_name,
-                // 'product_price' => '₹' . number_format($product->price, 2),
+                'mrp_price' => $product_varient->mrp_price,
+                'offer_price' => $product_varient->offer_price,
                 ]);
             } else {
                 return response()->json(['error' => 'Failed to add to cart']);
@@ -227,7 +231,27 @@ class ajaxcontroller extends Controller
 
 
 
+    public function removecart($id)
+    {
+        // dd($id);
+        $cart = DB::table('carts')
+        ->where('id',$id)
+        ->delete();
+        if($cart){
+            return response()->json(['success' => 'Removed']);
+        }
 
+    }
+
+    public function cartremove_all_cart($id){
+        
+        $remove_all_cart = DB::table('carts')
+        ->where('user_id',$id)
+        ->delete();
+        if($remove_all_cart){
+            return response()->json(['success' => 'Removed']);
+        }
+    }
 
 
 

@@ -163,6 +163,7 @@ $(document).ready(function () {
                     // Update modal content with product details
                     $('#add_new_cart_submit .product_name').text(response.product_name);
                     $('#add_new_cart_submit .he_para').text(response.product_price);
+                    $('#add_new_cart_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">$' + response.mrp_price + '</span>');
 
                     if ($('#add_new_cart_submit').length > 0) {
                         $('#add_new_cart_submit').modal('show');
@@ -187,3 +188,143 @@ $(document).ready(function () {
         });
     });
 });
+
+
+
+
+
+
+
+
+// $(document).on("click", ".rems", function () {
+
+//     Swal({
+//         title: "Are you sure?",
+//         text: "You want to delete this Product..!",
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonColor: "#3085d6",
+//         cancelButtonColor: "#d33",
+//         confirmButtonText: "Yes, delete it!",
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             $.ajax({
+//                 method: "GET",
+//                 url: `cartremove/${id}`,
+//                 success: function (data) {
+//                     Swal({
+//                         position: 'center',
+//                         icon: 'success',
+//                         title: 'Your Product has beed Deleted..',
+//                         showConfirmButton: false,
+//                         timer: 1500
+//                     })
+
+//                     location.reload();
+//                 },
+//                 error: function (data) {
+//                     Swal(
+//                         "Deleted!",
+//                         "Your file has been deleted.",
+//                         "success"
+//                     );
+//                 },
+//             });
+//         }
+//     });
+// });
+
+
+
+$(document).on("click", ".removes_carts", function () {
+    const id = $(this).data('id');
+
+    swal({
+        title: "Are you sure?",
+        text: "You want to delete this Product..!",
+        icon: "question",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed the deletion
+            $.ajax({
+                type: 'GET',
+                url: '/cartremove/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal(
+                        'Success',
+                        'Product deleted successfully',
+                        'success'
+                    );
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal(
+                        'Error',
+                        'Failed to delete the product',
+                        'error'
+                    );
+                }
+            });
+        } else {
+            swal.close();
+        }
+    });
+});
+
+
+
+$(document).on("click", ".removall_cart", function () {
+    const id = $(this).data('id');
+
+    swal({
+        title: "Are you sure?",
+        text: "You want to delete this all the cart products..!",
+        icon: "question",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed the deletion
+            $.ajax({
+                type: 'GET',
+                url: '/cartremove_all_cart/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal(
+                        'Success',
+                        'Remove all Product successfully',
+                        'success'
+                    );
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal(
+                        'Error',
+                        'Failed to delete the product',
+                        'error'
+                    );
+                }
+            });
+        } else {
+            swal.close();
+        }
+    });
+});
+
