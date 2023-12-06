@@ -68,10 +68,16 @@ Route::post('/edit_manage_ajax',[ajaxcontroller::class,'edit_update_managae_addr
 
 
 Route::post('/add_cart',[ajaxcontroller::class,'add_cart']);
+Route::post('/add_wishlist',[ajaxcontroller::class,'add_wishlist']);
 
 
 Route::GET('/cartremove/{id}',[ajaxcontroller::class,'removecart']);
 Route::GET('/cartremove_all_cart/{id}',[ajaxcontroller::class,'cartremove_all_cart']);
+
+
+Route::GET('/wishlistremove/{id}',[ajaxcontroller::class,'wishlistremove']);
+Route::GET('/wishlist_remove_all/{id}',[ajaxcontroller::class,'wishlist_remove_all']);
+
 
 
 Route::get('/search',[ajaxcontroller::class,'searchword']);

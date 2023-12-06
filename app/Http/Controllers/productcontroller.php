@@ -11,10 +11,11 @@ class productcontroller extends Controller
     //
     public function customRedirect($id){
 
-        $productid = product::select('*')->where('id', $id)->first();
+        // $product_variient_id = product_varient::select('*')->where('id', $id)->first();
+        $product_id = product::select('*')->where('id', $id)->first();
         // $descid = description::select('*')->where('productid', $Id)->first();
-        $product = product_varient::all();
-        return view("pages.singleproduct", compact("productid","product"));
+        $product_varient = product_varient::all();
+        return view("pages.singleproduct", compact("product_id","product_varient"));
     }
 
 }

@@ -46,7 +46,9 @@
                                     <div>
                                         <div class="coco">
                                             <div class="car1">
+                                                <a href="/single_products/{{ $car->product_id }}">
                                                 <img src="/assets/images/my.jpg" class="img-fluid" alt="">
+                                                </a>
                                                 <div class="ioio">
                                                     @if ($vrs = App\Models\product::where('id', $car->product_id)->first())
                                                         <h5>{{ $vrs->product_name }}</h5>

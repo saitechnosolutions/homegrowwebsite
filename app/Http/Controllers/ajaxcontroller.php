@@ -9,6 +9,7 @@ use App\Models\product_varient;
 use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
+use App\Models\wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -231,6 +232,7 @@ class ajaxcontroller extends Controller
 
 
 
+
     public function removecart($id)
     {
         // dd($id);
@@ -244,7 +246,7 @@ class ajaxcontroller extends Controller
     }
 
     public function cartremove_all_cart($id){
-        
+
         $remove_all_cart = DB::table('carts')
         ->where('user_id',$id)
         ->delete();
@@ -252,6 +254,86 @@ class ajaxcontroller extends Controller
             return response()->json(['success' => 'Removed']);
         }
     }
+
+
+
+
+    public function add_wishlist(Request $request){
+
+        $user_id = $request->input("user_id");
+        $product_main_id = $request->input("product_main_id");
+        $productqty = $request->input("productqty");
+        $prd_varient_id = $request->input("prd_varient_id");
+
+
+        $existingwishlist = wishlist::where('user_id', $user_id)
+        ->where('product_varient_id', $prd_varient_id)
+        ->first();
+
+        if ($existingwishlist) {
+            // $existingCart->product_quantity += $productqty;
+            // $existingCart->save();
+
+            return response()->json(['error' => 'Already Added']);
+        }else{
+            $cart = new wishlist();
+
+            $cart->user_id = $user_id;
+            $cart->product_id = $product_main_id;
+            $cart->product_varient_id = $prd_varient_id;
+            $cart->product_quantity = $productqty;
+
+            if ($cart->save()) {
+                $product = product::find($product_main_id);
+                $product_varient = product_varient::find($prd_varient_id);
+
+                return response()->json([
+                    'success' => true,
+                'product_name' => $product->product_name,
+                'mrp_price' => $product_varient->mrp_price,
+                'offer_price' => $product_varient->offer_price,
+                ]);
+            } else {
+                return response()->json(['error' => 'Failed to add to cart']);
+            }
+        }
+
+    }
+
+    public function wishlistremove($id)
+    {
+        // dd($id);
+        $wishlists = DB::table('wishlists')
+        ->where('id',$id)
+        ->delete();
+        if($wishlists){
+            return response()->json(['success' => 'Removed']);
+        }
+
+    }
+
+    public function wishlist_remove_all($id){
+
+        $wishlists_all = DB::table('wishlists')
+        ->where('user_id',$id)
+        ->delete();
+        if($wishlists_all){
+            return response()->json(['success' => 'Removed']);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

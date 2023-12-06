@@ -30,6 +30,34 @@
 </div>
 
 
+
+<div class="modal fade  add_to_carts" id="add_new_wishlist_submit" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-body addses_cart">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12 text-center">
+                            <img src="/assets/images/succes.png" class="isod" alt="">
+                            <p class="addes_csrtr">Item Added To Wishlist !</p>
+                            <div class="weight">
+                                <img src="/assets/images/small.png" class="img-fluid" alt="">
+                                <div class="pricre">
+                                    <h5 class="product_name">Combo Smart</h5>
+                                    <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span></h5>
+                                </div>
+                            </div>
+                            <a href="/checkout" class=" btn home-btn3 poster">Proceed to Checkout</a>
+                            <a href="/" class="kalart">Back to Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ==========================offer ================================== -->
 <div class="modal fade  offer_zone" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

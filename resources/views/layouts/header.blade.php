@@ -75,17 +75,27 @@
                         <div class="login-nav">
                             <button type="button" class="iconses_one rit" data-bs-toggle="modal"
                                 data-bs-target="#search"><i class="fa fa-search hd" aria-hidden="true"></i> </button>
-                            <a href="#" class="iconses_one">
-                                <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
-                            </a>
                             @if (Auth::check())
-                                @php $cartCount = \App\Models\cart::where('user_id', Auth::user()->user_id)->count(); @endphp
-                                <a href="/mycart" class="iconses_one" id="cartIcon">
-                                    <div class="num_couny  add_to_cart_num">{{ $cartCount }}</div><i class="fa fa-shopping-cart hd"
+                                @php $wishlistCount = \App\Models\wishlist::where('user_id', Auth::user()->user_id)->count(); @endphp
+                                <a href="/mywishlist" class="iconses_one  wish_list_ic">
+                                    <div class="num_couny add_to_wishlist_num">{{ $wishlistCount }}</div><i class="fa fa-heart hd"
                                         aria-hidden="true"></i>
                                 </a>
                             @else
-                                <a href="#" class="iconses_one" id="cartIcon"     data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <a href="#" class="iconses_one" data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">
+                                    <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
+                                </a>
+                            @endif
+                            @if (Auth::check())
+                                @php $cartCount = \App\Models\cart::where('user_id', Auth::user()->user_id)->count(); @endphp
+                                <a href="/mycart" class="iconses_one" id="cartIcon">
+                                    <div class="num_couny  add_to_cart_num">{{ $cartCount }}</div><i
+                                        class="fa fa-shopping-cart hd" aria-hidden="true"></i>
+                                </a>
+                            @else
+                                <a href="#" class="iconses_one" id="cartIcon" data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">
                                     <div class="num_couny">0</div><i class="fa fa-shopping-cart hd"
                                         aria-hidden="true"></i>
                                 </a>

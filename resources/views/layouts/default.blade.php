@@ -125,7 +125,10 @@
                     duration: 7500,
                     queue: false
                 },
-
+                masonry: {
+                    // use outer width of grid-sizer for columnWidth
+                    columnWidth: '.iso-container'
+                },
                 layoutMode: "fitRows",
                 fitRows: {
                     gutter: 0
@@ -398,6 +401,8 @@
             document.getElementById(id + '-number').value = value;
         }
 
+
+        // add to cart
         function increaseValue1(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
@@ -417,6 +422,7 @@
 
 
     <script>
+        //  add to cart
         $(document).ready(function() {
             updateTotal();
         });
@@ -455,7 +461,7 @@
                 const input = $(`#hair-${productId}-number`);
                 const quantity = !isNaN(parseInt(input.val())) ? parseInt(input.val()) : 0;
 
-                totalAmount += price  // Consider both price and quantity
+                totalAmount += price // Consider both price and quantity
             });
 
             // Update the total amount

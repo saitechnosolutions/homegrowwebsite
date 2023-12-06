@@ -196,6 +196,11 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
 // $(document).on("click", ".rems", function () {
 
 //     Swal({
@@ -283,6 +288,9 @@ $(document).on("click", ".removes_carts", function () {
 
 
 
+
+
+
 $(document).on("click", ".removall_cart", function () {
     const id = $(this).data('id');
 
@@ -309,6 +317,167 @@ $(document).on("click", ".removall_cart", function () {
                     swal(
                         'Success',
                         'Remove all Product successfully',
+                        'success'
+                    );
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal(
+                        'Error',
+                        'Failed to delete the product',
+                        'error'
+                    );
+                }
+            });
+        } else {
+            swal.close();
+        }
+    });
+});
+
+
+
+
+
+
+// =================================== add to wish list ================
+
+
+$(document).ready(function () {
+    $('.add_new_wishlist_submit').on('click', function () {
+
+        var product_main_id = $(this).closest("form").find('.product_main_id').val();
+        var user_id = $('.user_id').val();
+        var productqty = $(this).closest("form").find('.productqty').val();
+        var prd_varient_id = $(this).closest("form").find('.prd_varient_id').val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/add_wishlist',
+            type: 'post',
+            data: {
+                product_main_id: product_main_id,
+                user_id: user_id,
+                productqty: productqty,
+                prd_varient_id: prd_varient_id,
+            },
+            success: function (response) {
+                if (response.success) {
+                    // Update modal content with product details
+                    $('#add_new_wishlist_submit .product_name').text(response.product_name);
+                    $('#add_new_wishlist_submit .he_para').text(response.product_price);
+                    $('#add_new_wishlist_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">$' + response.mrp_price + '</span>');
+
+                    if ($('#add_new_wishlist_submit').length > 0) {
+                        $('#add_new_wishlist_submit').modal('show');
+                        setTimeout(function () {
+                            $('#add_new_wishlist_submit').modal('hide');
+                        }, 10000);
+                    } else {
+                        console.error('Modal not found!');
+                    }
+
+                    var cartIcon = $('.wish_list_ic');
+                    var currentItemCount = parseInt(cartIcon.find('.add_to_wishlist_num').text());
+                    cartIcon.find('.add_to_wishlist_num').text(currentItemCount + 1);
+                } else {
+                    swal(
+                        'Error!',
+                        'This product is already in the Wishlist',
+                        'error'
+                    );
+                }
+            },
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+$(document).on("click", ".removes_wishlist", function () {
+    const id = $(this).data('id');
+
+    swal({
+        title: "Are you sure?",
+        text: "You want to delete this product from wishlist..!",
+        icon: "question",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: 'GET',
+                url: '/wishlistremove/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal(
+                        'Success',
+                        'wishlist Product removed in  successfully',
+                        'success'
+                    );
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal(
+                        'Error',
+                        'Failed to delete the product',
+                        'error'
+                    );
+                }
+            });
+        } else {
+            swal.close();
+        }
+    });
+});
+
+
+$(document).on("click", ".removall_wishlist", function () {
+    const id = $(this).data('id');
+
+    swal({
+        title: "Are you sure?",
+        text: "You want to delete all this product from wishlist..!",
+        icon: "question",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed the deletion
+            $.ajax({
+                type: 'GET',
+                url: '/wishlist_remove_all/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal(
+                        'Success',
+                        'wishlist Product Remove successfully',
                         'success'
                     );
                     location.reload();
