@@ -16,7 +16,7 @@
                                 <img src="/assets/images/small.png" class="img-fluid" alt="">
                                 <div class="pricre">
                                     <h5 class="product_name">Combo Smart</h5>
-                                    <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span></h5>
+                                    <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span></h5>
                                 </div>
                             </div>
                             <a href="/checkout" class=" btn home-btn3 poster">Proceed to Checkout</a>
@@ -45,7 +45,7 @@
                                 <img src="/assets/images/small.png" class="img-fluid" alt="">
                                 <div class="pricre">
                                     <h5 class="product_name">Combo Smart</h5>
-                                    <h5 class="he_para">₹349.00 <span class="he_para1">$1128.00</span></h5>
+                                    <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span></h5>
                                 </div>
                             </div>
                             <a href="/checkout" class=" btn home-btn3 poster">Proceed to Checkout</a>

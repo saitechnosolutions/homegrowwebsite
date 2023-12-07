@@ -182,7 +182,12 @@ class ajaxcontroller extends Controller
 
         $searchWord = $request->input;
 
-        $products = product::where('product_name', 'like', '%' . $searchWord . '%')->get();
+        // $products = product::where('product_name', 'like', '%' . $searchWord . '%')->get();
+        $products = DB::table('product_varient')
+        ->join('products', 'product_varient.product_id', '=', 'products.id')
+        ->where('products.product_name', 'like', '%' . $searchWord . '%')
+        ->select('product_varient.*', 'products.product_name')
+        ->get();
 
     return view('ajaxpages.search')->with('products', $products);
     }

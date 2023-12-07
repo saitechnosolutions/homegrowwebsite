@@ -131,7 +131,7 @@
             <h5 class="combohead" data-aos="fade-up" data-aos-duration="800">Combo Products</h5>
             <div class="row num_weerr">
                 @if (
-                    $products = App\Models\product_varient::join('products', 'products.id', '=', 'product_varient.product_id')->where('products.category_id', 42)->select(
+                    $products = App\Models\product_varient::join('products', 'products.id', '=', 'product_varient.product_id')->where('products.category_id', 1)->select(
                             'product_varient.id as product_varient_id',
                             'products.id as product_id',
                             'product_varient.*',
@@ -265,12 +265,12 @@
                                             <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id"
                                                 class="user_id">
                                         @endif
-                                        <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
-                                            class="product_main_id">
+                                        <input type="hidden" value="{{ $pr->id }}" name="prd_varient_id"
+                                            class="prd_varient_id">
 
-                                        @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
-                                            <input type="hidden" name="prd_varient_id" value="{{ $var->id }}"
-                                                class="prd_varient_id">
+                                        @if ($var = App\Models\product_varient::where('id', $pr->product_id)->first())
+                                            <input type="hidden" name="product_main_id" value="{{ $var->id }}"
+                                                class="product_main_id">
                                         @endif
 
                                         <div class="ful_po">

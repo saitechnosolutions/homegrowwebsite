@@ -12,13 +12,18 @@
         <div class="container">
             <div class="row  rte">
                 <div class="col-lg-8">
-                    <ul class="oilss_cat iso_one" id="custom-filter">
+                    <ul class="oilss_cat iso_one  des_one" id="custom-filter">
                         <li><a href="" data-filter="*" class="all " class="grocry">All category</a></li>
-                        <li><a href="" data-filter=".on" class="grocry">Grocery</a></li>
-                        <li><a href=""class="grocry">Rice</a></li>
+                        @if ($cat = App\Models\category::all())
+                            @foreach ($cat as $ca)
+                                <li><a href="" data-filter=".{{ $ca->id }}"
+                                        class="grocry">{{ $ca->category_name }}</a></li>
+                            @endforeach
+                        @endif
+                        {{-- <li><a href=""class="grocry">Rice</a></li>
                         <li><a href=""class="grocry">Edible Oils</a></li>
                         <li><a href=""class="grocry">House Hold</a></li>
-                        <li><a href=""class="grocry">Spices</a></li>
+                        <li><a href=""class="grocry">Spices</a></li> --}}
                     </ul>
                 </div>
                 <div class="col-lg-4">
@@ -120,17 +125,19 @@
 
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="row  iso-container drdrrrr">
-                        {{-- <div class="col-lg-4">
+                <div class="col-lg-9 ">
+                    {{-- <div class="row">
+                        <div class="col-lg-4">
                             <p>vdsvhhvbjhjb</p>
                         </div>
                         <div class="col-lg-4 on">
                             <p>vdsvhhvbjhjb1</p>
-                        </div> --}}
+                        </div>
+                    </div> --}}
+                    <div class="row iso-container drdrrrr">
                         @if ($products = App\Models\product_varient::all())
                             @foreach ($products as $pr)
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-4    {{ $pr->categoryid }} ">
                                     <div class="product_one">
                                         <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
                                             <div class="produs_img">
@@ -150,12 +157,14 @@
                                                         name="user_id" class="user_id">
                                                 @endif
 
-                                                <input type="hidden" value="{{ $pr->id }}" name="product_main_id"
-                                                    class="product_main_id">
-                                                @if ($var = App\Models\product_varient::where('product_id', $pr->id)->first())
-                                                    <input type="hidden" name="prd_varient_id"
-                                                        value="{{ $var->id }}" class="prd_varient_id">
+                                                @if ($var = App\Models\product_varient::where('product_id', $pr->product_id)->first())
+                                                    <input type="hidden" value="{{ $var->id }}"
+                                                        name="product_main_id" class="product_main_id">
                                                 @endif
+
+                                                <input type="hidden" name="prd_varient_id" value="{{ $pr->id }}"
+                                                    class="prd_varient_id">
+
 
                                                 <div class="ful_po">
                                                     <div class="prds_inr">
@@ -191,8 +200,6 @@
                                 </div>
                             @endforeach
                         @endif
-
-
                     </div>
                 </div>
             </div>

@@ -111,7 +111,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
 
-    <script src="https://isotope.metafizzy.co/isotope.pkgd.js"></script>
+    {{-- <script src="https://isotope.metafizzy.co/isotope.pkgd.js"></script> --}}
 
     {{-- <script src="/assets/js/sweetalert2.all.min.js"></script> --}}
 
@@ -126,7 +126,6 @@
                     queue: false
                 },
                 masonry: {
-                    // use outer width of grid-sizer for columnWidth
                     columnWidth: '.iso-container'
                 },
                 layoutMode: "fitRows",
@@ -158,6 +157,9 @@
             });
         });
     </script>
+
+
+
 
     <script>
         $(".nutri_section").ripples({

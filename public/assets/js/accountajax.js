@@ -163,7 +163,7 @@ $(document).ready(function () {
                     // Update modal content with product details
                     $('#add_new_cart_submit .product_name').text(response.product_name);
                     $('#add_new_cart_submit .he_para').text(response.product_price);
-                    $('#add_new_cart_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">$' + response.mrp_price + '</span>');
+                    $('#add_new_cart_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">₹' + response.mrp_price + '</span>');
 
                     if ($('#add_new_cart_submit').length > 0) {
                         $('#add_new_cart_submit').modal('show');
@@ -177,6 +177,10 @@ $(document).ready(function () {
                     var cartIcon = $('#cartIcon');
                     var currentItemCount = parseInt(cartIcon.find('.add_to_cart_num').text());
                     cartIcon.find('.add_to_cart_num').text(currentItemCount + 1);
+
+                    var cartIcon1 = $('#cartIcon1');
+                    var currentItemCount1 = parseInt(cartIcon1.find('.add_to_cart_num').text());
+                    cartIcon1.find('.add_to_cart_num').text(currentItemCount1 + 1);
                 } else {
                     swal(
                         'Error!',
@@ -371,7 +375,7 @@ $(document).ready(function () {
                     // Update modal content with product details
                     $('#add_new_wishlist_submit .product_name').text(response.product_name);
                     $('#add_new_wishlist_submit .he_para').text(response.product_price);
-                    $('#add_new_wishlist_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">$' + response.mrp_price + '</span>');
+                    $('#add_new_wishlist_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">₹' + response.mrp_price + '</span>');
 
                     if ($('#add_new_wishlist_submit').length > 0) {
                         $('#add_new_wishlist_submit').modal('show');
@@ -385,6 +389,10 @@ $(document).ready(function () {
                     var cartIcon = $('.wish_list_ic');
                     var currentItemCount = parseInt(cartIcon.find('.add_to_wishlist_num').text());
                     cartIcon.find('.add_to_wishlist_num').text(currentItemCount + 1);
+
+                    var cartIcon1 = $('.wish_list_ic1');
+                    var currentItemCount1 = parseInt(cartIcon1.find('.add_to_wishlist_num').text());
+                    cartIcon1.find('.add_to_wishlist_num').text(currentItemCount1 + 1);
                 } else {
                     swal(
                         'Error!',

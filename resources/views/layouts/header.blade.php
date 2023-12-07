@@ -6,12 +6,31 @@
             <div class="loger">
                 <button type="button" class="iconses_one rit" data-bs-toggle="modal" data-bs-target="#search"><i
                         class="fa fa-search hd" aria-hidden="true"></i> </button>
-                <a href="#" class="iconses_one">
-                    <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="iconses_one">
-                    <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
-                </a>
+
+                @if (Auth::check())
+                    @php $wishlistCount = \App\Models\wishlist::where('user_id', Auth::user()->user_id)->count(); @endphp
+                    <a href="/mywishlist" class="iconses_one  wish_list_ic1">
+                        <div class="num_couny add_to_wishlist_num">{{ $wishlistCount }}</div><i class="fa fa-heart hd"
+                            aria-hidden="true"></i>
+                    </a>
+                @else
+                    <a href="#" class="iconses_one" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
+                    </a>
+                @endif
+
+                @if (Auth::check())
+                    @php $cartCount = \App\Models\cart::where('user_id', Auth::user()->user_id)->count(); @endphp
+                    <a href="/mycart" class="iconses_one" id="cartIcon1">
+                        <div class="num_couny  add_to_cart_num">{{ $cartCount }}</div><i
+                            class="fa fa-shopping-cart hd" aria-hidden="true"></i>
+                    </a>
+                @else
+                    <a href="#" class="iconses_one"  data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
+                    </a>
+                @endif
 
                 <div class=" dropstart">
                     <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -55,31 +74,29 @@
                             <li class="nav-item navbar-lists   @if (Request::segment(1) == '/') active @endif  ">
                                 <a class="nav-link  " aria-current="page" href="/">Home</a>
                             </li>
-                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'about') active @endif  ">
+                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'allproducts') active @endif  ">
 
                                 <a class="nav-link " href="/allproducts">All Categories</a>
                             </li>
-                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'allproducts') active @endif   ">
-
-
+                            <li class="nav-item navbar-lists    @if (Request::segment(1) == 'about') active @endif   ">
                                 <a class="nav-link " href="/products">Combo Products</a>
                             </li>
                             <li class="nav-item navbar-lists    @if (Request::segment(1) == 'gallery') active @endif    ">
 
                                 <a class="nav-link " href="/gallery">Hot Deals</a>
                             </li>
-
                         </ul>
                     </div>
                     <div class="col-lg-3 col-xl-3">
                         <div class="login-nav">
                             <button type="button" class="iconses_one rit" data-bs-toggle="modal"
                                 data-bs-target="#search"><i class="fa fa-search hd" aria-hidden="true"></i> </button>
+
                             @if (Auth::check())
                                 @php $wishlistCount = \App\Models\wishlist::where('user_id', Auth::user()->user_id)->count(); @endphp
                                 <a href="/mywishlist" class="iconses_one  wish_list_ic">
-                                    <div class="num_couny add_to_wishlist_num">{{ $wishlistCount }}</div><i class="fa fa-heart hd"
-                                        aria-hidden="true"></i>
+                                    <div class="num_couny add_to_wishlist_num">{{ $wishlistCount }}</div><i
+                                        class="fa fa-heart hd" aria-hidden="true"></i>
                                 </a>
                             @else
                                 <a href="#" class="iconses_one" data-bs-toggle="modal"
@@ -87,6 +104,7 @@
                                     <div class="num_couny">0</div><i class="fa fa-heart hd" aria-hidden="true"></i>
                                 </a>
                             @endif
+
                             @if (Auth::check())
                                 @php $cartCount = \App\Models\cart::where('user_id', Auth::user()->user_id)->count(); @endphp
                                 <a href="/mycart" class="iconses_one" id="cartIcon">
@@ -94,7 +112,7 @@
                                         class="fa fa-shopping-cart hd" aria-hidden="true"></i>
                                 </a>
                             @else
-                                <a href="#" class="iconses_one" id="cartIcon" data-bs-toggle="modal"
+                                <a href="#" class="iconses_one" data-bs-toggle="modal"
                                     data-bs-target="#loginModal">
                                     <div class="num_couny">0</div><i class="fa fa-shopping-cart hd"
                                         aria-hidden="true"></i>
@@ -167,15 +185,20 @@
                             </div>
                         </div>
                     @endforeach --}}
-                    @if ($products = App\Models\product::all())
+                    @if ($products = App\Models\product_varient::all())
                         @foreach ($products as $pr)
-                            <div class="first_node  ghh">
+                            <a href="/single_products/{{ $pr->product_id }}" class="first_node  ghh">
                                 <img src="/assets/images/pr3.jpg" class="img-fluid" width="70px" alt="">
                                 <div class="para_ht">
-                                    <h5 class="gro1">{{ $pr->product_name }}</h5>
-                                    <h5 class="he_para11">₹349.00 <span class="he_para12">₹1128.00</span> </h5>
+                                    @if ($desc = App\Models\product::where('id', $pr->product_id)->first())
+                                        <h5 class="gro1">{{ $desc->product_name }}</h5>
+                                    @endif
+                                    @if ($desc = App\Models\product_varient::where('id', $pr->id)->first())
+                                        <h5 class="he_para11">₹{{ $desc->offer_price }} <span
+                                                class="he_para12">₹{{ $desc->mrp_price }} </span> </h5>
+                                    @endif
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     @endif
 

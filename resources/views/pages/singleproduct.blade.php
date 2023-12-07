@@ -163,17 +163,17 @@
                                     <div class="sharess">
                                         <h5>Share </h5>
                                         <ul class="uit">
-                                            <li><a href="" target="_blank"><img src="/assets/images/msg.png"
-                                                        class="img-fluid ghg" alt=""></a></li>
+                                            {{-- <li><a href="https://www.facebook.com/dialog/send?app_id=YOUR_APP_ID&link={{ urlencode(url()->current()) }}" target="_blank"><img src="/assets/images/msg.png"
+                                                        class="img-fluid ghg" alt=""></a></li> --}}
                                             <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/fac.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                             <li><a href="https://api.whatsapp.com/send?text={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/wha.png"
                                                         class="img-fluid ghg" alt=""></a></li>
-                                            <li><a href="" target="_blank"><img src="/assets/images/ins.png"
-                                                        class="img-fluid ghg" alt=""></a></li>
-                                            <li><a href="" target="_blank"><img src="/assets/images/ex.png"
+                                            {{-- <li><a href="https://www.instagram.com/share?url={{ url(url()->current()) }}" target="_blank"><img src="/assets/images/ins.png"
+                                                        class="img-fluid ghg" alt=""></a></li> --}}
+                                            <li><a href="https://twitter.com/share?url={{ url(url()->current()) }}" target="_blank"><img src="/assets/images/ex.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                         </ul>
                                     </div>

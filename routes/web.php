@@ -57,7 +57,7 @@ Route::post('/login',[registercontroller::class,'login']);
 Route::GET('/logout',[registercontroller::class,'logout']);
 
 
-Route::get('single_products/{id}', [productController::class,'customRedirect']);
+    Route::get('single_products/{id}', [productController::class,'customRedirect']);
 
 Route::post('/update_product',[ajaxcontroller::class,'updateuser']);
 Route::post('/add_adress',[ajaxcontroller::class,'add_adress']);
