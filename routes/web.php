@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ajaxcontroller;
+use App\Http\Controllers\allproductcontroller;
 use App\Http\Controllers\mailcontroller;
 use App\Http\Controllers\productcontroller;
 use App\Http\Controllers\registercontroller;
@@ -82,6 +83,8 @@ Route::GET('/wishlist_remove_all/{id}',[ajaxcontroller::class,'wishlist_remove_a
 
 Route::get('/search',[ajaxcontroller::class,'searchword']);
 
+
+Route::post('/hotdeal',[allproductcontroller::class,'hotdeal']);
 
 
 ?>

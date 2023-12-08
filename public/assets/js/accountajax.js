@@ -505,3 +505,61 @@ $(document).on("click", ".removall_wishlist", function () {
     });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+//    hotdeal ajax
+
+// $(document).ready(function () {
+//     // Listen for checkbox change in the 'filtercheck' class
+//     $('.filtercheck').change(function () {
+//         // Get values of all checked checkboxes
+//         var checkedValues = $('.filtercheck:checked').map(function () {
+//             return $(this).val();
+//         }).toArray();
+
+//         // Display the values in the console (you can modify this part)
+//         console.log(checkedValues);
+//     });
+// });
+
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.filtercheck').change(function () {
+        
+        // Get values of all checked checkboxes
+        var checkedValues = $('.filtercheck:checked').map(function () {
+            return $(this).val();
+        }).toArray();
+        console.log(typeof(checkedValues));
+
+        $.ajax({
+            type: 'Post',
+            url: '/hotdeal',
+            data: {
+                option: checkedValues
+            },
+            success: function (response) {
+                $('#productsContainer').html(response);
+                // $('.er').hide()
+            },
+            error: function (error) {
+                // $('#productsContainer').html(error);
+            }
+        });
+    });
+});

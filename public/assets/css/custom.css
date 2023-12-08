@@ -3053,8 +3053,35 @@
      font-weight: 600;
  }
 
+ .all_cat_section .nav-link {
+    font-weight: 600;
+    color: #000000 !important;
+}
 
+.all_cat_section .nav-link.active {
+    font-weight: 700;
+    color: #670066 !important;
+    border: none;
+}
 
+.all_cat_section .nav-tabs{
+    border: none;
+}
+.all_cat_section .nav-link:focus-visible{
+    border: none;
+}
+.prd_serar:focus{
+    box-shadow: none;
+}
+.drdrrrr1{
+    row-gap: 70px;
+    position: relative;
+    top: 0;
+}
+#productsContainer{
+    position: relative;
+    top: -50px;
+}
 
  .first_node {
      display: flex;

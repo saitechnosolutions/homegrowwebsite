@@ -76,8 +76,6 @@
 
     {{-- <script src="assets/customjs/isotope.pkgd.min.js"></script>     --}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- template scripts -->
 
@@ -111,51 +109,67 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
+
+
     {{-- <script src="https://isotope.metafizzy.co/isotope.pkgd.js"></script> --}}
 
     {{-- <script src="/assets/js/sweetalert2.all.min.js"></script> --}}
 
     <script>
-        $(document).ready(function() {
-            var customContainer = jQuery(".iso-container");
-            customContainer.isotope({
-                filter: "*",
-                transitionDuration: "2s",
-                animationOptions: {
-                    duration: 7500,
-                    queue: false
-                },
-                masonry: {
-                    columnWidth: '.iso-container'
-                },
-                layoutMode: "fitRows",
-                fitRows: {
-                    gutter: 0
-                }
-            });
+        // $(document).ready(function() {
+        //     var customContainer = jQuery(".iso-container");
+        //     customContainer.isotope({
+        //         filter: "*",
+        //         transitionDuration: "2s",
+        //         animationOptions: {
+        //             duration: 7500,
+        //             queue: false
+        //         },
+        //         masonry: {
+        //             columnWidth: '.iso-container'
+        //         },
+        //         layoutMode: "fitRows",
+        //         fitRows: {
+        //             gutter: 0
+        //         }
+        //     });
 
-            jQuery("#custom-filter li:first-child > a").addClass("is-checked");
+        //     jQuery("#custom-filter li:first-child > a").addClass("is-checked");
 
-            jQuery("#custom-filter a").click(function() {
-                jQuery("#custom-filter .is-checked").removeClass("is-checked");
-                jQuery(this).addClass("is-checked");
+        //     jQuery("#custom-filter a").click(function() {
+        //         jQuery("#custom-filter .is-checked").removeClass("is-checked");
+        //         jQuery(this).addClass("is-checked");
 
-                var customSelector = jQuery(this).attr("data-filter");
-                customContainer.isotope({
-                    filter: customSelector,
-                    transitionDuration: "2s",
-                    animationOptions: {
-                        duration: 7500,
-                        queue: false
-                    },
-                    layoutMode: "fitRows",
-                    fitRows: {
-                        gutter: 0
-                    }
-                });
-                return false;
-            });
-        });
+        //         var customSelector = jQuery(this).attr("data-filter");
+        //         customContainer.isotope({
+        //             filter: customSelector,
+        //             transitionDuration: "2s",
+        //             animationOptions: {
+        //                 duration: 7500,
+        //                 queue: false
+        //             },
+        //             layoutMode: "fitRows",
+        //             fitRows: {
+        //                 gutter: 0
+        //             }
+        //         });
+        //         return false;
+        //     });
+        // });
+
+        // init Isotope
+        // var $grid = $('.iso-container').isotope({
+        //     // options
+        // });
+        // // filter gallerys on button click
+        // $('.iso_one').on('click', 'li a', function() {
+        //     var filterValue = $(this).attr('data-filter');
+        //     $grid.isotope({
+        //         filter: filterValue
+        //     });
+        // });
     </script>
 
 
