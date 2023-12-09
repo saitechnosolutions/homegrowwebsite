@@ -31,7 +31,9 @@
      top: 100px;
  }
 
-
+.section-header{
+    position: relative;
+}
 
 
  /* ======================active navbar ================== */
@@ -1875,7 +1877,7 @@
  .wrapper {
      width: 100%;
      background: #fff;
-     border-radius: 10px;
+     border-radius: 5px;
      padding: 14px 12px 25px;
      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
  }
@@ -1921,7 +1923,7 @@
  }
 
  .price-input .separator {
-     width: 37px;
+     width: 97%;
      display: flex;
      font-size: 19px;
      align-items: center;
@@ -1937,11 +1939,11 @@
 
  .slider .progress {
      height: 100%;
-     left: 25%;
-     right: 25%;
+     left: 7%;
+     right: 6%;
      position: absolute;
      border-radius: 5px;
-     background: #17a2b8;
+     background: #670066;
  }
 
  .range-input {
@@ -1963,7 +1965,7 @@
      height: 17px;
      width: 17px;
      border-radius: 50%;
-     background: #17a2b8;
+     background: #670066;
      pointer-events: auto;
      -webkit-appearance: none;
      box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -1974,7 +1976,7 @@
      width: 17px;
      border: none;
      border-radius: 50%;
-     background: #17a2b8;
+     background: #670066;
      pointer-events: auto;
      -moz-appearance: none;
      box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -2009,6 +2011,10 @@
      color: yellow;
      margin-top: 2rem;
  }
+.fr{
+    border: none !important;
+}
+
 
 
 
@@ -2388,7 +2394,6 @@
 
  .go_chec {
      border: 1px solid #DEE2E7;
-     position: sticky;
      border-radius: 5px;
  }
 
@@ -2959,7 +2964,7 @@
 
  .track_order_bar {
      position: relative;
-     left: 2%;
+     left: 0%;
  }
 
  .total_track1 .text {
@@ -3031,6 +3036,13 @@
      border: none;
      z-index: 333;
  }
+.orde_ert{
+    color: #000000;
+    text-decoration: none;
+}
+.orde_ert:hover{
+    color: #000000;
+}
 
  .fdjjee {
      font-size: 16px;
@@ -3052,9 +3064,13 @@
      font-size: 13px;
      font-weight: 600;
  }
-
+.cret1{
+    color: red;
+    font-size: 9px;
+}
  .all_cat_section .nav-link {
     font-weight: 600;
+    border: none;
     color: #000000 !important;
 }
 

@@ -112,7 +112,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
 
-
+    @yield('scripts')
     {{-- <script src="https://isotope.metafizzy.co/isotope.pkgd.js"></script> --}}
 
     {{-- <script src="/assets/js/sweetalert2.all.min.js"></script> --}}
@@ -194,7 +194,7 @@
         const rangeInput = document.querySelectorAll(".range-input input"),
             priceInput = document.querySelectorAll(".price-input input"),
             range = document.querySelector(".slider .progress");
-        let priceGap = 1000;
+        let priceGap = 100;
 
         priceInput.forEach((input) => {
             input.addEventListener("input", (e) => {
@@ -312,52 +312,54 @@
 
     <script>
         // track order
-        const progress = document.getElementById('progress')
-        const back = document.getElementById('back')
-        const next = document.getElementById('next')
-        const wraps = document.querySelectorAll('.text-wrap')
+        $(document).ready(function() {
+            const progress = $('#progress');
+            const back = $('#back');
+            const next = $('.next');
+            const wraps = $('.text-wrap');
 
-        let currentActive = 1
+            let currentActive = 1;
 
-        next.addEventListener('click', () => {
-            currentActive++
-            if (currentActive > wraps.length) {
-                currentActive = wraps.length
-            }
-
-            update()
-        })
-
-        back.addEventListener('click', () => {
-            currentActive--
-            if (currentActive < 1) {
-                currentActive = 1
-            }
-
-            update()
-        })
-
-        function update() {
-            wraps.forEach((wrap, index) => {
-                if (index < currentActive) {
-                    wrap.classList.add('active')
-                } else {
-                    wrap.classList.remove('active')
+            next.click(function() {
+                currentActive++;
+                if (currentActive > wraps.length) {
+                    currentActive = wraps.length;
                 }
-            })
 
-            const actives = document.querySelectorAll('.active')
-            progress.style.width = (actives.length - 1) / (wraps.length - 1) * 90 + '%'
+                update();
+            });
 
-            if (currentActive === 1) {
-                back.disabled = true
-            } else if (currentActive === wraps.length) {
-                next.disabled = true
-            } else {
-                back.disabled = false
-                next.disabled = false
+            back.click(function() {
+                currentActive--;
+                if (currentActive < 1) {
+                    currentActive = 1;
+                }
+
+                update();
+            });
+
+            function update() {
+                wraps.each(function(index) {
+                    if (index < currentActive) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+
+                const actives = $('.active');
+                progress.css('width', (actives.length - 1) / (wraps.length - 1) * 90 + '%');
+
+                if (currentActive === 1) {
+                    back.prop('disabled', true);
+                } else if (currentActive === wraps.length) {
+                    next.prop('disabled', true);
+                } else {
+                    back.prop('disabled', false);
+                    next.prop('disabled', false);
+                }
             }
-        }
+        });
     </script>
 
     <script>

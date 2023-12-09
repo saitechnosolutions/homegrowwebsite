@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product_varient;
 use App\Models\productslot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,30 @@ class allproductcontroller extends Controller
             $products = DB::table('product_varient')->get();
         }
 
+        if ($products->count() == 0) {
+        return view('ajaxpages.nodata');
+    }
+
         return view('ajaxpages.hotdeal', ['products' => $products]);
+
+    }
+
+
+
+
+    public function pricefilter(Request $request){
+
+        $min_num = $request->input("min_num");
+        $max_num = $request->input("max_num");
+
+        $products = product_varient::whereBetween('offer_price', [$min_num, $max_num])->get();
+        if ($products->count() == 0) {
+            return view('ajaxpages.nodata');
+        }
+
+        return view('ajaxpages.hotdeal', ['products' => $products]);
+    }
+
 
 
 
@@ -82,5 +106,12 @@ class allproductcontroller extends Controller
         // }
 
 
-    }
+
+
+
+
+
+
+
+
 }

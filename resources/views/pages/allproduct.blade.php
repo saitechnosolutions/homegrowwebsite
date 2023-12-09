@@ -52,7 +52,7 @@
             <div class="row  eortst">
                 <div class="col-lg-3">
                     <h5 class="coiii"></h5>
-                    <div class="accordion" id="regularAccordionRobots">
+                    <div class="accordion sticky-top" id="regularAccordionRobots">
 
                         <div class="accordion-item">
                             <h2 id="regularHeadingFirst" class="accordion-header">
@@ -66,7 +66,8 @@
                                 aria-labelledby="regularHeadingFirst" data-bs-parent="#regularAccordionRobots">
                                 <div class="accordion-body">
                                     <div class="form-check">
-                                        <input class="form-check-input filtercheck" type="checkbox" value="1" id="sellingCheckbox" >
+                                        <input class="form-check-input filtercheck" type="checkbox" value="1"
+                                            id="sellingCheckbox">
                                         <label class="form-check-label" for="sellingCheckbox">
                                             Top Selling
                                         </label>
@@ -78,13 +79,15 @@
                                         </label>
                                     </div> --}}
                                     <div class="form-check">
-                                        <input class="form-check-input filtercheck" type="checkbox" value="3" id="hotDealCheckbox">
+                                        <input class="form-check-input filtercheck" type="checkbox" value="3"
+                                            id="hotDealCheckbox">
                                         <label class="form-check-label" for="hotDealCheckbox">
                                             Hot Deal
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input filtercheck" type="checkbox" value="4" id="newArrivalCheckbox">
+                                        <input class="form-check-input filtercheck" type="checkbox" value="4"
+                                            id="newArrivalCheckbox">
                                         <label class="form-check-label" for="newArrivalCheckbox">
                                             New Arrival
                                         </label>
@@ -105,28 +108,30 @@
                             <div id="regularCollapseSecond" class="accordion-collapse collapse"
                                 aria-labelledby="regularHeadingSecond" data-bs-parent="#regularAccordionRobots">
                                 <div class="accordion-body">
-                                    <div class="wrapper">
-                                        <div class="price-input">
-                                            <div class="field">
-                                                <span>Min</span>
-                                                <input type="number" class="input-min" value="2500">
+                                    <form class="price_range">
+                                        <div class="wrapper">
+                                            <div class="price-input">
+                                                <div class="field">
+                                                    <span>Min</span>
+                                                    <input type="number" class="input-min  fr" value="0" readonly>
+                                                </div>
+                                                <div class="separator">-</div>
+                                                <div class="field">
+                                                    <span>Max</span>
+                                                    <input type="number" class="input-max  fr" value="5000" readonly>
+                                                </div>
                                             </div>
-                                            <div class="separator">-</div>
-                                            <div class="field">
-                                                <span>Max</span>
-                                                <input type="number" class="input-max" value="7500">
+                                            <div class="slider">
+                                                <div class="progress"></div>
+                                            </div>
+                                            <div class="range-input">
+                                                <input type="range" class="range-min rabge" min="0" max="5000" name="min_num"
+                                                    value="0" step="100">
+                                                <input type="range" class="range-max rabge" min="0" max="5000"  name="max_num"
+                                                    value="5000" step="100">
                                             </div>
                                         </div>
-                                        <div class="slider">
-                                            <div class="progress"></div>
-                                        </div>
-                                        <div class="range-input">
-                                            <input type="range" class="range-min" min="0" max="10000"
-                                                value="2500" step="100">
-                                            <input type="range" class="range-max" min="0" max="10000"
-                                                value="7500" step="100">
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

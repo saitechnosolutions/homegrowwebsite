@@ -33,7 +33,7 @@
                         <div class="accounting2">
                             <ul class="manages">
                                 <li class="listers"><a href="/myaccount" class="vart ">My Orders</a></li>
-                                <li class="listers"><a href="/accountsetting" class="vart active">Account Settings</a></li>
+                                <li class="listers"><a href="/myorders" class="vart active">Account Settings</a></li>
                                 <li class="listers"><a href="/editaddress" class="vart">Manage Addresses</a></li>
                             </ul>
                         </div>

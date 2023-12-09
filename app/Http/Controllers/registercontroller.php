@@ -74,7 +74,7 @@ class registercontroller extends Controller
             // Save the user record
             if (!$users->save()) {
                 throw new \Exception('Failed to save user record.');
-            }
+            }   
 
             // Get the ID of the saved User record
             $userId = $users->user_id;

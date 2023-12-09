@@ -4,6 +4,7 @@ use App\Http\Controllers\ajaxcontroller;
 use App\Http\Controllers\allproductcontroller;
 use App\Http\Controllers\mailcontroller;
 use App\Http\Controllers\productcontroller;
+use App\Http\Controllers\productOrdercontroller;
 use App\Http\Controllers\registercontroller;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +86,13 @@ Route::get('/search',[ajaxcontroller::class,'searchword']);
 
 
 Route::post('/hotdeal',[allproductcontroller::class,'hotdeal']);
+Route::post('/price_range',[allproductcontroller::class,'pricefilter']);
 
 
+
+
+
+
+
+Route::get('/my_order_status/{id}',[productOrdercontroller::class,'my_order_status']);
 ?>

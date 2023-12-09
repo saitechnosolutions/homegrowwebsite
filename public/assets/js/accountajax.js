@@ -519,19 +519,6 @@ $(document).on("click", ".removall_wishlist", function () {
 
 //    hotdeal ajax
 
-// $(document).ready(function () {
-//     // Listen for checkbox change in the 'filtercheck' class
-//     $('.filtercheck').change(function () {
-//         // Get values of all checked checkboxes
-//         var checkedValues = $('.filtercheck:checked').map(function () {
-//             return $(this).val();
-//         }).toArray();
-
-//         // Display the values in the console (you can modify this part)
-//         console.log(checkedValues);
-//     });
-// });
-
 
 $(document).ready(function () {
     $.ajaxSetup({
@@ -540,12 +527,13 @@ $(document).ready(function () {
         }
     });
     $('.filtercheck').change(function () {
-        
+
+        // $('.filtercheck').removeClass('all_cat_section active'); 
         // Get values of all checked checkboxes
         var checkedValues = $('.filtercheck:checked').map(function () {
             return $(this).val();
         }).toArray();
-        console.log(typeof(checkedValues));
+
 
         $.ajax({
             type: 'Post',
@@ -554,11 +542,39 @@ $(document).ready(function () {
                 option: checkedValues
             },
             success: function (response) {
+                console.log(response);
                 $('#productsContainer').html(response);
-                // $('.er').hide()
+                $('.er').hide()
             },
             error: function (error) {
                 // $('#productsContainer').html(error);
+               location.reload();
+            }
+        });
+    });
+});
+
+
+
+
+
+//  price range filter
+
+
+$(document).ready(function () {
+    $('.rabge').on('change', function () {
+        var price_range = $('.price_range').serialize();
+
+        $.ajax({
+            url: '/price_range',
+            type: 'post',
+            data: price_range,
+            success: function (response) {
+                $('#productsContainer').html(response)
+                $('.er').hide()
+            },
+            error: function (error) {
+
             }
         });
     });
