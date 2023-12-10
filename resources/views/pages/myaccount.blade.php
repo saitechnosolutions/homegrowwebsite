@@ -14,13 +14,13 @@
     <section class="my_acc">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-8 col-md-8">
                     <h5><strong>Account</strong> Settings</h5>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-3 ">
+                <div class="col-lg-3 col-md-5">
                     <div class="sticky-top">
                         <a href="/myaccount" class="accounting ">
                             <img src="/assets/images/usr.png" alt="">
@@ -40,7 +40,7 @@
                         <a href="/logout" class="btn logout_btn">Logout</a>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 col-md-7">
                     <div class="orders1">
                         <form action="/update_user" method="post" id="update_user">
                             @csrf
@@ -81,7 +81,7 @@
                         <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
                         <p class="def_del">Delivery at <strong>
                                 @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', Auth::user()->user_default_address_id)->first())
-                                    {{ $add->address_line_one }}
+                                    {{ $add->address_line_one }} , {{ $add->landmark }}, {{ $add->city }} , {{ $add->state }}
                                 @endif
                             </strong> </p>
                     </div>

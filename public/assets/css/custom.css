@@ -31,6 +31,10 @@
      top: 100px;
  }
 
+
+ .home_grow {
+    /* overflow-x: hidden; */
+}
 .section-header{
     position: relative;
 }
@@ -502,6 +506,7 @@
 
  .gro {
      padding: 20px 0;
+     word-break: break-all;
  }
 
  .first_slick {
@@ -614,9 +619,7 @@
      z-index: 1;
  }
 
- .home_grow {
-     overflow-x: hidden;
- }
+
 
  .categories_section {
      background: url('../images/dow.png');

@@ -243,13 +243,13 @@
                                         width="23px" alt=""></h5>
                                 <p class="groce">Welcome to your Healthy store! Sign in now to explore the
                                     Fresh & healthier groceries </p>
-                                <form action="/login" method="POST">
+                                <form action="/login" class="login_form" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="" class="roboto">Mobile Number</label>
-                                                <input type="text" class="form-control emil" name="login_mblnum">
+                                                <input type="text" maxlength="10" class="form-control emil" name="login_mblnum" onkeypress="return phone1(event);"  oninput="checkPhoneNumberLength(this)" >
                                             </div>
                                         </div>
                                         <div class="col-lg-12 pt-3">
@@ -273,9 +273,10 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="error-message1" class="text-danger"></div>
                                         <div class="col-lg-12 pt-4">
                                             <div class="tree text-center">
-                                                <button class="btn  home-btn3  logins">
+                                                <button class="btn  home-btn3  logins" type="button">
                                                     Sign Up</button>
                                             </div>
                                         </div>

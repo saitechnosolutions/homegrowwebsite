@@ -14,8 +14,8 @@
     <section class="my_acc">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-8 col-md-8">
                     <h5>My Orders</h5>
                 </div>
             </div>

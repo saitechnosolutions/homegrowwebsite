@@ -52,24 +52,25 @@ class ajaxcontroller extends Controller
     {
         $user_id = $request->input("user_id");
         $address = $request->input("address");
-        $stateId = $request->input("state");
+        $pin_state = $request->input("pin_state");
+        $pin_district = $request->input("pin_district");
+        $city_input = $request->input("city_input");
 
-        $state = state::find($stateId);
-        $stateName = $state->name;
+        // $stateId = $request->input("state");
+        // $state = state::find($stateId);
+        // $stateName = $state->name;
 
-        $cityId = $request->input("city");
-        $city = city::find($cityId);
-        $cityName = $city->name;
+        // $cityId = $request->input("city");
+        // $city = city::find($cityId);
+        // $cityName = $city->name;
 
         $phone = $request->input("phone");
-        $pincode = $request->input("pincode");
-        $landmark = $request->input("landmark");
+        $pincode = $request->input("pin_code");
+        // $landmark = $request->input("landmark");
 
         $defaultAddress = $request->has('status');
 
-
         $add_user = new user_addres;
-
 
         if (!$add_user) {
             return response()->json(['error' => 'User not found'], 404);
@@ -77,19 +78,21 @@ class ajaxcontroller extends Controller
 
         $add_user->user_id = $user_id;
         $add_user->address_line_one = $address;
-        $add_user->state_id = $stateId;
-        $add_user->state = $stateName;
-        $add_user->city_id = $cityId;
-        $add_user->city = $cityName;
+        $add_user->state = $pin_state;
+        $add_user->city = $pin_district;
+        $add_user->landmark = $city_input;
+        // $add_user->state_id = $stateId;
+        // $add_user->state = $stateName;
+        // $add_user->city_id = $cityId;
+        // $add_user->city = $cityName;
         $add_user->address_phone_number = $phone;
         $add_user->pincode = $pincode;
-        $add_user->landmark = $landmark;
+        // $add_user->landmark = $landmark;
 
         // Save changes
         if ($add_user->save()) {
             if ($defaultAddress) {
                  $user = User::where('user_id', $user_id)->first();
-
                 //  dd( $user);
                 if ($user) {
                     $user->user_default_address_id = $add_user->id;
@@ -138,18 +141,34 @@ class ajaxcontroller extends Controller
     }
 
 
+    public function deletaddress($id){
+
+        $editAddress = user_addres::find($id);
+
+        if ($editAddress) {
+            $editAddress->delete();
+
+            return back();
+        }
+
+
+    }
+
+
     public function edit_update_managae_address(Request $request){
 
         $user_adress_id = $request->user_address_id;
         $address = $request->address;
+        $pin_state = $request->pin_state;
+        $pin_district = $request->pin_district;
+        $city_input = $request->city_input;
+        // $stateId = $request->state;
+        // $state = state::find($stateId);
+        // $stateName = $state->name;
 
-        $stateId = $request->state;
-        $state = state::find($stateId);
-        $stateName = $state->name;
-
-        $cityId = $request->city;
-        $city = city::find($cityId);
-        $cityName = $city->name;
+        // $cityId = $request->city;
+        // $city = city::find($cityId);
+        // $cityName = $city->name;
 
         $phone = $request->phone;
         $pincode = $request->pincode;
@@ -160,13 +179,16 @@ class ajaxcontroller extends Controller
 
 
         $edit_user->address_line_one = $address;
-        $edit_user->state_id = $stateId;
-        $edit_user->state = $stateName;
-        $edit_user->city_id = $cityId;
-        $edit_user->city = $cityName;
+        // $edit_user->state_id = $stateId;
+        // $edit_user->state = $stateName;
+        // $edit_user->city_id = $cityId;
+        // $edit_user->city = $cityName;
         $edit_user->address_phone_number = $phone;
         $edit_user->pincode = $pincode;
         $edit_user->landmark = $landmark;
+        $edit_user->state = $pin_state;
+        $edit_user->city = $pin_district;
+        $edit_user->landmark = $city_input;
 
         if($edit_user->save()){
             return back()->with('Success','User updated successfully');

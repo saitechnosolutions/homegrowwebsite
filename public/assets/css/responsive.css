@@ -120,6 +120,21 @@
     .input_poo {
         width: 274px;
     }
+    .coco{
+        flex-flow: wrap;
+        align-items: baseline;
+    }
+    .sticky-top{
+        z-index: 0;
+    }
+    .port .progress{
+        max-width: 85% !important;
+        left: 19px !important;
+    }
+    .delivery_section{
+        padding-top: 130px;
+        padding-bottom: 50px
+    }
 }
 
 
@@ -157,5 +172,13 @@
     }
     .over{
         font-size: 18px;
+    }
+    .port .progress {
+        max-width: 77% !important;
+        left: 26px !important;
+    }
+    .darks-logo {
+        width: 39%;
+        left: 10px;
     }
 }

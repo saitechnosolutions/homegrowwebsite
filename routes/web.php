@@ -54,17 +54,22 @@ route::view('single_products','pages.singleproduct');
 Route::post('/mail',[mailcontroller::class,"mail"]);
 
 Route::POST('/register',[registercontroller::class,'register']);
+
+Route::get('/get-address-details', [registercontroller::class, 'getAddressDetails']);
+
 Route::get('/city/{id}',[registercontroller::class,"city"]);
 Route::post('/login',[registercontroller::class,'login']);
 Route::GET('/logout',[registercontroller::class,'logout']);
 
 
-    Route::get('single_products/{id}', [productController::class,'customRedirect']);
+Route::get('single_products/{id}', [productController::class,'customRedirect']);
 
 Route::post('/update_product',[ajaxcontroller::class,'updateuser']);
 Route::post('/add_adress',[ajaxcontroller::class,'add_adress']);
 Route::get('/makedefault/{id}',[ajaxcontroller::class,'make_default_address']);
 Route::get('/edit_manage_addres/{id}',[ajaxcontroller::class,'edit_manage_addres']);
+
+Route::get('/deletaddress/{id}',[ajaxcontroller::class,'deletaddress']);
 
 Route::post('/edit_manage_ajax',[ajaxcontroller::class,'edit_update_managae_address']);
 

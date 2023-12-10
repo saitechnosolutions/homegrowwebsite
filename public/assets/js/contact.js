@@ -10,7 +10,7 @@ $('#send-message').on("click", function() {
         true) {
         $('#send-message').attr('type', 'submit');
         $(document).on('click', '#send-message', function(e) {
-			swal(
+			swal.fire(
 				'Success',
 				'You Mail has been send successfully',
 				'success'
@@ -156,6 +156,9 @@ function checkPhoneNumberLength(input) {
 
 
 
-
+function phone1(evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    return !(charCode > 31 && (charCode < 48 || charCode > 57));
+  }
 
 

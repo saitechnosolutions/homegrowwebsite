@@ -32,18 +32,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
 
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script> --}}
 
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+    {{-- 10-12-2023 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- <link rel="stylesheet" href="/assets/css/sweetalert2.min.css"> --}}
 </head>
 
@@ -68,12 +66,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="/assets/js/main.js"></script>
-
-    <script src="/assets/js/contact.js"></script>
-
-
-
     {{-- <script src="assets/customjs/isotope.pkgd.min.js"></script>     --}}
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -96,6 +88,10 @@
 
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
 
+    <script src="/assets/js/main.js"></script>
+
+    <script src="/assets/js/contact.js"></script>
+
     <script src="/assets/js/slider.js"></script>
 
     <script src="/assets/js/register.js"></script>
@@ -104,6 +100,9 @@
 
 
     <script src="/assets/js/kenburns.js"></script>
+
+    <!--================just validate script=====================-->
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
 
     {{-- ================== water effects =================== --}}
 
@@ -491,6 +490,12 @@
             updateTotal();
         }
     </script>
+
+
+
+
+
+
 
 </body>
 
