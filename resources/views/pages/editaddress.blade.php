@@ -39,7 +39,7 @@
 
                         <div class="accounting2">
                             <ul class="manages">
-                                <li class="listers"><a href="/myaccount" class="vart ">My Orders</a></li>
+                                <li class="listers"><a href="/myorders" class="vart ">My Orders</a></li>
                                 <li class="listers"><a href="/accountsetting" class="vart ">Account Settings</a></li>
                                 <li class="listers"><a href="/editaddress" class="vart active">Manage Addresses</a></li>
                             </ul>
@@ -54,7 +54,7 @@
                                 <a href="/edit_manage_addres/{{ $adds->id }}" class=" fcdin">Edit</a>
                             </div>
                             <h5 class="def_addrer"><strong>Default</strong> Address<span> </span> </h5>
-                            <p class="def_del">Delivery at <strong>{{ $adds->address_line_one }} ,{{ $adds->landmark }}  , {{ $adds->city }}  , {{ $adds->state }}</strong> </p>
+                            <p class="def_del">Delivery at <strong>{{ $adds->address_line_one }} ,{{ $adds->area_name }} , {{ $adds->city }} , {{ $adds->state }} - {{ $adds->pincode }}</strong> </p>
                         </div>
                     @endif
                     @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', '!=', Auth::user()->user_default_address_id)->get())
@@ -68,7 +68,7 @@
                                 </div>
                                 <h5 class="def_addrer"><strong>Address</strong>{{ $loop->iteration }} <span> </span> </h5>
                                 <p class="def_del">Delivery at <strong>
-                                        {{ $ad->address_line_one }} , {{ $ad->landmark }}, {{ $ad->city }}, {{ $ad->state }}
+                                        {{ $ad->address_line_one }} , {{ $ad->area_name }}, {{ $ad->city }}, {{ $ad->state }} - {{ $ad->pincode }}
                                     </strong> </p>
 
                                     <div class="rergff">

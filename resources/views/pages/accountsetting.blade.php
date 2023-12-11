@@ -49,23 +49,29 @@
                                     <div class="form-group">
                                         <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id">
                                         <label class="roboto_set">Full Name</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}"
-                                            name="first_name">
+                                        <input type="text" class="form-control full_name"
+                                            value="{{ Auth::user()->name }}" name="first_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group  pt-3">
                                         <label class="roboto_set">Email</label>
-                                        <input type="email" class="form-control" value="{{ Auth::user()->email }}"
+                                        <input type="email" class="form-control email" value="{{ Auth::user()->email }}"
                                             name="email">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group  pt-3">
                                         <label class="roboto_set">Mobile Number</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->phone_number }}"
-                                            onkeypress="return phone1(event);" oninput="checkPhoneNumberLength(this)"
-                                            name="phone">
+                                        <input type="text" class="form-control phone"
+                                            value="{{ Auth::user()->phone_number }}" onkeypress="return phone1(event);"
+                                            oninput="checkPhoneNumberLength(this)" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group  pt-3">
+                                        <label class="roboto_set">User Image</label>
+                                        <input type="file" class="form-control clientsup_img" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -81,7 +87,8 @@
                         <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
                         <p class="def_del">Delivery at <strong>
                                 @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', Auth::user()->user_default_address_id)->first())
-                                    {{ $add->address_line_one }}  , {{ $add->landmark }}, {{ $add->city }} , {{ $add->state }}
+                                    {{ $add->address_line_one }} , {{ $add->area_name }}, {{ $add->city }} ,
+                                    {{ $add->state }} - {{ $add->pincode }}
                                 @endif
                             </strong> </p>
                     </div>
@@ -89,4 +96,100 @@
             </div>
         </div>
     </section>
+@endsection
+
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            const validator = new JustValidate("#update_user", {
+                validateBeforeSubmitting: true,
+            });
+            // const validator = new JustValidate('.updatesbanner');
+            validator
+                .addField('.full_name', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 30,
+                    }
+                ])
+                .addField('.email', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'email',
+                    }
+                ])
+                .addField('.phone', [{
+                        rule: 'required',
+                    }, {
+                        rule: 'minLength',
+                        value: 10,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 10,
+                    },
+                ])
+                .addField('.clientsup_img', [{
+                    rule: 'files',
+                    value: {
+                        files: {
+                            maxSize: 500000,
+                        },
+                    },
+                    errorMessage: 'Image is too large below 500kb',
+                }, ])
+
+
+                .onSuccess(() => {
+                    e.preventDefault();
+
+                    var formData = new FormData($('#update_user')[0]);
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/update_product',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log(response);
+                            swal.fire(
+                                'Success',
+                                'Your User form has been Updated',
+                                'success'
+                            ).then((result) => {
+                                if (result.isConfirmed || result.isDismissed) {
+                                    window.location.href = "/myaccount";
+                                }
+                            });
+                        },
+                        error: function(xhr) {
+                            console.log(xhr);
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                swal.fire('Error!', xhr.responseJSON.error, 'error');
+                            } else {
+                                swal.fire('Error!', 'An error occurred during the update.',
+                                'error');
+                            }
+                        }
+                    });
+                });
+
+        });
+    </script>
 @endsection

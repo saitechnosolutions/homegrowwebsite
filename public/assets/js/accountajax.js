@@ -1,70 +1,85 @@
+// ==============  user update fields ===============
+
 $(document).ready(function () {
-    $('#updateButton').on('click', function () {
-        var formData = $('#update_user').serialize();
+    $('#updateButton').on('click', function (e) {
+        e.preventDefault();
+
+        var formData = new FormData($('#update_user')[0]);
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $.ajax({
             url: '/update_product',
             type: 'post',
             data: formData,
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response);
                 swal.fire(
                     'Success',
                     'Your User form has been Updated',
                     'success'
-                );
-            },
-            error: function (error) {
-                console.log(error);
-                swal.fire(
-                    'Error!',
-                    'The phone number has been already entered . please enter valid number',
-                    'error'
-                )
-            }
-        });
-    });
-});
-
-
-
-
-
-$(document).ready(function () {
-    $('#add_adress').on('click', function () {
-        var add_aders = $('.add_usering').serialize();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        swal.fire(
-            'Success',
-            'Add new user address successfully',
-            'success'
-        ).then((confirmation) => {
-            if (confirmation) {
-                $.ajax({
-                    url: '/add_adress',
-                    type: 'post',
-                    data: add_aders,
-                    success: function (response) {
-                        console.log(response);
-                        window.location.href = '/editaddress';
-                    },
-                    error: function (error) {
-                        console.log(error);
-
+                ).then((result) => {
+                    if (result.isConfirmed || result.isDismissed) {
+                        window.location.href = "/myaccount";
                     }
                 });
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                if (xhr.responseJSON && xhr.responseJSON.error) {
+                    swal.fire('Error!', xhr.responseJSON.error, 'error');
+                } else {
+                    swal.fire('Error!', 'An error occurred during the update.', 'error');
+                }
             }
         });
     });
 });
+
+
+
+
+
+
+// ===========       add address =================
+
+// $(document).ready(function () {
+//     $('#add_adress').on('click', function () {
+//         var add_aders = $('.add_usering').serialize();
+//         $.ajaxSetup({
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//             }
+//         });
+//         swal.fire(
+//             'Success',
+//             'Add new user address successfully',
+//             'success'
+//         ).then((confirmation) => {
+//             if (confirmation) {
+//                 $.ajax({
+//                     url: '/add_adress',
+//                     type: 'post',
+//                     data: add_aders,
+//                     success: function (response) {
+//                         console.log(response);
+//                         window.location.href = '/editaddress';
+//                     },
+//                     error: function (error) {
+//                         console.log(error);
+
+//                     }
+//                 });
+//             }
+//         });
+//     });
+// });
 
 
 
@@ -91,13 +106,18 @@ $(document).on('click', '#make_default1', function (e) {
         cancelButtonText: "No, cancel",
     }).then((result) => {
         if (result.isConfirmed) {
-            // Perform the action (redirect or any other logic)
-            window.location.href = defaultUrl;
+            // Display a success message
+            swal.fire("Success", "The address has been set as default.", "success")
+                .then(() => {
+                    // Reload the page when the user clicks "OK"
+                    window.location.href = defaultUrl;
+                });
         } else {
             swal.fire("Cancelled", "The address has not been set as default.", "info");
         }
     });
 });
+
 
 
 //   =================    delete adres btn ============
@@ -136,45 +156,45 @@ $(document).on('click', '.delete-address1', function (e) {
 
 
 
+// ============================= edit manage address ========================
 
 
 
-
-$(document).ready(function () {
-    $('#edit_adress').on('click', function () {
-        var edit_adress = $('.edit_manage_addres').serialize();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        swal.fire(
-            'Success',
-            'Edited Manage user address sucessfully',
-            'success'
-        ).then((confirmation) => {
-            if (confirmation) {
-                $.ajax({
-                    url: '/edit_manage_ajax',
-                    type: 'post',
-                    data: edit_adress,
-                    success: function (response) {
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        swal.fire(
-                            'Error!',
-                            'The phone number has been already entered . please enter valid number',
-                            'error'
-                        )
-                    }
-                });
-            }
-        });
-    });
-});
+// $(document).ready(function () {
+//     $('#edit_adress').on('click', function () {
+//         var edit_adress = $('.edit_manage_addres').serialize();
+//         $.ajaxSetup({
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//             }
+//         });
+//         swal.fire(
+//             'Success',
+//             'Edited Manage user address sucessfully',
+//             'success'
+//         ).then((confirmation) => {
+//             if (confirmation) {
+//                 $.ajax({
+//                     url: '/edit_manage_ajax',
+//                     type: 'post',
+//                     data: edit_adress,
+//                     success: function (response) {
+//                         console.log(response);
+//                         location.reload();
+//                     },
+//                     error: function (error) {
+//                         console.log(error);
+//                         swal.fire(
+//                             'Error!',
+//                             'The phone number has been already entered . please enter valid number',
+//                             'error'
+//                         )
+//                     }
+//                 });
+//             }
+//         });
+//     });
+// });
 
 
 
@@ -321,51 +341,52 @@ $(document).ready(function () {
 // });
 
 
-
 $(document).on("click", ".removes_carts", function () {
     const id = $(this).data('id');
 
     swal.fire({
-            title: "Are you sure?",
-            text: "You want to delete this Product..!",
-            icon: "question",
-            showCancelButton: false,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-            allowOutsideClick: false,
-            closeOnClickOutside: false,
-            closeOnEsc: false,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                // User confirmed the deletion
-                $.ajax({
-                    type: 'GET',
-                    url: '/cartremove/' + id,
-                    success: function (response) {
-                        console.log(response);
-                        swal.fire(
-                            'Success',
-                            'Product deleted successfully',
-                            'success'
-                        );
+        title: "Are you sure?",
+        text: "You want to delete this Product..!",
+        icon: "question",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    }).then((willDelete) => {
+        if (willDelete) {
+            // User confirmed the deletion
+            $.ajax({
+                type: 'GET',
+                url: '/cartremove/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal.fire(
+                        'Success',
+                        'Product deleted successfully',
+                        'success'
+                    ).then(() => {
+                        // Reload the page after the success alert is closed
                         location.reload();
-                    },
-                    error: function (error) {
-                        console.error('Error:', error);
-                        swal.fire(
-                            'Error',
-                            'Failed to delete the product',
-                            'error'
-                        );
-                    }
-                });
-            } else {
-                swal.fire.close();
-            }
-        });
+                    });
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal.fire(
+                        'Error',
+                        'Failed to delete the product',
+                        'error'
+                    );
+                }
+            });
+        } else {
+            swal.fire.close();
+        }
+    });
 });
+
 
 
 
@@ -621,7 +642,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 $('#productsContainer').html(response);
-                $('.er').hide()
+                // $('.er').hide()
             },
             error: function (error) {
                 // $('#productsContainer').html(error);

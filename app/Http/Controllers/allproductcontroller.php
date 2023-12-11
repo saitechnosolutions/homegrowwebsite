@@ -35,11 +35,13 @@ class allproductcontroller extends Controller
 
         if ($products->count() == 0) {
         return view('ajaxpages.nodata');
-    }
+        }
 
         return view('ajaxpages.hotdeal', ['products' => $products]);
 
     }
+
+
 
 
 

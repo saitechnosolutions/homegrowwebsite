@@ -1,7 +1,33 @@
 
+@media only screen and (max-width: 1400px) {
+    .input_poo{
+        width: 50px;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding: 11px 18px;
+        font-size: 13px;
+    }
+}
 
+
+@media only screen and (max-width: 1200px) {
+    .input_poo{
+        width: 40px;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding: 11px 10px;
+        font-size: 13px;
+    }
+}
 
 @media only screen and (max-width: 990px) {
+    .input_poo{
+        width: 60px;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding: 11px 50px;
+        font-size: 13px;
+    }
     .scroll-down-btn {
         left: 51%;
     }
@@ -79,6 +105,9 @@
 
 
 @media only screen and (max-width: 990px) {
+    .ali_in{
+        width: 120px !important;
+    }
     .navbar {
         justify-content: end;
         padding: 39px 10px;
@@ -108,6 +137,16 @@
 }
 
 @media only screen and (max-width: 776px) {
+    .input_poo{
+        width: 100%;
+    }
+    .ali_in{
+        width: 60px !important;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding:11px 120px;
+        font-size: 16px;
+    }
     .login-nav1{
         width: 200px;
     }
@@ -117,9 +156,7 @@
     .scr_full{
         display: none;
     }
-    .input_poo {
-        width: 274px;
-    }
+
     .coco{
         flex-flow: wrap;
         align-items: baseline;
@@ -137,11 +174,30 @@
     }
 }
 
-
-
-
+@media only screen and (max-width: 576px) {
+    .input_poo{
+        width: 100%;
+    }
+    .ali_in{
+        width: 200px !important;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding:11px 40px;
+        font-size: 16px;
+    }
+}
 
 @media only screen and (max-width: 430px) {
+    .input_poo{
+        width: 100%;
+    }
+    .theme-btn1, a.theme-btn1{
+        padding:11px 20px;
+        font-size: 16px;
+    }
+    .ali_in{
+        width: 110px !important;
+    }
     .darks-logo {
         display: block;
         width: 43%;

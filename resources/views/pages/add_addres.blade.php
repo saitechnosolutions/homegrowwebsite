@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <button type="button" id="add_adress" class="btn home-btn3 mt-4">Add Address
+                                    <button type="submit" id="add_adress" class="btn home-btn3 mt-4">Add Address
                                     </button>
                                 </div>
                             </div>
@@ -176,7 +176,73 @@
 
 
 @section('scripts')
-    {{-- <script>
+    <script>
+        $(document).ready(function() {
+
+            const validator = new JustValidate(".add_usering", {
+                validateBeforeSubmitting: true,
+            });
+            // const validator = new JustValidate('.updatesbanner');
+            validator
+                .addField('.address', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 120,
+                    }
+                ])
+                // .addField('.phone', [{
+                //         rule: 'required',
+                //     }
+                // ])
+                .addField('.pincode', [{
+                    rule: 'required',
+                }, ])
+
+
+                .onSuccess(() => {
+                    var add_aders = $('.add_usering').serialize();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    swal.fire(
+                        'Success',
+                        'Add new user address successfully',
+                        'success'
+                    ).then((confirmation) => {
+                        if (confirmation) {
+                            $.ajax({
+                                url: '/add_adress',
+                                type: 'post',
+                                data: add_aders,
+                                success: function(response) {
+                                    console.log(response);
+                                    window.location.href = '/editaddress';
+                                },
+                                error: function(error) {
+                                    console.log(error);
+
+                                }
+                            });
+                        }
+                    });
+                });
+
+
+        });
+    </script>
+@endsection
+
+{{--
+@section('scripts')
+    <script>
         $('#add_adress').on("click", function() {
             checkusername();
             checkphonenumber();
@@ -351,5 +417,5 @@
                 return true;
             }
         }
-    </script> --}}
-@endsection
+    </script>
+@endsection --}}

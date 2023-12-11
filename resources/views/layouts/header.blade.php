@@ -239,8 +239,8 @@
                     <div class="row">
                         <div class="col-lg-6  loher">
                             <div class="logses_ful">
-                                <h5 class="wel_log">Welcome Back <img src="/assets/images/hand.png" class="img-fluid"
-                                        width="23px" alt=""></h5>
+                                <h5 class="wel_log">Welcome Back <img src="/assets/images/pq1.png" class="img-fluid"
+                                        width="30px" alt=""></h5>
                                 <p class="groce">Welcome to your Healthy store! Sign in now to explore the
                                     Fresh & healthier groceries </p>
                                 <form action="/login" class="login_form" method="POST">
@@ -329,7 +329,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 pt-5">
                                             <div class="form-group">
-                                                <label for="" class="roboto">Email</label>
+                                                <label for="" class="roboto">Mobile Number</label>
                                                 <input type="text" class="form-control emil">
                                             </div>
                                         </div>

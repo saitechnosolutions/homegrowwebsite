@@ -2665,7 +2665,7 @@
  }
 
  .secdrt {
-     row-gap: 20px;
+     row-gap: 10px;
      justify-content: center;
  }
 
@@ -2676,7 +2676,14 @@
      font-family: 'Roboto Flex', sans-serif;
  }
 
-
+ .secdrt .input-group-append{
+    position: absolute;
+    right: 0px;
+    z-index: 99;
+ }
+ .secdrt #myInput1{
+    width: 100%;
+ }
  .roboto_set {
      color: #0C1421;
      font-size: 15px;
@@ -3094,8 +3101,8 @@
 }
 .drdrrrr1{
     row-gap: 70px;
-    position: relative;
-    top: 0;
+    /* position: relative;
+    top: 0; */
 }
 #productsContainer{
     position: relative;
@@ -3348,3 +3355,49 @@
     transform: scale(1.1);
     transition: 1.1s ease-in-out re;
 } */
+
+
+
+
+.wel_re img, .wel_log img {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(14deg);
+    }
+
+    /* five values can be played with to make the waving more or less */
+    20% {
+        transform: rotate(-8deg);
+    }
+
+    30% {
+        transform: rotate(14deg);
+    }
+
+    40% {
+        transform: rotate(-4deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    60% {
+        transform: rotate(0deg);
+    }
+
+    /* Reset for the last half to pause */
+    100% {
+        transform: rotate(0deg);
+    }
+}

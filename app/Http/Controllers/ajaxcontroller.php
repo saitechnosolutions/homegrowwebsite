@@ -19,32 +19,65 @@ class ajaxcontroller extends Controller
     //
     public function updateuser(Request $request)
     {
-        $user_id = $request->input("user_id");
-        $name = $request->input("first_name");
-        $email = $request->input("email");
-        $phone_number = $request->input("phone");
+        try {
+            $user_id = $request->input("user_id");
+            $name = $request->input("first_name");
+            $email = $request->input("email");
+            $phone_number = $request->input("phone");
 
-        $user = User::where('user_id', $user_id)->first();
+            $user = User::where('user_id', $user_id)->first();
 
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            if (!$user) {
+                return response()->json(['error' => 'User not found'], 404);
+            }
+
+            // Check for changes in phone number and email before querying the database
+            if ($phone_number !== $user->phone_number) {
+                $mobileNumberCheck = DB::table('users')->where('phone_number', $phone_number)->count();
+                if ($mobileNumberCheck > 0) {
+                    throw new \Exception('Phone number already exists.');
+                }
+            }
+
+            if ($email !== $user->email) {
+                $emailCheck = DB::table('users')->where('email', $email)->count();
+                if ($emailCheck > 0) {
+                    throw new \Exception('Email already exists.');
+                }
+            }
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+
+                if ($image->move(public_path('/assets/images/'), $filename)) {
+                    $user->profile_image = $filename;
+                } else {
+                    // Handle the case where the image upload fails
+                    return response()->json(['error' => 'Error uploading image'], 500);
+                }
+            }
+
+            // Update user properties
+            $user->name = $name;
+            $user->first_name = $name;
+            $user->email = $email;
+            $user->phone_number = $phone_number;
+
+            // Save changes
+            if ($user->save()) {
+                return response()->json(['success' => 'User updated successfully']);
+            } else {
+                return response()->json(['error' => 'Error updating user'], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 422);
         }
-
-        // Update user properties
-        $user->name = $name;
-        $user->first_name = $name;
-        $user->email = $email;
-        $user->phone_number = $phone_number;
-
-        // Save changes
-        $user->save();
-        if ($user->save()) {
-            return back()->with('success', 'User updated successfully');
-        } else {
-            return back()->with('error', 'Error updating user');
-        }
-
     }
+
+
+
+
 
 
 
@@ -66,6 +99,7 @@ class ajaxcontroller extends Controller
 
         $phone = $request->input("phone");
         $pincode = $request->input("pin_code");
+        $pincodeId = DB::table('all_india_pincodes')->select('id')->where('officename', $city_input)->first()->id;
         // $landmark = $request->input("landmark");
 
         $defaultAddress = $request->has('status');
@@ -80,13 +114,14 @@ class ajaxcontroller extends Controller
         $add_user->address_line_one = $address;
         $add_user->state = $pin_state;
         $add_user->city = $pin_district;
-        $add_user->landmark = $city_input;
+        $add_user->area_name = $city_input;
         // $add_user->state_id = $stateId;
         // $add_user->state = $stateName;
         // $add_user->city_id = $cityId;
         // $add_user->city = $cityName;
         $add_user->address_phone_number = $phone;
         $add_user->pincode = $pincode;
+        $add_user->pincode_id = $pincodeId;
         // $add_user->landmark = $landmark;
 
         // Save changes
@@ -172,7 +207,8 @@ class ajaxcontroller extends Controller
 
         $phone = $request->phone;
         $pincode = $request->pincode;
-        $landmark = $request->landmark;
+        $pincodeId = DB::table('all_india_pincodes')->select('id')->where('officename', $city_input)->first()->id;
+        // $landmark = $request->landmark;
 
 
         $edit_user =  user_addres::find($user_adress_id);
@@ -185,10 +221,11 @@ class ajaxcontroller extends Controller
         // $edit_user->city = $cityName;
         $edit_user->address_phone_number = $phone;
         $edit_user->pincode = $pincode;
-        $edit_user->landmark = $landmark;
+        $edit_user->pincode_id = $pincodeId;
+        // $edit_user->landmark = $landmark;
         $edit_user->state = $pin_state;
         $edit_user->city = $pin_district;
-        $edit_user->landmark = $city_input;
+        $edit_user->area_name = $city_input;
 
         if($edit_user->save()){
             return back()->with('Success','User updated successfully');

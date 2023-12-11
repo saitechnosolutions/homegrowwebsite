@@ -17,7 +17,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Full Name</label>
-                                        <input type="text" class="form-control" name="full_name">
+                                        <input type="text" class="form-control full_name" name="full_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -49,20 +49,22 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Phone</label>
-                                        <input type="text" maxlength="10" class="form-control" name="phone_number" onkeypress="return phone1(event);"  oninput="checkPhoneNumberLength(this)">
+                                        <input type="text" maxlength="10" class="form-control phone" name="phone_number"
+                                            onkeypress="return phone1(event);" oninput="checkPhoneNumberLength(this)">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Address</label>
-                                        <input type="text" class="form-control" name="address" class="address">
+                                        <input type="text" class="form-control address" name="address" class="address">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="" class="roboto">Pincode</label>
-                                        <input type="text" class="form-control" class="pincode  " id="pin_code_type"
-                                            name="pin_code" pattern="[0-9]{6}">
+                                        <input type="text" class="form-control pincode" id="pin_code_type"
+                                            name="pin_code" pattern="[0-9]{6}" maxlength="6"
+                                            onkeypress="return phone1(event);" oninput="checkPhoneNumberLength(this)">
                                     </div>
                                 </div>
 
@@ -85,7 +87,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="" class="roboto">Area</label>
-                                        <select name="city_input" class="form-select" id="city_input">
+                                        <select name="city_input" class="form-select areas" id="city_input">
                                             <option value="" hidden>Select Area</option>
                                             {{-- <option value="" id="city_input"></option> --}}
                                         </select>
@@ -128,7 +130,7 @@
                                 </div> --}}
                                 <div class="col-lg-5 pt-4">
                                     <div class="tree text-center">
-                                        <button type="button" name="register_btn" id="register_btn"
+                                        <button type="submit" name="register_btn" id="register_btn"
                                             class="btn m-auto d-block home-btn3 register_btn">
                                             Register</button>
                                     </div>
@@ -148,13 +150,38 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('.register_btn').on('click', function() {
-                validator.validate();
-                const validator = new JustValidate('.register_form', {
-                    validateBeforeSubmitting: true,
-                });
 
-                validator
+            const validator = new JustValidate(".register_form", {
+                validateBeforeSubmitting: true,
+            });
+            // const validator = new JustValidate('.updatesbanner');
+            validator
+                .addField('.full_name', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 30,
+                    }
+                    ])
+                    .addField('.email', [{
+                            rule: 'required',
+                        },
+                        {
+                            rule: 'email',
+                        }
+                    ])
+                    .addField('.bnub', [{
+                            rule: 'required',
+                        },
+                        {
+                            rule: 'password',
+                        }
+                    ])
                     .addField('.phone', [{
                             rule: 'required',
                         }, {
@@ -166,32 +193,69 @@
                             value: 10,
                         },
                     ])
-                    .addField('.email', [{
-                            rule: 'required'
-                        },
-                        {
-                            rule: 'email'
-                        }
-                    ])
-                    .addField('.text12', [{
-                            rule: 'required'
+                    .addField('.address', [{
+                            rule: 'required',
                         },
                         {
                             rule: 'minLength',
-                            value: 3
+                            value: 3,
                         },
                         {
                             rule: 'maxLength',
-                            value: 150
+                            value: 120,
+                        }
+                    ])
+                    .addField('.pincode', [{
+                        rule: 'required',
+                    }, ])
+
+
+                .onSuccess(() => {
+
+                    var formData = $('.register_form').serialize();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: '/register',
+                        type: 'post',
+                        data: formData,
+                        success: function(response) {
+                            swal.fire(
+                                'Success',
+                                response.success,
+                                'success'
+                            ).then(() => {
+                                // Close the current modal (if any)
+                                $('#loginModal').modal('hide');
+
+                                // Open the login modal
+                                $('#loginModal').modal('show');
+
+                                // Reload the page if needed
+                                // location.reload();
+                            });
                         },
-                    ]);
-
-
-
-                validator.onSuccess(() => {
-                    $('.register_form')[0].submit();
+                        error: function(xhr, status, error) {
+                            if (xhr.status === 422) {
+                                swal.fire(
+                                    'Error!',
+                                    xhr.responseJSON.error,
+                                    'error'
+                                );
+                            } else {
+                                swal.fire(
+                                    'Error!',
+                                    'Failed to update register data. Please try again later.',
+                                    'error'
+                                );
+                            }
+                        }
+                    });
                 });
-            });
+
         });
     </script>
 @endsection

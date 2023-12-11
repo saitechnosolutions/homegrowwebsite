@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-4"></div>
                 <div class="col-lg-8  col-md-8">
-                    <h5><strong>Manage  </strong> Address</h5>
+                    <h5><strong>Manage </strong> Address</h5>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -32,9 +32,22 @@
 
                         <div class="accounting2">
                             <ul class="manages">
-                                <li class="listers"><a href="/myaccount" class="vart ">My Orders</a></li>
-                                <li class="listers"><a href="/accountsetting" class="vart ">Account Settings</a></li>
-                                <li class="listers"><a href="/editaddress" class="vart active">Manage Addresses</a></li>
+                                @if (Auth::check())
+                                    <li class="listers"><a href="/myorders" class="vart ">My Orders</a></li>
+                                @else
+                                    <li class="listers"><a href="/" class="vart ">My Orders</a></li>
+                                @endif
+                                @if (Auth::check())
+                                    <li class="listers"><a href="/accountsetting" class="vart ">Account Settings</a></li>
+                                @else
+                                    <li class="listers"><a href="/" class="vart ">Account Settings</a></li>
+                                @endif
+                                @if (Auth::check())
+                                    <li class="listers"><a href="/editaddress" class="vart active">Manage Addresses</a></li>
+                                @else
+                                    <li class="listers"><a href="/" class="vart active">Manage Addresses</a></li>
+                                @endif
+
                             </ul>
                         </div>
                         <a href="/logout" class="btn logout_btn">Logout</a>
@@ -49,7 +62,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Address</label>
-                                        <input type="text" class="form-control" name="address" value="{{ $editaddres->address_line_one }}">
+                                        <input type="text" class="form-control address" name="address"
+                                            value="{{ $editaddres->address_line_one }}">
                                     </div>
                                 </div>
 
@@ -84,15 +98,16 @@
                                     <div class="toors">
                                         <div class="form-group">
                                             <label for="" class="roboto_set">Phone Number</label>
-                                            <div class="input-group">
+                                            {{-- <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">+91</span>
-                                                </div>
-                                                <input type="text" class="form-control phone" id="PhoneNumber" name="phone"
-                                                    placeholder="Enter Your Phone Number Here" maxlength="10" value="{{ $editaddres->address_phone_number }}" required
-                                                    onkeypress="return phone1(event);"  oninput="checkPhoneNumberLength(this)">
-                                            </div>
-                                            <span id="message3" class="text-danger"></span>
+                                                </div> --}}
+                                            <input type="text" class="form-control phone" id="PhoneNumber" name="phone"
+                                                placeholder="Enter Your Phone Number Here" maxlength="10"
+                                                value="{{ $editaddres->address_phone_number }}" required
+                                                onkeypress="return phone1(event);" oninput="checkPhoneNumberLength(this)">
+                                            {{-- </div> --}}
+                                            {{-- <span id="message3" class="text-danger"></span> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -100,14 +115,16 @@
                                 <div class="col-lg-6">
                                     <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Pincode</label>
-                                        <input type="text" class="form-control" maxlength="6" name="pincode" id="pin_code_type" value="{{ $editaddres->pincode }}"  pattern="[0-9]{6}" onkeypress="return phone1(event);">
+                                        <input type="text" class="form-control pincode" maxlength="6" name="pincode"
+                                            id="pin_code_type" value="{{ $editaddres->pincode }}" pattern="[0-9]{6}"
+                                            onkeypress="return phone1(event);">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="" class="roboto">State</label>
-                                        <input type="text" class="form-control pin_state" id="pin_state" name="pin_state" value="{{ $editaddres->state }}"
-                                            readonly>
+                                        <input type="text" class="form-control pin_state" id="pin_state" name="pin_state"
+                                            value="{{ $editaddres->state }}" readonly>
                                         <span id="message4" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -115,8 +132,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="" class="roboto">District</label>
-                                        <input type="text" class="form-control pin_district" id="pin_district" value="{{ $editaddres->city }}"
-                                            name="pin_district" readonly>
+                                        <input type="text" class="form-control pin_district" id="pin_district"
+                                            value="{{ $editaddres->city }}" name="pin_district" readonly>
                                         <span id="message5" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -126,7 +143,8 @@
                                         <label for="" class="roboto">Area</label>
                                         <select name="city_input" class="form-select city_input" id="city_input">
                                             <option value="" hidden>Select Area</option>
-                                            <option value="{{ $editaddres->landmark }}" id="city_input" selected>{{ $editaddres->landmark }}</option>
+                                            <option value="{{ $editaddres->landmark }}" id="city_input" selected>
+                                                {{ $editaddres->area_name }}</option>
                                             <!-- Add more options if needed -->
                                         </select>
                                         <span id="message6" class="text-danger"></span>
@@ -147,7 +165,8 @@
                                     </div>
                                 </div> --}}
                                 <div class="col-lg-4">
-                                    <button type="button"  id="edit_adress" class="btn home-btn3 mt-4">Edit Address </button>
+                                    <button type="submit" id="edit_adress" class="btn home-btn3 mt-4">Edit Address
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -157,4 +176,86 @@
             </div>
         </div>
     </section>
+@endsection
+
+
+
+
+
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            const validator = new JustValidate(".edit_manage_addres", {
+                validateBeforeSubmitting: true,
+            });
+            // const validator = new JustValidate('.updatesbanner');
+            validator
+
+                .addField('.address', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 120,
+                    }
+                ])
+                .addField('.phone', [{
+                        rule: 'required',
+                    }, {
+                        rule: 'minLength',
+                        value: 10,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 10,
+                    },
+                ])
+                .addField('.pincode', [{
+                    rule: 'required',
+                }, ])
+
+
+                .onSuccess(() => {
+                    var edit_adress = $('.edit_manage_addres').serialize();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    swal.fire(
+                        'Success',
+                        'Edited Manage user address sucessfully',
+                        'success'
+                    ).then((confirmation) => {
+                        if (confirmation) {
+                            $.ajax({
+                                url: '/edit_manage_ajax',
+                                type: 'post',
+                                data: edit_adress,
+                                success: function(response) {
+                                    console.log(response);
+                                    location.reload();
+                                },
+                                error: function(error) {
+                                    console.log(error);
+                                    swal.fire(
+                                        'Error!',
+                                        'The phone number has been already entered . please enter valid number',
+                                        'error'
+                                    )
+                                }
+                            });
+                        }
+                    });
+                });
+
+
+        });
+    </script>
 @endsection

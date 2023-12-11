@@ -45,7 +45,7 @@
                                 @endif
 
                                 @if (Auth::check())
-                                    <li class="listers"><a href="/manageaddress" class="vart">Manage Addresses</a></li>
+                                    <li class="listers"><a href="/editaddress" class="vart">Manage Addresses</a></li>
                                 @else
                                     <li class="listers"><a href="/" class="vart">Manage Addresses</a></li>
                                 @endif

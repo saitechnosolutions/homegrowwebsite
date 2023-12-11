@@ -11,7 +11,7 @@
     <section class="all_cat_section">
         <div class="container">
             <div class="row  rte">
-                <div class="col-lg-8">
+                <div class="col-lg-12 col-md-12">
                     {{-- <ul class="oilss_cat iso_one  des_one" id="custom-filter">
                         <li><a data-filter="*" class="all grocry" >All category</a></li>
                         @if ($cat = App\Models\category::all())
@@ -50,7 +50,7 @@
                 </div> --}}
             </div>
             <div class="row  eortst">
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-5">
                     <h5 class="coiii"></h5>
                     <div class="accordion sticky-top" id="regularAccordionRobots">
 
@@ -138,7 +138,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-9 ">
+                <div class="col-lg-9 col-md-7">
                     {{-- <div class="row">
                         <div class="col-lg-4">
                             <p>vdsvhhvbjhjb</p>
@@ -154,7 +154,7 @@
                                 <div class="row drdrrrr er">
                                     @if ($products = App\Models\product_varient::all())
                                         @foreach ($products as $pr)
-                                            <div class="col-lg-4    {{ $pr->categoryid }}  ">
+                                            <div class="col-lg-4  col-md-12 col-sm-12  {{ $pr->categoryid }}  ">
                                                 <div class="product_one">
                                                     <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
                                                         <div class="produs_img">
@@ -188,7 +188,7 @@
                                                                 <div class="prds_inr">
                                                                     <button type="button" class="btn_min"
                                                                         onclick="decreaseValue('hair-{{ $pr->id }}')">-</button>
-                                                                    <input type="number" class="input_poo  productqty"
+                                                                    <input type="number" class="input_poo  productqty  ali_in"
                                                                         id="hair-{{ $pr->id }}-number"
                                                                         min="1" max="100" value="1"
                                                                         name="productqty">

@@ -24,44 +24,44 @@ $(document).on('click', '.state', function () {
 
 
 
-$(document).ready(function () {
-    $('.register_btn').on('click', function () {
-        var formData = $('.register_form').serialize();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: '/register',
-            type: 'post',
-            data: formData,
-            success: function (response) {
-                swal.fire(
-                    'Success',
-                    response.success,
-                    'success'
-                );
-                location.reload();
-            },
-            error: function (xhr, status, error) {
-                if (xhr.status === 422) {
-                    swal.fire(
-                        'Error!',
-                        xhr.responseJSON.error,
-                        'error'
-                    );
-                } else {
-                    swal.fire(
-                        'Error!',
-                        'Failed to update register data. Please try again later.',
-                        'error'
-                    );
-                }
-            }
-        });
-    });
-});
+// $(document).ready(function () {
+//     $('.register_btn').on('click', function () {
+//         var formData = $('.register_form').serialize();
+//         $.ajaxSetup({
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//             }
+//         });
+//         $.ajax({
+//             url: '/register',
+//             type: 'post',
+//             data: formData,
+//             success: function (response) {
+//                 swal.fire(
+//                     'Success',
+//                     response.success,
+//                     'success'
+//                 );
+//                 location.reload();
+//             },
+//             error: function (xhr, status, error) {
+//                 if (xhr.status === 422) {
+//                     swal.fire(
+//                         'Error!',
+//                         xhr.responseJSON.error,
+//                         'error'
+//                     );
+//                 } else {
+//                     swal.fire(
+//                         'Error!',
+//                         'Failed to update register data. Please try again later.',
+//                         'error'
+//                     );
+//                 }
+//             }
+//         });
+//     });
+// });
 
 
 
@@ -148,7 +148,7 @@ $(document).ready(function () {
                         toast: true,
                         position: "top-end",
                         showConfirmButton: false,
-                        timer: 3000,
+                        timer: 2000,
                         timerProgressBar: true,
                         didOpen: (toast) => {
                             toast.onmouseenter = Swal.stopTimer;

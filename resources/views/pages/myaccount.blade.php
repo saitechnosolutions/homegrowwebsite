@@ -81,7 +81,7 @@
                         <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
                         <p class="def_del">Delivery at <strong>
                                 @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', Auth::user()->user_default_address_id)->first())
-                                    {{ $add->address_line_one }} , {{ $add->landmark }}, {{ $add->city }} , {{ $add->state }}
+                                    {{ $add->address_line_one }} , {{ $add->area_name }}, {{ $add->city }} , {{ $add->state }} - {{ $add->pincode }}
                                 @endif
                             </strong> </p>
                     </div>
