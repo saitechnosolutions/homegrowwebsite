@@ -43,6 +43,8 @@
     {{-- 10-12-2023 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- <link rel="stylesheet" href="/assets/css/sweetalert2.min.css"> --}}
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -107,6 +109,7 @@
     {{-- ================== water effects =================== --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
@@ -367,42 +370,8 @@
         // });
     </script>
 
+
     <script>
-        // $(document).ready(function () {
-        //   $('.btn_plus').on('click', function () {
-        //     var inputElement = $('.input_poo');
-        //     var currentValue = parseInt(inputElement.val(), 10);
-        //     if (currentValue < 100) {
-        //       inputElement.val(currentValue + 1);
-        //     }
-        //   });
-
-        //   $('.btn_min').on('click', function () {
-        //     var inputElement = $('.input_poo');
-        //     var currentValue = parseInt(inputElement.val(), 10);
-        //     if (currentValue > 1) {
-        //       inputElement.val(currentValue - 1);
-        //     }
-        //   });
-
-        //   $('.btn_plus1').on('click', function () {
-        //     var inputElement = $('.input_poo1');
-        //     var currentValue = parseInt(inputElement.val(), 10);
-        //     if (currentValue < 100) {
-        //       inputElement.val(currentValue + 1);
-        //     }
-        //   });
-
-        //   $('.btn_min1').on('click', function () {
-        //     var inputElement = $('.input_poo1');
-        //     var currentValue = parseInt(inputElement.val(), 10);
-        //     if (currentValue > 1) {
-        //       inputElement.val(currentValue - 1);
-        //     }
-        //   });
-
-
-        // });
         function increaseValue(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
@@ -419,7 +388,7 @@
         }
 
 
-        // add to cart
+        // add to cart     yesterdayremove
         function increaseValue1(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
@@ -442,12 +411,25 @@
         //  add to cart
         $(document).ready(function() {
             updateTotal();
+            singletocheckout();
         });
 
         function increaseValue1(offerPrice) {
             const input = $(`#hair-${offerPrice}-number`);
-            input.val(parseInt(input.val()) + 1);
-            updatePriceAndTotal(offerPrice);
+            const maxqty = parseInt(input.attr("max"));
+            if (parseInt(input.val()) < maxqty) {
+                input.val(parseInt(input.val()) + 1);
+                updatePriceAndTotal(offerPrice);
+            } else {
+                Toastify({
+                    text: "Out Of Stock",
+                    className: "info",
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    }
+                }).showToast();
+            }
+
         }
 
         function decreaseValue1(offerPrice) {
@@ -463,25 +445,29 @@
             const priceElement = $(`#price-${offerPrice}`);
             const quantity = parseInt(input.val());
             const price = quantity * parseInt(offerPrice);
+
             priceElement.text(`₹${price}`);
+
         }
 
         function updateTotal() {
             let totalAmount = 0;
-
             // Loop through all product prices and quantities
             $('[id^="price-"]').each(function() {
                 const priceText = $(this).text().replace('₹', '');
                 const price = !isNaN(parseFloat(priceText)) ? parseFloat(priceText) : 0;
-
                 const productId = $(this).attr('id').split('-')[1]; // Extract the product ID
                 const input = $(`#hair-${productId}-number`);
                 const quantity = !isNaN(parseInt(input.val())) ? parseInt(input.val()) : 0;
-
                 totalAmount += price // Consider both price and quantity
+
+                // change code
+                $(`#price_offer_${productId}`).val(price);
+                $(this).closest('div').find('.cart_qty').val(quantity);
             });
 
             // Update the total amount
+            $('.totalamtcart').val(totalAmount);
             $('#totalAmount').text(`₹${totalAmount.toFixed(2)}`);
         }
 
@@ -490,10 +476,161 @@
             updateTotal();
         }
     </script>
+    <script>
+        function increment(idd, event) {
+            var qtty = $('#qty' + idd).val();
+            var maxqty = $('#maxqty' + idd).val();
+            var proprice = $('#proprice' + idd).val();
+            var mrprice = $('#mrprice' + idd).val();
+            var totalamt;
+
+            if (qtty != maxqty) {
+                qtty = parseInt(qtty) + 1;
+                $('#qty' + idd).val(qtty);
+                totalamt = parseFloat(proprice) * parseFloat(qtty);
+                $('#totalamt' + idd).val(totalamt.toFixed(2));
+            } else {
+                alert("Out of Stock");
+            }
+        }
+
+        function decrement(idd1, event) {
+            var qtty1 = $('#qty' + idd1).val();
+            var minqty = $('#minqty' + idd1).val();
+            var proprice1 = $('#proprice' + idd1).val();
+            var mrprice = $('#mrprice' + idd1).val();
+            var totalamtt;
+
+            if (qtty1 != minqty) {
+                qtty1 = parseInt(qtty1) - 1;
+                $('#qty' + idd1).val(qtty1);
+                totalamt1 = parseFloat(proprice1) * parseFloat(qtty1);
+                $('#totalamt' + idd1).val(totalamt1.toFixed(2));
+            }
+        }
+
+        $(document).ready(function() {
+
+            $('.coupon_btn').on("click", function() {
+                var couponcode = $('.coupocode').val();
+                var totalamount = $('.totalamt').val();
+                var taxamt = $('.taxamt').val();
+                var userId = $('.loginid').val();
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: '/couponapply',
+                    type: 'POST',
+                    // Replace with your actual API endpoint
+                    data: {
+                        couponcode: couponcode,
+                        totalamount: totalamount,
+                        userId: userId,
+                        taxamt: taxamt
+                    },
+                    success: function(response) {
+                        // console.log(response);
+
+                        var discountedAmount = response.disamt;
+                        console.log("discountedAmount", discountedAmount);
+                        $('.discountprint').text('-₹' + discountedAmount);
+                        var disamt = $('.discamnt').val(discountedAmount);
+
+                        singletocheckout();
+                    },
+
+                });
+            });
+
+        });
+
+        function singletocheckout() {
+            var totalamt = $('.totalamt').val();
+            var discamnt = $('.discamnt').val();
+
+            var netTotal = totalamt - discamnt;
+
+            // var gstval = $('.tax_amt_display').val();
+            // var taxAmount = (netTotal * gstval) / 100;
+            //    var nn = $('.textamt').text('+₹ ' + taxAmount.toFixed(2));
+
+
+            var gstval = $('.tax_amt_display').val();
+            // console.log("nettotal",netTotal);
+            totalsamt = parseInt(netTotal) + parseInt(gstval);
+            // console.log("totallllll", totalsamt);
+            // var paytamt = totalsamt + gstval;
+            $('#proamt').text('₹ ' + totalsamt.toFixed(2));
+            $('.finalpay').val(totalsamt);
+        }
+
+        // checkout checkbox
+        $(document).ready(function() {
+            $('.checkout_checkbox').change(function() {
+                if (this.checked) {
+                    $('.same_adress_row').show();
+
+                    var uname = $('.c_userid').val();
+                    var phone = $('.c_phone').val();
+                    var email = $('.c_email').val();
+                    var addres = $('.c_addres').val();
+                    var city = $('.c_city').val();
+                    var state = $('.c_state').val();
+                    var pincode = $('.c_pincode').val();
+                    var landmark = $('.c_landmark').val();
+
+                    $('.d_name').val(uname);
+                    $('.d_phone').val(phone);
+                    $('.d_email').val(email);
+                    $('.d_address').val(addres);
+                    $('.d_city').val(city);
+                    $('.d_state').val(state);
+                    $('.d_pincode').val(pincode);
+
+                    var $dropdown = $('.d_landmark');
+            $dropdown.append('<option value="' + landmark + '" selected>' + landmark + '</option>');
+                    $('.d_landmark').append(option);
+                } else {
+                    $('.same_adress_row').hide();
+                }
+            });
+        });
+    </script>
 
 
 
+<script>
+    var list = document.querySelectorAll('.des_one1 ')
 
+    function setactive() {
+        list.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.toggle('active')
+    }
+
+
+    list.forEach((item) =>
+        item.addEventListener('click', setactive));
+</script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.entr_passwrd').hide();
+            $('#sms_ot_login').hide();
+            $('.entr_otp').hide();
+            $('#sms_ot').on('click', function() {
+                $('.entr_passwrd').show();
+                $('#sms_ot_login').show();
+                $('.entr_otp').show();
+                $('#sms_ot').hide();
+            })
+        });
+    </script>
 
 
 

@@ -26,8 +26,7 @@
                             class="fa fa-shopping-cart hd" aria-hidden="true"></i>
                     </a>
                 @else
-                    <a href="#" class="iconses_one"  data-bs-toggle="modal"
-                        data-bs-target="#loginModal">
+                    <a href="#" class="iconses_one" data-bs-toggle="modal" data-bs-target="#loginModal">
                         <div class="num_couny">0</div><i class="fa fa-shopping-cart hd" aria-hidden="true"></i>
                     </a>
                 @endif
@@ -249,7 +248,9 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="" class="roboto">Mobile Number</label>
-                                                <input type="text" maxlength="10" class="form-control emil" name="login_mblnum" onkeypress="return phone1(event);"  oninput="checkPhoneNumberLength(this)" >
+                                                <input type="text" maxlength="10" class="form-control emil"
+                                                    name="login_mblnum" onkeypress="return phone1(event);"
+                                                    oninput="checkPhoneNumberLength(this)">
                                             </div>
                                         </div>
                                         <div class="col-lg-12 pt-3">
@@ -320,8 +321,8 @@
                 <div class="container reg_container">
                     <div class="row  align-items-center ">
                         <div class="col-lg-6 loher">
-                            <div class="logses_ful">
-                                <h5 class="wel_log">Forgot Pin <img src="/assets/images/forpin.png" class="img-fluid"
+                            <div class="logses_ful restedq">
+                                <h5 class="wel_log">Login With Mobile Number <img src="/assets/images/forpin.png" class="img-fluid"
                                         width="25px" alt=""></h5>
                                 <p class="groce">Enter your email address to change
                                     your password</p>
@@ -330,14 +331,25 @@
                                         <div class="col-lg-12 pt-5">
                                             <div class="form-group">
                                                 <label for="" class="roboto">Mobile Number</label>
-                                                <input type="text" class="form-control emil">
+                                                <input type="text"  id="mobileInput"  maxlength="10" class="form-control emil"
+                                                    onkeypress="return phone1(event);"
+                                                    oninput="checkPhoneNumberLength(this)">
                                             </div>
                                         </div>
-
+                                        <div class="col-lg-12 pt-2">
+                                            <input type="text" class="form-control roboto entr_otp" name=""
+                                                id="" placeholder="Enter OTP">
+                                        </div>
                                         <div class="col-lg-12 pt-4">
                                             <div class="tree text-center">
-                                                <a href="" class="btn  home-btn3">
-                                                    Reset Password</a>
+                                                <button type="button" class="btn  home-btn3" id="sms_ot">
+                                                    Send OTP</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 pt-4">
+                                            <div class="tree text-center">
+                                                <button type="button" class="btn  home-btn3" id="sms_ot_login">
+                                                    submit</button>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 pt-3">

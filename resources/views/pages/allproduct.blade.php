@@ -12,42 +12,17 @@
         <div class="container">
             <div class="row  rte">
                 <div class="col-lg-12 col-md-12">
-                    {{-- <ul class="oilss_cat iso_one  des_one" id="custom-filter">
-                        <li><a data-filter="*" class="all grocry" >All category</a></li>
-                        @if ($cat = App\Models\category::all())
-                            @foreach ($cat as $ca)
-                                <li><a  data-filter=".{{ $ca->id }}"
-                                        class="grocry">{{ $ca->category_name }}</a></li>
-                            @endforeach
-                        @endif
-                    </ul> --}}
                     <ul class="nav nav-tabs" id="myTabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="all-tab" data-bs-toggle="tab" href="#all">All category</a>
-                        </li>
+
+                            <button class="nav-link des_one1 active" data-category="all"  >All category</button>
+
                         @if ($cat = App\Models\category::all())
                             @foreach ($cat as $ca)
-                                <li class="nav-item">
-                                    <a class="nav-link" id="cat-{{ $ca->id }}-tab" data-bs-toggle="tab"
-                                        href="#cat-{{ $ca->id }}">
-                                        {{ $ca->category_name }}
-                                    </a>
-                                </li>
+                                <button type="button" class="nav-link des_one1 " id="" name="cat-{{ $ca->id }}"   data-category="{{ $ca->id }}"  >{{ $ca->category_name }}</button>
                             @endforeach
                         @endif
                     </ul>
                 </div>
-                {{-- <div class="col-lg-4">
-                    <form action="" class="search_ajx" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control  prd_serar" placeholder="Search Here"
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <button type="button" class="ser_ic" id="basic-addon2">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div> --}}
             </div>
             <div class="row  eortst">
                 <div class="col-lg-3 col-md-5">
@@ -156,7 +131,7 @@
                                         @foreach ($products as $pr)
                                             <div class="col-lg-4  col-md-12 col-sm-12  {{ $pr->categoryid }}  ">
                                                 <div class="product_one">
-                                                    <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
+                                                    <a href="/single_products/{{ $pr->id }}/{{ $pr->product_id }}" class="las_pro">
                                                         <div class="produs_img">
                                                             <img src="/assets/images/gt1.png" class="img-fluid"
                                                                 alt="">
@@ -232,7 +207,7 @@
                                                 @foreach ($products as $pr)
                                                     <div class="col-lg-4    {{ $pr->categoryid }} ">
                                                         <div class="product_one">
-                                                            <a href="/single_products/{{ $pr->product_id }}"
+                                                            <a href="/single_products/{{ $pr->id }}/{{ $pr->product_id }}"
                                                                 class="las_pro">
                                                                 <div class="produs_img">
                                                                     <img src="/assets/images/gt1.png" class="img-fluid"

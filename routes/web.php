@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ajaxcontroller;
 use App\Http\Controllers\allproductcontroller;
+use App\Http\Controllers\CarttoCheckController;
+use App\Http\Controllers\CheckController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\mailcontroller;
 use App\Http\Controllers\productcontroller;
 use App\Http\Controllers\productOrdercontroller;
@@ -94,10 +97,33 @@ Route::post('/hotdeal',[allproductcontroller::class,'hotdeal']);
 Route::post('/price_range',[allproductcontroller::class,'pricefilter']);
 
 
-
+Route::post('/sendOtp',[registercontroller::class,'sendOtpFunction']);
+Route::post('/checkOtp',[registercontroller::class,'checkOtp']);
 
 
 
 
 Route::get('/my_order_status/{id}',[productOrdercontroller::class,'my_order_status']);
+
+
+
+
+Route::post('/getCategory',[allproductcontroller::class,'getCategory']);
+Route::get('/getAllVariants',[allproductcontroller::class,'getAllVariants']);
+
+
+
+
+
+
+
+
+
+
+
+// ==============its my =============== and checkout view remove
+Route::get('single_products/{id}/{varid}', [ProductController::class, 'customRedirect']);
+Route::post('/checkout', [CheckController::class, 'singlproData']);
+Route::post('/siglesizedata', [ProductController::class, 'sigleajaxdata']);
+Route::POST('/couponapply',[CouponController::class, 'coupondats']);
 ?>

@@ -139,7 +139,7 @@
                     @foreach ($products as $pr)
                         <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                             <div class="product_one" data-aos="fade-up" data-aos-duration="800">
-                                <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
+                                <a href="/single_products/{{ $pr->id }}/{{ $pr->product_id }}" class="las_pro">
                                     <div class="produs_img">
                                         <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                     </div>
@@ -246,7 +246,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 col-12">
 
                             <div class="product_one" data-aos="fade-up" data-aos-duration="800">
-                                <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
+                                <a href="/single_products/{{ $pr->id }}/{{ $pr->product_id }}" class="las_pro">
                                     <div class="produs_img">
                                         <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                                     </div>

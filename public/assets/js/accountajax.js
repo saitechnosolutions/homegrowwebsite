@@ -1,3 +1,144 @@
+// ========================singleproduct code ===================
+$(document).ready(function () {
+    $('.price_ty').on('click', function () {
+        var sizevar_id = $(this).data('vrid');
+        $('.price_ty').removeClass('active');
+        $('.sts').addClass('active1');
+        //default qty 1 set
+        $('.productqty').val('1');
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/siglesizedata',
+            method: "POST",
+            data: {
+                varid: sizevar_id
+            },
+            success: function (data) {
+                // console.log('data', data);
+                // alert(data.product_qty);
+                $('.prd_varient_id').val(data.data['id']);
+                $('.product_main_id').val(data.data['product_id']);
+
+                $('.he_price').text('₹' + data.data['offer_price']);
+                $('#proprice1').val(data.data['offer_price']);
+
+                $('.he_par').text('₹' + data.data['mrp_price']);
+                $('#mrprice').val(data.data['mrp_price']);
+
+                $('#progst').val(data.data['product_gst']);
+
+                $('#maxqty1').val(data.data['product_qty']);
+
+                //total amount initial offerprice val ajax time
+                $('#totalamt1').val(data.data['offer_price']);
+
+                // offer calculation
+                var mrp = $("#mrprice").val();
+                var salePrice = $("#proprice1").val();
+                if (mrp !== "" && salePrice !== "") {
+                    var discount = ((mrp - salePrice) / mrp) * 100;
+                    $(".offer").text('(' + discount.toFixed(2) + "%" + ')');
+                }
+            },
+        });
+    });
+});
+
+
+
+
+
+
+
+// ===============send otp =================
+
+$(document).ready(function () {
+    $('#sms_ot').on('click', function () {
+        var mobile = $('#mobileInput').val();
+
+        $.ajax({
+            url: '/sendOtp',
+            type: 'post',
+            contentType: 'application/json',  // Set content type to JSON
+            data: JSON.stringify({
+                'mobile': mobile,
+            }),
+            success: function (response) {
+                console.log(response);
+                swal.fire(
+                    'Success',
+                    'OTP send Successfully',
+                    'success'
+                )
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                if (xhr.responseJSON && xhr.responseJSON.error) {
+                    swal.fire('Error!', xhr.responseJSON.error, 'error');
+                } else {
+                    swal.fire('Error!', 'An error occurred during the update.', 'error');
+                }
+            }
+        });
+    });
+});
+
+
+
+
+// ========================  enter otp ============
+
+$(document).ready(function () {
+    $('#sms_ot_login').on('click', function () {
+        // Get entered OTP from the input field
+        var enteredOTP = $('#otpInput').val();
+
+        // Make the AJAX request to check the OTP
+        $.ajax({
+            url: '/checkOtp', // Replace with your actual route
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                'otp': enteredOTP,
+            }),
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    // OTP is correct, handle success
+                    swal.fire('Success', 'OTP is correct!', 'success');
+                } else {
+                    // OTP is incorrect, handle error
+                    swal.fire('Error!', 'Incorrect OTP. Please try again.', 'error');
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                swal.fire('Error!', 'An error occurred during the OTP check.', 'error');
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ==============  user update fields ===============
 
 $(document).ready(function () {
@@ -340,23 +481,24 @@ $(document).ready(function () {
 //     });
 // });
 
-
 $(document).on("click", ".removes_carts", function () {
     const id = $(this).data('id');
+    let isFirstClick = true;
 
     swal.fire({
         title: "Are you sure?",
-        text: "You want to delete this Product..!",
+        text: "You want to delete this Product in Cart..!",
         icon: "question",
-        showCancelButton: false,
+        showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel",
         allowOutsideClick: false,
         closeOnClickOutside: false,
         closeOnEsc: false,
     }).then((willDelete) => {
-        if (willDelete) {
+        if (willDelete.isConfirmed) {
             // User confirmed the deletion
             $.ajax({
                 type: 'GET',
@@ -381,7 +523,12 @@ $(document).on("click", ".removes_carts", function () {
                     );
                 }
             });
+        } else if (isFirstClick) {
+            // This is the first click, close the SweetAlert without doing anything
+            isFirstClick = false;
+            swal.fire.close();
         } else {
+            // User clicked cancel on subsequent clicks, close the SweetAlert
             swal.fire.close();
         }
     });
@@ -390,53 +537,59 @@ $(document).on("click", ".removes_carts", function () {
 
 
 
-
-
-
 $(document).on("click", ".removall_cart", function () {
     const id = $(this).data('id');
+    let isFirstClick = true;
 
     swal.fire({
-            title: "Are you sure?",
-            text: "You want to delete this all the cart products..!",
-            icon: "question",
-            showCancelButton: false,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-            allowOutsideClick: false,
-            closeOnClickOutside: false,
-            closeOnEsc: false,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                // User confirmed the deletion
-                $.ajax({
-                    type: 'GET',
-                    url: '/cartremove_all_cart/' + id,
-                    success: function (response) {
-                        console.log(response);
-                        swal.fire(
-                            'Success',
-                            'Remove all Product successfully',
-                            'success'
-                        );
+        title: "Are you sure?",
+        text: "You want to delete all the cart products..!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel",
+        allowOutsideClick: false,
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+    }).then((willDelete) => {
+        if (willDelete.isConfirmed) {
+            // User confirmed the deletion
+            $.ajax({
+                type: 'GET',
+                url: '/cartremove_all_cart/' + id,
+                success: function (response) {
+                    console.log(response);
+                    swal.fire(
+                        'Success',
+                        'Remove all Products successfully',
+                        'success'
+                    ).then(() => {
+                        // Reload the page after the success alert is closed
                         location.reload();
-                    },
-                    error: function (error) {
-                        console.error('Error:', error);
-                        swal.fire(
-                            'Error',
-                            'Failed to delete the product',
-                            'error'
-                        );
-                    }
-                });
-            } else {
-                swal.fire.close();
-            }
-        });
+                    });
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    swal.fire(
+                        'Error',
+                        'Failed to delete the products',
+                        'error'
+                    );
+                }
+            });
+        } else if (isFirstClick) {
+            // This is the first click, close the SweetAlert without doing anything
+            isFirstClick = false;
+            swal.fire.close();
+        } else {
+            // User clicked cancel on subsequent clicks, close the SweetAlert
+            swal.fire.close();
+        }
+    });
 });
+
 
 
 
@@ -512,24 +665,26 @@ $(document).ready(function () {
 
 
 
-
 $(document).on("click", ".removes_wishlist", function () {
     const id = $(this).data('id');
+    let isFirstClick = true;
 
     swal.fire({
             title: "Are you sure?",
             text: "You want to delete this product from wishlist..!",
             icon: "question",
-            showCancelButton: false,
+            showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel",
             allowOutsideClick: false,
             closeOnClickOutside: false,
             closeOnEsc: false,
         })
         .then((willDelete) => {
-            if (willDelete) {
+            if (willDelete.isConfirmed) {
+                // User confirmed the deletion
                 $.ajax({
                     type: 'GET',
                     url: '/wishlistremove/' + id,
@@ -537,7 +692,7 @@ $(document).on("click", ".removes_wishlist", function () {
                         console.log(response);
                         swal.fire(
                             'Success',
-                            'wishlist Product removed in  successfully',
+                            'wishlist Product removed successfully',
                             'success'
                         );
                         location.reload();
@@ -551,11 +706,17 @@ $(document).on("click", ".removes_wishlist", function () {
                         );
                     }
                 });
+            } else if (isFirstClick) {
+                // This is the first click, close the SweetAlert without doing anything
+                isFirstClick = false;
+                swal.fire.close();
             } else {
+                // User clicked cancel on subsequent clicks, close the SweetAlert
                 swal.fire.close();
             }
         });
 });
+
 
 
 $(document).on("click", ".removall_wishlist", function () {
@@ -565,16 +726,17 @@ $(document).on("click", ".removall_wishlist", function () {
             title: "Are you sure?",
             text: "You want to delete all this product from wishlist..!",
             icon: "question",
-            showCancelButton: false,
+            showCancelButton: true, // Set showCancelButton to true
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel", // Text for the cancel button
             allowOutsideClick: false,
             closeOnClickOutside: false,
             closeOnEsc: false,
         })
         .then((willDelete) => {
-            if (willDelete) {
+            if (willDelete.isConfirmed) {
                 // User confirmed the deletion
                 $.ajax({
                     type: 'GET',
@@ -612,8 +774,50 @@ $(document).on("click", ".removall_wishlist", function () {
 
 
 
+$(document).ready(function () {
+    $('.nav-link').click(function () {
+        var categoryId = $(this).data('category');
+
+        var checkedValues = $('.filtercheck:checked').map(function () {
+            return $(this).val();
+        }).toArray();
 
 
+
+
+
+        if (categoryId === 'all') {
+            $.ajax({
+                url: '/getAllVariants',
+                type: 'GET',
+                success: function (response) {
+                    $('#productsContainer').html(response);
+                    $('.er').hide();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        } else {
+            $.ajax({
+                url: '/getCategory',
+                type: 'post',
+                data: {
+                    "categoryId": categoryId,
+                    "checkedValues": checkedValues.length ? checkedValues : []
+                },
+                success: function (response) {
+                    $('#productsContainer').html(response);
+                    $('.er').hide();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+
+    });
+});
 
 //    hotdeal ajax
 
@@ -624,13 +828,32 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.filtercheck').change(function () {
 
-        // $('.filtercheck').removeClass('all_cat_section active');
-        // Get values of all checked checkboxes
+
+    $('.filtercheck').change(function () {
         var checkedValues = $('.filtercheck:checked').map(function () {
             return $(this).val();
         }).toArray();
+
+
+        if (checkedValues.length == 0) {
+            $.ajax({
+                url: '/getAllVariants',
+                type: 'GET',
+                success: function (response) {
+                    $('#productsContainer').html(response);
+                    $('.er').hide();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+
+            return;
+        }
+
+
+
 
 
         $.ajax({
@@ -640,13 +863,12 @@ $(document).ready(function () {
                 option: checkedValues
             },
             success: function (response) {
-                console.log(response);
                 $('#productsContainer').html(response);
-                // $('.er').hide()
+                $('.er').hide()
             },
             error: function (error) {
-                // $('#productsContainer').html(error);
-                location.reload();
+                $('#productsContainer').html(error);
+                // location.reload();
             }
         });
     });

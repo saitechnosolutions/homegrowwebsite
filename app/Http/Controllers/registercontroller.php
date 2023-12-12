@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AllIndiaPincode;
 use App\Models\city;
+use App\Models\Otp;
 use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
@@ -18,8 +19,11 @@ class registercontroller extends Controller
     public function register(Request $request)
     {
         try {
+            $currentYear = date("y");
             $lastUserId = User::max('id');
-            $newUserId = sprintf('HG-CUS-%05d', $lastUserId + 1);
+            $newUserId = sprintf('HG-%s-%05d', $currentYear, $lastUserId + 1);
+            // $lastUserId = User::max('id');
+            // $newUserId = sprintf('HG-CUS-%05d', $lastUserId + 1);
 
             $full_name = $request->full_name;
             $email = $request->email;
@@ -174,7 +178,9 @@ class registercontroller extends Controller
     public function sendOtpFunction(Request $request)
     {
 
-        $mobileNumber = $request->input('mobile_number');
+        $mobileNumber = $request->input('mobile');
+
+
 
         // OTP Sent
         $code = rand(1000, 10000);
@@ -214,6 +220,33 @@ class registercontroller extends Controller
 
         return response("Otp Send Successfully to $mobileNumber");
     }
+
+
+
+    public function checkOtp(Request $request)
+{
+    // Get expected OTP (replace with your logic to retrieve the expected OTP)
+    $enteredOtp =  $request->input('otp'); // Replace with your actual expected OTP
+
+    // Get entered OTP from the request
+    $expectedOtp = Otp::where('otp', $enteredOtp)->first();
+
+    // Compare entered OTP with expected OTP
+    $isOtpCorrect = $expectedOtp !== null;
+
+    // Return the result
+    if ($isOtpCorrect) {
+        // OTP is correct
+        return response()->json(['success' => true]);
+    } else {
+        // OTP is incorrect
+        return response()->json(['error' => 'Incorrect OTP. Please try again.'], 400);
+    }
+}
+
+
+
+
 
 
 

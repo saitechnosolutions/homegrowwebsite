@@ -105,6 +105,12 @@
 
 
 @media only screen and (max-width: 990px) {
+    .logs_img{
+        display: none;
+    }
+    .restedq{
+        padding: 35px 30px;
+    }
     .ali_in{
         width: 120px !important;
     }
@@ -188,6 +194,15 @@
 }
 
 @media only screen and (max-width: 430px) {
+    .pind{
+        padding: 0px;
+    }
+    .just-validate-error-label{
+        font-size: 14px;
+    }
+    .logses_ful {
+        padding: 10px 15px;
+    }
     .input_poo{
         width: 100%;
     }

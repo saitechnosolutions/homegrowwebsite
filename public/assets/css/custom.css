@@ -884,7 +884,7 @@
      position: relative;
      z-index: 1;
      border-radius: 21px !important;
-     padding: 7px 5px;
+     padding: 7px 30px;
      font-weight: 600;
      color: #fff;
      display: flex;
@@ -1690,7 +1690,9 @@
 .price_ty.active{
     border:1px solid #00B517;
 }
-
+.sts.active1{
+    border: 1px solid #00B517;
+}
 
 
  .home-btn8::before {
@@ -2454,7 +2456,7 @@
      position: relative;
      z-index: 1;
      border-radius: 5px !important;
-     padding: 13px 20px;
+     padding: 13px 90px;
      color: #fff;
      display: flex;
      justify-content: space-evenly;
@@ -3101,9 +3103,11 @@
 }
 .drdrrrr1{
     row-gap: 70px;
+    margin-top: 20px;
     /* position: relative;
     top: 0; */
 }
+
 #productsContainer{
     position: relative;
     top: -50px;
@@ -3118,6 +3122,12 @@
      margin: 4px 0;
      text-decoration: none;
      color: #000000;
+ }
+
+ .des_one1.active{
+    font-weight: 700;
+    color: #670066 !important;
+    border: none;
  }
 
 

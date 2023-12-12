@@ -4,7 +4,7 @@
         @foreach ($products as $pr)
             <div class="col-lg-4    {{ $pr->categoryid }} ">
                 <div class="product_one">
-                    <a href="/single_products/{{ $pr->product_id }}" class="las_pro">
+                    <a href="/single_products/{{ $pr->id }}/{{ $pr->product_id }}" class="las_pro">
                         <div class="produs_img">
                             <img src="/assets/images/gt1.png" class="img-fluid" alt="">
                         </div>

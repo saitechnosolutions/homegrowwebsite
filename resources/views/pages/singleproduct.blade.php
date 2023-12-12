@@ -7,9 +7,8 @@
             </div>
         </div>
     </section>
-
-
-    @if ($products = App\Models\product_varient::where('product_id', $product_id->id)->first())
+    @if ($products = App\Models\product_varient::where('id', $proid->id)->first())
+        {{-- @dd($products) --}}
         <section class="description_section">
             <div class="container">
                 <div class="row sdfjk">
@@ -19,19 +18,25 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
-                        <form class="ads_carts">
+
+                        <form class="ads_carts" action="/checkout" method="POST">
                             @csrf
                             @if (Auth::check())
                                 <input type="hidden" value="{{ Auth::user()->user_id }}" name="user_id" class="user_id">
                             @endif
 
-                            <input type="hidden" value="{{ $products->product_id }}" name="product_main_id"
-                                class="product_main_id">
+                            <input type="hidden" class="product_main_id" value="{{ $products->product_id }}"
+                                name="productid[]">
+                            <input type="hidden" class="prd_varient_id" value="{{ $products->id }}" name="provarient_id[]">
+                            <input type="hidden" id="proprice1" value="{{ $products->offer_price }}" name="proprice1[]">
+                            <input type="hidden" id="mrprice" value="{{ $products->mrp_price }}" name="mrpprice[]">
+                            <input type="hidden" id="progst" value="{{ $products->product_gst }}" name="gst[]">
+                            <input type="hidden" id="totalamt1" name="proprice[]" value="{{ $products->offer_price }}">
 
-
-                            <input type="hidden" name="prd_varient_id" value="{{ $products->id }}" class="prd_varient_id">
-
-
+                            @if ($productstock = App\Models\productstock::where('pro_ver_id', $productstock->pro_ver_id)->first())
+                                <input type="hidden" id="maxqty1" value="{{ $productstock->availablestock }}"
+                                    name="available_stock[]">
+                            @endif
                             <div class="in_stock">
 
                                 <div class="redt">
@@ -54,23 +59,23 @@
                                     @endif
                                 </div>
 
-                                @if ($desc = App\Models\product::where('id', $product_id->id)->first())
+                                @if ($desc = App\Models\product::where('id', $protbl_data->id)->first())
                                     <h5 class="smar">{{ $desc->product_name }}</h5>
                                     <p class="desc_para">{{ $desc->product_description }}</p>
                                 @endif
                                 <div class="row">
                                     <div class="col-lg-7">
                                         <div class="pases">
-                                            <h5 class="he_price">₹{{ $products->offer_price }} <span
-                                                    class="he_par">₹{{ $products->mrp_price }}</span> <span
-                                                    class="offer">(63%
-                                                    OFF)</span> </h5>
+                                            <h5><span class="he_price">₹{{ $products->offer_price }} </span>
+                                                <span class="he_par">₹{{ $products->mrp_price }}</span> <span
+                                                    class="offer">(63% OFF)</span>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row qty_lit">
                                     <div class="col-lg-6  lent">
-                                        @if ($mart = App\Models\product_varient::where('product_id', $product_id->id)->first())
+                                        @if ($mart = App\Models\product_varient::where('id', $varient_id->id)->first())
                                             @if ($mart->varient == 1)
                                                 <h5 class="qtys">Select Liter</h5>
                                             @elseif ($mart->varient == 2)
@@ -85,27 +90,31 @@
                                         @endif
 
                                         <div class="litre">
-                                            @if ($variants = App\Models\product_varient::where('product_id', $product_id->id)->get())
-                                                @foreach ($variants as $variant)
-                                                    <button class="price_ty active" type="button">
-                                                        @if ($variant->varient == 1)
-                                                            {{ $variant->value }} Liter
-                                                        @elseif ($variant->varient == 2)
-                                                            {{ $variant->value }} ml
-                                                        @elseif ($variant->varient == 3)
-                                                            {{ $variant->value }} grm
-                                                        @elseif ($variant->varient == 4)
-                                                            {{ $variant->value }} kg
-                                                        @elseif ($variant->varient == 5)
-                                                            {{ $variant->value }} nos
-                                                        @endif
-                                                        <br>
-                                                        <span class="price_twe">Price: ₹{{ $variant->offer_price }}</span>
-                                                    </button>
-                                                @endforeach
-                                            @endif
-                                            {{-- <button class="price_ty">Qty: 50g <br> <span class="price_twe">Price: ₹22</span>
-                                        </button> --}}
+                                            @foreach ($varient as $product)
+                                            @php
+                                                $fgujh = App\Models\product_varient::where('product_id',$product->product_id)->first();
+                                              $var = $fgujh->id;
+
+                                            @endphp
+                                                <button
+                                                    class="price_ty sts {{ $var == $product->id ? 'active' : '' }}"
+                                                    data-vrid={{ $product->id }} type="button">
+                                                    @if ($product->varient == 1)
+                                                        {{ $product->value }} Liter
+                                                    @elseif ($product->varient == 2)
+                                                        {{ $product->value }} ml
+                                                    @elseif ($product->varient == 3)
+                                                        {{ $product->value }} grm
+                                                    @elseif ($product->varient == 4)
+                                                        {{ $product->value }} kg
+                                                    @elseif ($product->varient == 5)
+                                                        {{ $product->value }} nos
+                                                    @endif
+                                                    <br>
+                                                    <span class="price_twe">Price: ₹{{ $product->offer_price }}</span>
+                                                </button>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                     <div class="col-lg-4 lent1">
@@ -113,29 +122,29 @@
                                             <h5 class="qtys">Qty</h5>
                                             <div class="prds_inr">
                                                 <button class="btn_min1" type="button"
-                                                    onclick="decreaseValue('hair-{{ $products->product_id }}')">-</button>
-                                                <input type="number" class="input_poo1  productqty"
-                                                    id="hair-{{ $products->product_id }}-number" min="1"
-                                                    max="100" value="1" name="productqty" readonly>
+                                                    onclick="decrement(1,this)">-</button>
+                                                <input type="number" class="input_poo1  productqty" minqty="1"
+                                                    value="1" name="productqty[]" id="qty1"
+                                                    maxqty="{{ $productstock->availablestock }}" readonly>
                                                 <button class="btn_plus1" type="button"
-                                                    onclick="increaseValue('hair-{{ $products->product_id }}')">+</button>
+                                                    onclick="increment(1,this)">+</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row tyty">
                                     <div class="col-lg-4">
-                                        @if (Auth::check())
-                                            <a class="btn home-btn1 ">BUY NOW
+                                        @auth
+                                            <button class="btn home-btn1 singproduct_btn" type="submit" name="buynowbtn">
+                                                BUY NOW
                                                 <img src="/assets/images/buy1.png" class="img-fluid" alt="">
-                                            </a>
+                                            </button>
                                         @else
-                                            <a class="btn home-btn1 "  data-bs-toggle="modal"
-                                            data-bs-target="#loginModal">BUY NOW
+                                            <a class="btn home-btn1" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                BUY NOW
                                                 <img src="/assets/images/buy1.png" class="img-fluid" alt="">
                                             </a>
-                                        @endif
-
+                                        @endauth
                                     </div>
                                     <div class="col-lg-4">
                                         @if (Auth::check())
@@ -163,17 +172,17 @@
                                     <div class="sharess">
                                         <h5>Share </h5>
                                         <ul class="uit">
-                                            {{-- <li><a href="https://www.facebook.com/dialog/send?app_id=YOUR_APP_ID&link={{ urlencode(url()->current()) }}" target="_blank"><img src="/assets/images/msg.png"
-                                                        class="img-fluid ghg" alt=""></a></li> --}}
+                                            <li><a href="" target="_blank"><img src="/assets/images/msg.png"
+                                                        class="img-fluid ghg" alt=""></a></li>
                                             <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/fac.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                             <li><a href="https://api.whatsapp.com/send?text={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/wha.png"
                                                         class="img-fluid ghg" alt=""></a></li>
-                                            {{-- <li><a href="https://www.instagram.com/share?url={{ url(url()->current()) }}" target="_blank"><img src="/assets/images/ins.png"
-                                                        class="img-fluid ghg" alt=""></a></li> --}}
-                                            <li><a href="https://twitter.com/share?url={{ url(url()->current()) }}" target="_blank"><img src="/assets/images/ex.png"
+                                            <li><a href="" target="_blank"><img src="/assets/images/ins.png"
+                                                        class="img-fluid ghg" alt=""></a></li>
+                                            <li><a href="" target="_blank"><img src="/assets/images/ex.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                         </ul>
                                     </div>
@@ -201,11 +210,9 @@
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="row aresa">
-                                    @if ($desc = App\Models\product::where('id', $product_id->id)->first())
+                                    @if ($desc = App\Models\product::where('id', $protbl_data->id)->first())
                                         <div class="col-lg-12 col-12">
-
                                             <p>{{ $desc->product_specification }}</p>
-
                                         </div>
                                         <div class="col-lg-12 col-12">
                                             {{-- <table class="table table-bordered table-striped table-seller">
