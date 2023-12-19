@@ -59,9 +59,12 @@
                                         <div>
                                             <div class="coco">
                                                 <div class="car1">
-                                                    <a href="/single_products/{{ $wishlist->product_id }}">
-                                                        <img src="/assets/images/my.jpg" class="img-fluid" alt="">
-                                                    </a>
+                                                    @if ($vrs = App\Models\product::where('id', $wishlist->product_id)->first())
+                                                        <a href="/single_products/{{ $wishlist->product_varient_id }}/{{ $wishlist->product_id }}">
+                                                            <img src="{{ env('MAIN_URL') }}images/{{ $vrs->product_image }}"
+                                                                class="img-fluid" alt="">
+                                                        </a>
+                                                    @endif
                                                     <div class="ioio">
                                                         @if ($vrs = App\Models\product::where('id', $wishlist->product_id)->first())
                                                             <h5>{{ $vrs->product_name }}</h5>
@@ -118,12 +121,12 @@
                             @endforeach
 
                             <div class="row ful_crtr">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-6">
                                     <a href="/" class="btn  home-btn3"><i class="fa fa-arrow-left"
                                             aria-hidden="true"></i>
                                         Back to shop</a>
                                 </div>
-                                <div class="col-lg-4 text-end">
+                                <div class="col-lg-4 col-6 text-end">
                                     <button type="button" data-id="{{ Auth::user()->user_id }}"
                                         class="btn removall_wishlist">Remove all</button>
                                 </div>

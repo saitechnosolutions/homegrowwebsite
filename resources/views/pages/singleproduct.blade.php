@@ -12,12 +12,17 @@
         <section class="description_section">
             <div class="container">
                 <div class="row sdfjk">
-                    <div class="col-lg-6 col-md-6 col-12 text-center">
+                    <div class="col-lg-5 col-md-5 col-12 text-center">
                         <div class="alva">
-                            <img src="/assets/images/lit1.png" class="img-fluid" alt="">
+                            @if ($desc = App\Models\product::where('id', $protbl_data->id)->first())
+                                <div class="alva">
+                                    <img src="{{ env('MAIN_URL') }}images/{{ $desc->product_image }}" class="img-fluid"
+                                        alt="">
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-5 col-md-5 col-12">
 
                         <form class="ads_carts" action="/checkout" method="POST">
                             @csrf
@@ -26,21 +31,22 @@
                             @endif
 
                             <input type="hidden" class="product_main_id" value="{{ $products->product_id }}"
-                                name="productid[]">
-                            <input type="hidden" class="prd_varient_id" value="{{ $products->id }}" name="provarient_id[]">
+                                name="product_id[]">
+                            <input type="hidden" class="prd_varient_id" value="{{ $products->id }}"
+                                name="product_varient_id[]">
                             <input type="hidden" id="proprice1" value="{{ $products->offer_price }}" name="proprice1[]">
                             <input type="hidden" id="mrprice" value="{{ $products->mrp_price }}" name="mrpprice[]">
                             <input type="hidden" id="progst" value="{{ $products->product_gst }}" name="gst[]">
                             <input type="hidden" id="totalamt1" name="proprice[]" value="{{ $products->offer_price }}">
 
-                            @if ($productstock = App\Models\productstock::where('pro_ver_id', $productstock->pro_ver_id)->first())
+                            @if ($productstock = App\Models\ProductStock::where('pro_ver_id', $productstock->pro_ver_id)->first())
                                 <input type="hidden" id="maxqty1" value="{{ $productstock->availablestock }}"
                                     name="available_stock[]">
                             @endif
                             <div class="in_stock">
 
                                 <div class="redt">
-                                    @if ($stock = App\Models\productstock::where('productid', $products->id)->first())
+                                    @if ($stock = App\Models\ProductStock::where('pro_ver_id', $products->id)->first())
                                         @if ($stock->availablestock == 0)
                                             <p class="cresesd"><i class="fa fa-times cresesd" aria-hidden="true"></i> Out of
                                                 stock
@@ -64,7 +70,7 @@
                                     <p class="desc_para">{{ $desc->product_description }}</p>
                                 @endif
                                 <div class="row">
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-8">
                                         <div class="pases">
                                             <h5><span class="he_price">₹{{ $products->offer_price }} </span>
                                                 <span class="he_par">₹{{ $products->mrp_price }}</span> <span
@@ -91,13 +97,12 @@
 
                                         <div class="litre">
                                             @foreach ($varient as $product)
-                                            @php
-                                                $fgujh = App\Models\product_varient::where('product_id',$product->product_id)->first();
-                                              $var = $fgujh->id;
+                                                @php
+                                                    $fgujh = App\Models\product_varient::where('product_id', $product->product_id)->first();
+                                                    $var = $fgujh->id;
 
-                                            @endphp
-                                                <button
-                                                    class="price_ty sts {{ $var == $product->id ? 'active' : '' }}"
+                                                @endphp
+                                                <button class="price_ty sts {{ $var == $product->id ? 'active' : '' }}"
                                                     data-vrid={{ $product->id }} type="button">
                                                     @if ($product->varient == 1)
                                                         {{ $product->value }} Liter
@@ -117,14 +122,14 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 lent1">
+                                    <div class="col-lg-6 lent1">
                                         <div class="atrt">
                                             <h5 class="qtys">Qty</h5>
                                             <div class="prds_inr">
                                                 <button class="btn_min1" type="button"
                                                     onclick="decrement(1,this)">-</button>
                                                 <input type="number" class="input_poo1  productqty" minqty="1"
-                                                    value="1" name="productqty[]" id="qty1"
+                                                    value="1" name="product_quantity[]" id="qty1"
                                                     maxqty="{{ $productstock->availablestock }}" readonly>
                                                 <button class="btn_plus1" type="button"
                                                     onclick="increment(1,this)">+</button>
@@ -133,20 +138,20 @@
                                     </div>
                                 </div>
                                 <div class="row tyty">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         @auth
                                             <button class="btn home-btn1 singproduct_btn" type="submit" name="buynowbtn">
                                                 BUY NOW
-                                                <img src="/assets/images/buy1.png" class="img-fluid" alt="">
+                                                &nbsp;<img src="/assets/images/buy1.png" class="img-fluid" alt="">
                                             </button>
                                         @else
                                             <a class="btn home-btn1" data-bs-toggle="modal" data-bs-target="#loginModal">
                                                 BUY NOW
-                                                <img src="/assets/images/buy1.png" class="img-fluid" alt="">
+                                                &nbsp;<img src="/assets/images/buy1.png" class="img-fluid" alt="">
                                             </a>
                                         @endauth
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         @if (Auth::check())
                                             <a class="btn home-btn2 add_new_cart_submit" data-bs-toggle="modal"
                                                 data-bs-target="add_new_cart_submit">ADD TO CART
@@ -172,18 +177,18 @@
                                     <div class="sharess">
                                         <h5>Share </h5>
                                         <ul class="uit">
-                                            <li><a href="" target="_blank"><img src="/assets/images/msg.png"
-                                                        class="img-fluid ghg" alt=""></a></li>
+                                            {{-- <li><a href="" target="_blank"><img src="/assets/images/msg.png"
+                                                        class="img-fluid ghg" alt=""></a></li> --}}
                                             <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/fac.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                             <li><a href="https://api.whatsapp.com/send?text={{ url()->current() }}"
                                                     target="_blank"><img src="/assets/images/wha.png"
                                                         class="img-fluid ghg" alt=""></a></li>
-                                            <li><a href="" target="_blank"><img src="/assets/images/ins.png"
+                                            {{-- <li><a href="" target="_blank"><img src="/assets/images/ins.png"
                                                         class="img-fluid ghg" alt=""></a></li>
                                             <li><a href="" target="_blank"><img src="/assets/images/ex.png"
-                                                        class="img-fluid ghg" alt=""></a></li>
+                                                        class="img-fluid ghg" alt=""></a></li> --}}
                                         </ul>
                                     </div>
                                 </div>
@@ -212,7 +217,7 @@
                                 <div class="row aresa">
                                     @if ($desc = App\Models\product::where('id', $protbl_data->id)->first())
                                         <div class="col-lg-12 col-12">
-                                            <p>{{ $desc->product_specification }}</p>
+                                            <p style="word-wrap: break-word;">{{ $desc->product_specification }}</p>
                                         </div>
                                         <div class="col-lg-12 col-12">
                                             {{-- <table class="table table-bordered table-striped table-seller">
@@ -307,4 +312,28 @@
             </div>
         </section>
     @endif
+@endsection
+
+
+
+
+
+@section('scripts')
+
+<script>
+  $(document).ready(function () {
+    // Your PHP variables
+    var offerPrice = @json($products->offer_price);
+    var mrpPrice = @json($products->mrp_price);
+
+    // Update elements with these values
+    $('.he_price').text('₹' + offerPrice);
+    $('.he_par').text('₹' + mrpPrice);
+
+    // Calculate discount
+    var discount = ((mrpPrice - offerPrice) / mrpPrice) * 100;
+    $(".offer").text('(' + discount.toFixed(2) + "%" + ')');
+});
+
+</script>
 @endsection

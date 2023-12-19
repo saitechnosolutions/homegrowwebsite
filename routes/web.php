@@ -11,6 +11,8 @@ use App\Http\Controllers\productOrdercontroller;
 use App\Http\Controllers\registercontroller;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentResponseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +104,11 @@ Route::post('/checkOtp',[registercontroller::class,'checkOtp']);
 
 
 
+Route::post('/forgotsendOtp',[registercontroller::class,'forgotsendOtpfunction']);
+Route::post('/forgotcheckOtp',[registercontroller::class,'forgotcheckOtpfunction']);
+Route::post('/savepassword',[registercontroller::class,'savepassword']);
+
+
 
 Route::get('/my_order_status/{id}',[productOrdercontroller::class,'my_order_status']);
 
@@ -115,8 +122,7 @@ Route::get('/getAllVariants',[allproductcontroller::class,'getAllVariants']);
 
 
 
-
-
+Route::post('/cancelProductFucntion',[ajaxcontroller::class,'cancelProductFucntion']);
 
 
 
@@ -126,4 +132,10 @@ Route::get('single_products/{id}/{varid}', [ProductController::class, 'customRed
 Route::post('/checkout', [CheckController::class, 'singlproData']);
 Route::post('/siglesizedata', [ProductController::class, 'sigleajaxdata']);
 Route::POST('/couponapply',[CouponController::class, 'coupondats']);
+// payment page
+Route::post('/payment',[PaymentController::class,'webpaymentIndexFunction']);
+// payment process
+Route::POST('/payment_request',[PaymentController::class,'initiateTransaction']);
+Route::post('/payment_response', [PaymentResponseController::class,'handleResponse']);
+Route::post('/payment_response_web', [PaymentResponseController::class,'handleResponseWeb']);
 ?>

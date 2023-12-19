@@ -11,13 +11,15 @@
                 <div class="col-lg-6  col-12">
                     <div class="regst_sec">
                         <h5 class="wel_re">Welcome <img src="/assets/images/hand.png" class="img-fluid" alt=""></h5>
+                        <p>Welcome to your Healthy store! Sign in now to explore the Fresh & healthier groceries </p>
                         <form class="register_form" method="POST">
                             @csrf
                             <div class="row  secdrt">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Full Name</label>
-                                        <input type="text" class="form-control full_name" name="full_name">
+                                        <input type="text" class="form-control full_name" name="full_name"
+                                            maxlength="40" onkeydown="return /[a-z ]/i.test(event.key)">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -32,7 +34,7 @@
                                         <div class="paswer">
                                             <div class="input-group">
                                                 <input class="form-control  bnub" id="myInput1" type="password"
-                                                    name="password" required="" placeholder="Password"
+                                                    name="password" required="" placeholder="Password" maxlength="50"
                                                     autocomplete="off">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text toggle-password1 form-control"
@@ -56,7 +58,8 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Address</label>
-                                        <input type="text" class="form-control address" name="address" class="address">
+                                        <input type="text" class="form-control address" name="address" class="address"
+                                            maxlength="120">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -151,6 +154,9 @@
     <script>
         $(document).ready(function() {
 
+
+
+
             const validator = new JustValidate(".register_form", {
                 validateBeforeSubmitting: true,
             });
@@ -167,47 +173,52 @@
                         rule: 'maxLength',
                         value: 30,
                     }
-                    ])
-                    .addField('.email', [{
-                            rule: 'required',
-                        },
-                        {
-                            rule: 'email',
-                        }
-                    ])
-                    .addField('.bnub', [{
-                            rule: 'required',
-                        },
-                        {
-                            rule: 'password',
-                        }
-                    ])
-                    .addField('.phone', [{
-                            rule: 'required',
-                        }, {
-                            rule: 'minLength',
-                            value: 10,
-                        },
-                        {
-                            rule: 'maxLength',
-                            value: 10,
-                        },
-                    ])
-                    .addField('.address', [{
-                            rule: 'required',
-                        },
-                        {
-                            rule: 'minLength',
-                            value: 3,
-                        },
-                        {
-                            rule: 'maxLength',
-                            value: 120,
-                        }
-                    ])
-                    .addField('.pincode', [{
+                ])
+                .addField('.email', [{
                         rule: 'required',
-                    }, ])
+                    },
+                    {
+                        rule: 'email',
+                    }
+                ])
+                .addField('.bnub', [{
+                        rule: 'required',
+                    },
+                    // {
+                    //     rule: 'password',
+                    // }
+                    {
+                        rule: 'customRegexp',
+                        value: /^(?=.*[!@#$&])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
+                        errorMessage: 'Min 8 characters with at least one numeric, one alphabet, and one symbol.'
+                    },
+                ])
+                .addField('.phone', [{
+                        rule: 'required',
+                    }, {
+                        rule: 'minLength',
+                        value: 10,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 10,
+                    },
+                ])
+                .addField('.address', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 120,
+                    }
+                ])
+                .addField('.pincode', [{
+                    rule: 'required',
+                }, ])
 
 
                 .onSuccess(() => {

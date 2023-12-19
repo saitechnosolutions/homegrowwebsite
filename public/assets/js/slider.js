@@ -41,6 +41,46 @@ $('.rsr').slick({
 
 
 
+$('.mobile_rsr').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    touchThreshold: 100,
+    // centerMode: true,
+    autoplay: true,
+    arrows: false,
+    autoplaySpeed: 1000,
+    margin: 10,
+    speed: 3000,
+    focusOnSelect: true,
+    pauseOnHover: true,
+    cssEase: 'linear',
+    responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+});
+
 
 
 
@@ -50,12 +90,12 @@ $('.first_slick').slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    touchThreshold: 100,
+    // touchThreshold: 100,
     // centerMode: true,
     // autoplay: true,
     autoplaySpeed: 1000,
     margin: 10,
-    speed: 3000,
+    speed: 2000,
     focusOnSelect: true,
     pauseOnHover: true,
     cssEase: 'linear',
@@ -70,14 +110,18 @@ $('.first_slick').slick({
             breakpoint: 600,
             settings: {
                 slidesToShow: 3,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                autoplaySpeed: 1000,
             }
         },
         {
             breakpoint: 480,
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                 autoplay: true,
+                autoplaySpeed: 2000,
+                dots: false,
             }
         }
     ]
@@ -112,7 +156,7 @@ $(document).ready(function() {
         autoplaySpeed: 5000,
         slidesToShow: 1,
         speed: 500,
-        fade: true,
+        fade: false,
         cssEase: 'linear'
     });
 

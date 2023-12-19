@@ -173,8 +173,62 @@
         //     });
         // });
     </script>
+    <script>
+        $(document.body).on('click', function(e) {
+            // Check if the clicked element is not inside the first dropdown or the new dropdown
+            if (!$(e.target).closest('.navbar-toggler').length &&
+                !$(e.target).closest('.dropdown-content').length &&
+                !$(e.target).closest('.dropstart').length) {
+                // Close the first dropdown
+                $('#navbarTogglerDemo03').removeClass('show');
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            // Get the button text content
+            var buttonText = this.textContent;
 
+            // Create a temporary textarea element
+            var tempTextarea = document.createElement('textarea');
 
+            // Set the value of the textarea to the button text content
+            tempTextarea.value = buttonText;
+
+            // Append the textarea to the document
+            document.body.appendChild(tempTextarea);
+
+            // Select the text in the textarea
+            tempTextarea.select();
+
+            // Use the Clipboard API to copy the selected text
+            navigator.clipboard.writeText(buttonText)
+                .then(function() {
+                    // Successful copy, you can perform any additional actions here
+                })
+                .catch(function(err) {
+                    console.error('Unable to copy text to clipboard', err);
+                })
+                .finally(function() {
+                    // Remove the temporary textarea
+                    document.body.removeChild(tempTextarea);
+                });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Function to show the modal
+            function showModal() {
+                $('#ofersModal').modal('show');
+            }
+            showModal();
+
+            setInterval(function() {
+                showModal();
+            }, 60000000); // 60000 milliseconds = 1 minute
+        });
+    </script>
 
 
     <script>
@@ -372,6 +426,7 @@
 
 
     <script>
+        // all categories and  home
         function increaseValue(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
@@ -382,13 +437,16 @@
         function decreaseValue(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
-            value < 1 ? value = 1 : '';
-            value--;
+            // value < 1 ? value = 1 : '';
+            // value--;
+            value = (value <= 1) ? 1 : value - 1;
             document.getElementById(id + '-number').value = value;
         }
 
 
-        // add to cart     yesterdayremove
+        // add to cart
+
+
         function increaseValue1(id) {
             var value = parseInt(document.getElementById(id + '-number').value, 10);
             value = isNaN(value) ? 0 : value;
@@ -419,7 +477,11 @@
             const maxqty = parseInt(input.attr("max"));
             if (parseInt(input.val()) < maxqty) {
                 input.val(parseInt(input.val()) + 1);
+
                 updatePriceAndTotal(offerPrice);
+
+                updateTotalCartAmount();
+
             } else {
                 Toastify({
                     text: "Out Of Stock",
@@ -437,6 +499,7 @@
             if (parseInt(input.val()) > 1) {
                 input.val(parseInt(input.val()) - 1);
                 updatePriceAndTotal(offerPrice);
+                updateTotalCartAmount()
             }
         }
 
@@ -446,7 +509,7 @@
             const quantity = parseInt(input.val());
             const price = quantity * parseInt(offerPrice);
 
-            priceElement.text(`₹${price}`);
+            // priceElement.text(`₹${price}`);
 
         }
 
@@ -490,13 +553,20 @@
                 totalamt = parseFloat(proprice) * parseFloat(qtty);
                 $('#totalamt' + idd).val(totalamt.toFixed(2));
             } else {
-                alert("Out of Stock");
+                Toastify({
+                    text: "Out Of Stock",
+                    className: "info",
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    }
+                }).showToast();
             }
         }
 
         function decrement(idd1, event) {
             var qtty1 = $('#qty' + idd1).val();
-            var minqty = $('#minqty' + idd1).val();
+            var minqty = 1;
+            // var minqty = $('#minqty' + idd1).val();
             var proprice1 = $('#proprice' + idd1).val();
             var mrprice = $('#mrprice' + idd1).val();
             var totalamtt;
@@ -592,30 +662,192 @@
                     $('.d_pincode').val(pincode);
 
                     var $dropdown = $('.d_landmark');
-            $dropdown.append('<option value="' + landmark + '" selected>' + landmark + '</option>');
+                    $dropdown.append('<option value="' + landmark + '" selected>' + landmark + '</option>');
                     $('.d_landmark').append(option);
                 } else {
                     $('.same_adress_row').hide();
                 }
             });
+            // ============checkout form validation ====================
+            $('.checkoutform').on('click', function() {
+                checkfullname();
+                checkphone();
+                checkmail();
+                checkaddress();
+                checkpincode();
+                checkstate();
+                checkcity();
+                checkarea();
+
+                if (checkfullname() == true && checkphone() == true && checkmail() == true &&
+                    checkaddress() == true && checkpincode() == true && checkstate() == true &&
+                    checkcity() ==
+                    true && checkarea() == true) {
+
+                    $(".checkoutform").attr('type', 'submit');
+                } else {
+                    $(".checkoutform").attr('type', 'button');
+                }
+            });
+            $('.c_userid').on("input", function() {
+                checkfullname();
+            });
+            $('.c_phone').on("input", function() {
+                checkphone();
+            });
+            $('.c_email').on("input", function() {
+                checkmail();
+            });
+            $('.c_addres').on("input", function() {
+                checkaddress();
+            });
+            $('.c_pincode').on("input", function() {
+                checkpincode();
+            });
+            $('.c_state').on("input", function() {
+                checkstate();
+            });
+            $('.c_city').on("input", function() {
+                checkcity();
+            });
+            $('.c_landmark').on("input", function() {
+                checkarea();
+            });
+
+            function checkfullname() {
+                let fullname = $('.c_userid').val();
+                if (fullname == '') {
+                    $("#msg1").html("*Please enter Full Name");
+                    $('#msg1').show();
+                    return false
+                } else {
+                    $('#msg1').hide();
+                    return true
+                }
+            }
+
+            function checkphone() {
+                let Phone01 = $('.c_phone').val();
+                var Pattern = /^[6,7,8,9][0-9]{0,9}$/;
+
+                if (Phone01 == '') {
+                    $("#msg2").html("*Please enter the Phone Number");
+                    $("#msg2").show();
+                    return false
+                } else if (Phone01.length < 10 || Phone01.length > 10) {
+                    $("#msg2").html('*Please correct format');
+                    $("#msg2").show();
+                    return false
+                } else if ((!Pattern.test(Phone01))) {
+                    $("#msg2").html('*Please correct format');
+                    $("#msg2").show();
+                    return false
+                } else {
+                    $("#msg2").hide();
+                    return true
+                }
+            }
+
+            function checkmail() {
+                let Email = $('.c_email').val();
+                mail = /^([A-Za-z0-9_.])+\@([a-z])+\.([a-z])+$/;
+
+                if (Email == '') {
+                    $("#msg3").html("* Please enter the email");
+                    $("#msg3").show();
+                    return false
+                } else if ((!mail.test(Email))) {
+                    $("#msg3").html("* Enter  email correct format");
+                    $("#msg3").show();
+                    return false
+                } else {
+                    $("#msg3").hide();
+                    return true
+                }
+            }
+
+            function checkaddress() {
+                let addres = $('.c_addres').val();
+                if (addres == '') {
+                    $("#msg4").html("*Please enter address");
+                    $('#msg4').show();
+                    return false
+                } else {
+                    $('#msg4').hide();
+                    return true
+                }
+            }
+
+            function checkpincode() {
+                let pincode = $('.c_pincode').val();
+                if (pincode == '') {
+                    $("#msg5").html("This field is required");
+                    $('#msg5').show();
+                    return false
+                } else if (pincode.length < 6 || pincode.length > 6) {
+                    $("#msg5").html('Pincode should be 6 characters');
+                    $("#msg5").show();
+                    return false
+                } else {
+                    $('#msg5').hide();
+                    return true
+                }
+            }
+
+            function checkstate() {
+                let state = $('.c_state').val();
+                if (state == '') {
+                    $("#msg6").html("This field is required");
+                    $('#msg6').show();
+                    return false
+                } else {
+                    $('#msg6').hide();
+                    return true
+                }
+            }
+
+            function checkcity() {
+                let city = $('.c_city').val();
+                if (city == '') {
+                    $("#msg7").html("This field is required");
+                    $('#msg7').show();
+                    return false
+                } else {
+                    $('#msg7').hide();
+                    return true
+                }
+            }
+
+            function checkarea() {
+                let area = $('.c_landmark').val();
+                if (area == '') {
+                    $("#msg8").html("This field is required");
+                    $('#msg8').show();
+                    return false
+                } else {
+                    $('#msg8').hide();
+                    return true
+                }
+            }
+
         });
     </script>
 
 
 
-<script>
-    var list = document.querySelectorAll('.des_one1 ')
+    <script>
+        var list = document.querySelectorAll('.des_one1 ')
 
-    function setactive() {
+        function setactive() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.toggle('active')
+        }
+
+
         list.forEach((item) =>
-            item.classList.remove('active'));
-        this.classList.toggle('active')
-    }
-
-
-    list.forEach((item) =>
-        item.addEventListener('click', setactive));
-</script>
+            item.addEventListener('click', setactive));
+    </script>
 
 
     <script>
@@ -625,14 +857,57 @@
             $('.entr_otp').hide();
             $('#sms_ot').on('click', function() {
                 $('.entr_passwrd').show();
-                $('#sms_ot_login').show();
-                $('.entr_otp').show();
-                $('#sms_ot').hide();
             })
+        });
+
+        $(document).ready(function() {
+            $('#set_password').hide();
+            $('#forgot_sms_ot_login').hide();
+
+            $('.frgot_enter_paswrd').hide();
+            $('.entr_fotgot_otps').hide();
         });
     </script>
 
 
+
+    <script>
+        $(function() {
+
+            // Function to extract query parameter from URL
+            function getQueryParam(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            // Get the category ID from the URL
+            const categoryId = getQueryParam('categoryid');
+            console.log(categoryId);
+
+            if (categoryId) {
+                $("#" + categoryId).trigger("click");
+            }
+
+        })
+    </script>
+
+
+    <script>
+           function updateTotalCartAmount (){
+            let totalCartValue = 0;
+$('[name="ogproprice[]"]').each(function (index,element){
+
+    totalCartValue += (element.value * $(".cart_qty")[index].value);
+    $(".totalamtcart").val(totalCartValue);
+    $("#totalAmount").html(`₹${totalCartValue}`)
+})
+        }
+
+        $(function () {
+            updateTotalCartAmount();
+        })
+
+    </script>
 
 
 </body>

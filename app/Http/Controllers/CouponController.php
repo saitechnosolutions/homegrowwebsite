@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\coupon;
+use App\Models\Coupon;
 use App\Models\product_order;
 use App\Models\productorder;
 use Carbon\Carbon;

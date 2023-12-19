@@ -11,13 +11,13 @@
                         @csrf
                         <div class="tps">
                             <h5 class="heer"data-aos="fade-up" data-aos-duration="500">Find Your</h5>
-                            <h5 class="heer1" data-aos="fade-up" data-aos-duration="500">Interior Product Here</h5>
+                            <h5 class="heer1" data-aos="fade-up" data-aos-duration="500">Product Here</h5>
                             <div class="cont_cd">
                                 <div class="toors" data-aos="fade-up" data-aos-duration="500">
                                     <div class="form-group">
                                         <label for="Name" class="fdsfddfd">Name</label>
                                         <input type="text" class="form-control name" name="name"
-                                            placeholder="Enter Your Name Here" required
+                                            placeholder="Enter Your Name Here" required maxlength="30"
                                             onkeydown="return /[a-z ]/i.test(event.key)">
                                         <span id="message1" class="text-danger"></span>
                                     </div>
@@ -31,7 +31,7 @@
                                             </div>
                                             <input type="text" class="form-control phone" id="PhoneNumber" name="phone"
                                                 placeholder="Enter Your Phone Number Here" maxlength="10" required
-                                                onkeypress="return phone1(event);"  oninput="checkPhoneNumberLength(this)">
+                                                onkeypress="return phone1(event);" oninput="checkPhoneNumberLength(this)">
                                         </div>
                                         <span id="message3" class="text-danger"></span>
                                     </div>
@@ -39,20 +39,14 @@
                                 <div class="toors" data-aos="fade-up" data-aos-duration="500">
                                     <div class="form-group">
                                         <label for="Country" class="fdsfddfd">Products</label>
-                                        <select class="form-control products" id="Country" name="products">
+                                        <select class="form-select products" id="Country" name="products">
                                             <option value="" hidden> Select Products</option>
-                                            <option value="	 PVC MARBLE SHEET"> PVC MARBLE SHEET</option>
-                                            <option value=" PVC 3D marble sheet"> PVC 3D marble sheet</option>
-                                            <option value="PVC Wood Series ">PVC Wood Series </option>
-                                            <option value="Wpc interior">Wpc interior</option>
-                                            <option value="Wpc Exterior">Wpc Exterior</option>
-                                            <option value="WPC Decking ">WPC Decking </option>
-                                            <option value="Wooden flooring & laminated flooring ">Wooden flooring &
-                                                laminated flooring </option>
-                                            <option value=" Stone coated roofing "> Stone coated roofing </option>
-                                            <option value="Soffit Panels">Soffit Panels</option>
-                                            <option value="Wallpaper ">Wallpaper </option>
-                                            <option value=" PU stone"> PU stone</option>
+                                            @if ($pro = App\Models\product::all())
+                                                @foreach ($pro as $pr)
+                                                    <option value="{{ $pr->product_name }}">{{ $pr->product_name }}</option>
+                                                @endforeach
+                                            @endif
+
                                         </select>
                                         <span id="message5" class="text-danger"></span>
                                     </div>
@@ -60,7 +54,8 @@
                                 <div class="toors" data-aos="fade-up" data-aos-duration="500">
                                     <div class="form-group">
                                         <label for="Message" class="fdsfddfd">Other Details</label>
-                                        <textarea class="form-control comments" name="comments" id="" rows="2" placeholder="Any Message"></textarea>
+                                        <textarea class="form-control comments" name="comments" id="" rows="2" maxlength="150"
+                                            placeholder="Any Message"></textarea>
                                         <span id="message4" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -96,10 +91,10 @@
 
                     <h3 class="foic">Address</h3>
                     <p class="foicp1">Home Grow Enterprises - Vadavalli, Coimbatore.
-</p>
+                    </p>
 
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-4 col-12 sds11 aos-init" data-aos="fade-down"
+                <div class="col-lg-3 col-md-3 col-sm-4 col-12 sds11 aos-init" data-aos="fade-down"
                     data-aos-duration="500" id="tel">
                     <img src="assets/images/phic.png">
 
@@ -137,12 +132,12 @@
                     <div class="footer-icon11">
                         <h5 class="foot_head11">Follow Us</h5>
                         <div class="asstrs">
-                            <a href=" " target="_blank" class="yue"><i class="fab fa-instagram  footing-icons"
+                            <a href="https://www.instagram.com/Home.Grow.CBE" target="_blank" class="yue"><i
+                                    class="fab fa-instagram  footing-icons" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=917788996891" target="_blank" class="yue"><i class="fab fa-whatsapp  footing-icons"
                                     aria-hidden="true"></i></a>
-                            <a href="" target="_blank" class="yue"><i class="fab fa-whatsapp  footing-icons"
-                                    aria-hidden="true"></i></a>
-                            <a href="" target="_blank" class="yue"><i class="fab fa-facebook-f  footing-icons"
-                                    aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/Home.Grow.CBE" target="_blank" class="yue"><i
+                                    class="fab fa-facebook-f  footing-icons" aria-hidden="true"></i></a>
                             <!--<a href="" target="_blank"><i class="fab fa-twitter  footing-icons"-->
                             <!--        aria-hidden="true"></i></a>-->
                             <!--<a href="" target="_blank"><i class="fab fa-youtube  footing-icons"-->

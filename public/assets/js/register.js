@@ -64,21 +64,22 @@ $(document).on('click', '.state', function () {
 // });
 
 
-
-
-$(document).ready(function() {
-    $('#pin_code_type').on('input', function() {
+$(document).ready(function () {
+    $('#pin_code_type').on('input', function () {
         var pinCode = $(this).val();
-        // if (pinCode.length === 6) {
+
+        // Clear existing options in the dropdown
+        $('#city_input').empty();
+
+        if (pinCode.length === 6) {
             // Make AJAX request to Laravel backend
             $.ajax({
                 url: '/get-address-details',
                 method: 'GET',
-                data: { pincode: pinCode },
-                success: function(response) {
-                    // Clear existing options in the dropdown
-                    $('#city_input').empty();
-
+                data: {
+                    pincode: pinCode
+                },
+                success: function (response) {
                     var district = response[0].match(/District: (.*?),/)[1];
                     var state = response[0].match(/State: (.*)/)[1];
 
@@ -86,11 +87,9 @@ $(document).ready(function() {
                     $('#pin_state').val(state);
 
                     // Iterate through each city in the response and add it to the dropdown
-                    response.forEach(function(cityDetails) {
+                    response.forEach(function (cityDetails) {
                         // Extract city, district, and state
                         var cityMatch = cityDetails.match(/City: (.*?),/);
-
-
                         var city = cityMatch ? cityMatch[1] : '';
 
                         // Append a new option to the dropdown
@@ -100,13 +99,18 @@ $(document).ready(function() {
                         }));
                     });
                 },
-                error: function(error) {
+                error: function (error) {
                     console.error('Error fetching address details:', error);
                 }
             });
-        // }
+        } else {
+            // Clear #pin_district and #pin_state if the length is less than 6
+            $('#pin_district').val('');
+            $('#pin_state').val('');
+        }
     });
 });
+
 
 
 
@@ -177,10 +181,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
-
-
-
-

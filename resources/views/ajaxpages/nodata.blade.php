@@ -1,3 +1,3 @@
 <div>
-    <p class="text-center pt-3">No data available for the specified price range.</p>
+    <p class="text-center pt-3">No Products available for the specified Category.</p>
 </div>

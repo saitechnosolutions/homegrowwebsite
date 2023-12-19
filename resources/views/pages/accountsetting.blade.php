@@ -26,7 +26,7 @@
                             <img src="/assets/images/usr.png" alt="">
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
-                                <h5 class="hel2">{{ Auth::user()->first_name }}</h5>
+                                <h5 class="hel2">{{ Auth::user()->name }}</h5>
                             </div>
                         </a>
 
@@ -68,14 +68,24 @@
                                             oninput="checkPhoneNumberLength(this)" name="phone">
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <!--<div class="col-lg-12">-->
+                                <!--    <div class="form-group  pt-3">-->
+                                <!--        <label class="roboto_set">User Image</label>-->
+                                <!--        <input type="file" class="form-control clientsup_img" name="image"   accept="image/jpeg, image/png">-->
+                                <!--    </div>-->
+                                <!--</div>-->
+                                <div class="col-lg-12 passwor_manage_acc">
                                     <div class="form-group  pt-3">
-                                        <label class="roboto_set">User Image</label>
-                                        <input type="file" class="form-control clientsup_img" name="image">
+                                        <label class="roboto_set">Password <span class="text-danger">Min 8 characters with at least one numeric, one alphabet, and one symbol.</span></label>
+                                        <input type="email" placeholder="Enter Password"
+                                            class="form-control passwor_manage_acc" name="Password">
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <button type="button" id="show_passwoi" class="btn  mt-1">Update password </button>
+                                </div>
                                 <div class="col-lg-4">
-                                    <button type="button" id="updateButton" class="btn home-btn3 mt-4">Update </button>
+                                    <button type="button" id="updateButton" class="btn home-btn3 mt-2">Update </button>
                                 </div>
                             </div>
                         </form>
@@ -102,6 +112,16 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            $('.passwor_manage_acc').hide();
+
+            $('#show_passwoi').on('click', function() {
+                $('.passwor_manage_acc').show();
+                $('#show_passwoi').hide();
+            })
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
 
             const validator = new JustValidate("#update_user", {
                 validateBeforeSubmitting: true,
@@ -126,6 +146,18 @@
                     {
                         rule: 'email',
                     }
+                ])
+                .addField('.passwor_manage_acc', [{
+                        rule: 'required',
+                    },
+                    // {
+                    //     rule: 'password',
+                    // }
+                    {
+                        rule: 'customRegexp',
+                        value: /^(?=.*[!@#$&])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
+                        errorMessage: 'Min 8 characters with at least one numeric, one alphabet, and one symbol.'
+                    },
                 ])
                 .addField('.phone', [{
                         rule: 'required',
@@ -184,7 +216,7 @@
                                 swal.fire('Error!', xhr.responseJSON.error, 'error');
                             } else {
                                 swal.fire('Error!', 'An error occurred during the update.',
-                                'error');
+                                    'error');
                             }
                         }
                     });

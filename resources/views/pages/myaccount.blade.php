@@ -23,10 +23,15 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sticky-top">
                         <a href="/myaccount" class="accounting ">
-                            <img src="/assets/images/usr.png" alt="">
+                            @if (Auth::user()->profile_image)
+                                <img src="{{ env('MAIN_URL') }}images/{{ Auth::user()->profile_image  }}" alt="">
+                            @else
+                                <img src="/assets/images/usr.png" alt="">
+                            @endif
+
                             <div class="names">
                                 <h5 class="hel1">Hello,</h5>
-                                <h5 class="hel2">{{ Auth::user()->first_name }}</h5>
+                                <h5 class="hel2">{{ Auth::user()->name }}</h5>
                             </div>
                         </a>
 
@@ -81,7 +86,8 @@
                         <h5 class="def_addrer"><strong>Default</strong> <span> Address</span> </h5>
                         <p class="def_del">Delivery at <strong>
                                 @if ($add = App\Models\user_addres::where('user_id', Auth::user()->user_id)->where('id', Auth::user()->user_default_address_id)->first())
-                                    {{ $add->address_line_one }} , {{ $add->area_name }}, {{ $add->city }} , {{ $add->state }} - {{ $add->pincode }}
+                                    {{ $add->address_line_one }} , {{ $add->area_name }}, {{ $add->city }} ,
+                                    {{ $add->state }} - {{ $add->pincode }}
                                 @endif
                             </strong> </p>
                     </div>

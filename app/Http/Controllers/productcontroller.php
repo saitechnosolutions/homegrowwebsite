@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use App\Models\product_varient;
-use App\Models\productstock;
+use App\Models\ProductStock;
 use Illuminate\Http\Request;
 
 class productcontroller extends Controller
@@ -16,7 +16,7 @@ class productcontroller extends Controller
 
         $varid = product_varient::find($varid);  //don't use this
 
-        $productstock = productstock::select('*')->where('pro_ver_id', $proid->id)->first();
+        $productstock = ProductStock::select('*')->where('pro_ver_id', $proid->id)->first();
 
         $protbl_data = product::select('*')->where('id', $proid->product_id)->first();
         $varient_id = product_varient::select('*')->where('id', $proid->id)->first();
@@ -35,5 +35,7 @@ class productcontroller extends Controller
 
 
     }
+
+
 
 }

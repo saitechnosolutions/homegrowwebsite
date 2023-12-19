@@ -37,7 +37,7 @@
                                 <li class="listers"><a href="/editaddress" class="vart active">Manage Addresses</a></li>
                             </ul>
                         </div>
-                        <a href="" class="btn logout_btn">Logout</a>
+                        <a href="/logout" class="btn logout_btn">Logout</a>
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-7">
@@ -46,6 +46,13 @@
                             @csrf
                             <div class="row ac_sett justify-content-center">
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}" id="">
+                                <div class="col-lg-6">
+                                    <div class="form-group  pt-2">
+                                        <label for="" class="roboto_set">Name</label>
+                                        <input type="text " class="form-control firstname" name="firstname" maxlength="50">
+                                        <span id="message1" class="text-danger"></span>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group  pt-2">
                                         <label for="" class="roboto_set">Address</label>
@@ -97,7 +104,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="" class="roboto">Area</label>
                                         <select name="city_input" class="form-select city_input" id="city_input">
@@ -184,6 +191,18 @@
             });
             // const validator = new JustValidate('.updatesbanner');
             validator
+            .addField('.firstname', [{
+                        rule: 'required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 3,
+                    },
+                    {
+                        rule: 'maxLength',
+                        value: 50,
+                    }
+                ])
                 .addField('.address', [{
                         rule: 'required',
                     },

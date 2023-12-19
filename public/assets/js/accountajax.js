@@ -1,11 +1,15 @@
 // ========================singleproduct code ===================
+
+
 $(document).ready(function () {
     $('.price_ty').on('click', function () {
         var sizevar_id = $(this).data('vrid');
         $('.price_ty').removeClass('active');
-        $('.sts').addClass('active1');
+        $('.sts').removeClass('active1');
+        $(this).addClass('active1');
         //default qty 1 set
         $('.productqty').val('1');
+
 
         $.ajaxSetup({
             headers: {
@@ -61,27 +65,45 @@ $(document).ready(function () {
     $('#sms_ot').on('click', function () {
         var mobile = $('#mobileInput').val();
 
+        if (!mobile) {
+            swal.fire('Error!', 'Please enter a mobile number', 'error');
+            return;
+        } else if (mobile.length < 10) {
+            swal.fire('Error!', 'Mobile number must be at least 10 characters', 'error');
+            return;
+        }
+        $("#sms_ot").attr("disabled", true);
+
         $.ajax({
             url: '/sendOtp',
             type: 'post',
-            contentType: 'application/json',  // Set content type to JSON
+            contentType: 'application/json',
             data: JSON.stringify({
                 'mobile': mobile,
             }),
+            complete: function () {
+                $("#sms_ot").removeAttr("disabled");
+            },
             success: function (response) {
                 console.log(response);
-                swal.fire(
-                    'Success',
-                    'OTP send Successfully',
-                    'success'
-                )
+                if (response.includes('Mobile number already exists')) {
+                    $('.entr_otp').hide();
+                    $('#sms_ot_login').hide();
+                    $('#sms_ot').show();
+                    swal.fire('Error!', response, 'error');
+                } else {
+                    $('.entr_otp').show();
+                    $('#sms_ot_login').show();
+                    $('#sms_ot').hide();
+                    swal.fire('Success', 'OTP sent Successfully', 'success');
+                }
             },
             error: function (xhr) {
                 console.log(xhr);
                 if (xhr.responseJSON && xhr.responseJSON.error) {
                     swal.fire('Error!', xhr.responseJSON.error, 'error');
                 } else {
-                    swal.fire('Error!', 'An error occurred during the update.', 'error');
+                    swal.fire('Error!', 'Already  used this mobile number', 'error');
                 }
             }
         });
@@ -95,34 +117,233 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#sms_ot_login').on('click', function () {
-        // Get entered OTP from the input field
         var enteredOTP = $('#otpInput').val();
-
-        // Make the AJAX request to check the OTP
+        var mobile = $('#mobileInput').val();
         $.ajax({
-            url: '/checkOtp', // Replace with your actual route
+            url: '/checkOtp',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify({
                 'otp': enteredOTP,
+                'mobile': mobile,
             }),
             success: function (response) {
                 console.log(response);
                 if (response.success) {
-                    // OTP is correct, handle success
-                    swal.fire('Success', 'OTP is correct!', 'success');
+                    swal.fire({
+                        title: 'Success',
+                        text: 'Login Successfully',
+                        icon: 'success',
+                        didClose: function () {
+                            location.reload();
+                        }
+                    });
                 } else {
-                    // OTP is incorrect, handle error
-                    swal.fire('Error!', 'Incorrect OTP. Please try again.', 'error');
+                    swal.fire({
+                        title: 'Warning',
+                        text: 'Incorrect OTP. Please try again.',
+                        icon: 'warning'
+                    });
                 }
             },
             error: function (xhr) {
                 console.log(xhr);
-                swal.fire('Error!', 'An error occurred during the OTP check.', 'error');
+                swal.fire({
+                    title: 'Warning',
+                    text: 'Incorrect OTP. Please check.',
+                    icon: 'warning'
+                });
             }
         });
     });
 });
+
+
+
+
+
+
+
+
+// =================================== forgot send otp =============
+
+$(document).ready(function () {
+    $('#forgot_sms_ot').on('click', function () {
+        var mobile = $('.forgot_mobileInput').val();
+
+        if (!mobile) {
+            swal.fire('Error!', 'Please enter a mobile number', 'error');
+            return;
+        } else if (mobile.length < 10) {
+            swal.fire('Error!', 'Mobile number must be at least 10 characters', 'error');
+            return;
+        }
+
+        $("#forgot_sms_ot").attr("disabled", true);
+
+
+
+        $.ajax({
+            url: '/forgotsendOtp',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                'mobile': mobile,
+            }),
+            complete: function () {
+                $("#forgot_sms_ot").removeAttr("disabled");
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.includes('Mobile number already exists')) {
+                    $('#forgot_sms_ot').hide();
+                    $('.forgot_mobileInput').hide();
+                    swal.fire('Error!', response, 'error');
+                } else {
+
+                    $(".entr_fotgot_otps").show();
+                    $("#forgot_sms_ot").hide();
+                    $("#forgot_sms_ot_login").show();
+                    swal.fire('Success', 'OTP sent Successfully', 'success');
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                if (xhr.responseJSON && xhr.responseJSON.error) {
+                    swal.fire('Error!', xhr.responseJSON.error, 'error');
+                } else {
+                    swal.fire('Error!', 'New Mobile Number go to login.', 'error');
+                }
+            }
+        });
+
+
+    });
+});
+
+
+
+
+
+
+
+
+
+// ======================== FORGOT enter otp ============
+
+$(document).ready(function () {
+    $('#forgot_sms_ot_login').on('click', function () {
+        var enteredOTP = $('.entr_fotgot_otps').val();
+        var mobile = $('.forgot_mobileInput').val();
+        $.ajax({
+            url: '/forgotcheckOtp',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                'otp': enteredOTP,
+                'mobile': mobile,
+            }),
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    // OTP is correct, show password input
+
+                    $(".entr_fotgot_otps").hide();
+                    $(".frgot_enter_paswrd").show();
+                    $("#forgot_sms_ot_login").hide();
+                    $("#set_password").show();
+                    swal.fire({
+                        title: 'Success',
+                        text: 'OTP is correct! Please enter your password.',
+                        icon: 'success',
+                    });
+                } else {
+                    // Incorrect OTP, show warning
+                    swal.fire({
+                        title: 'Warning',
+                        text: 'Incorrect OTP. Please try again.',
+                        icon: 'warning'
+                    });
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                // Error in the request, show warning
+                swal.fire({
+                    title: 'Warning',
+                    text: 'Incorrect OTP. Please check.',
+                    icon: 'warning'
+                });
+            }
+        });
+    });
+});
+
+
+
+// =================================enter password ============
+
+
+
+
+$(document).ready(function () {
+    $('#set_password').on('click', function () {
+        var frgot_enter_paswrd = $('.frgot_enter_paswrd').val();
+        var mobile = $('.forgot_mobileInput').val();
+
+
+        if (!frgot_enter_paswrd) {
+            swal.fire({
+                title: 'Error',
+                text: 'Enter Password',
+                icon: 'error',
+            });
+            return;
+        }
+
+        $.ajax({
+            url: '/savepassword',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                'frgot_enter_paswrd': frgot_enter_paswrd,
+                'mobile': mobile,
+            }),
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    // OTP is correct, show password input
+                    $('#passwordInput').show();
+                    swal.fire({
+                        title: 'Success',
+                        text: 'password set successfully.',
+                        icon: 'success',
+                    })
+                    location.reload();
+                } else {
+                    // Incorrect OTP, show warning
+                    swal.fire({
+                        title: 'Warning',
+                        text: 'Incorrect OTP. Please try again.',
+                        icon: 'warning'
+                    });
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                // Error in the request, show warning
+                swal.fire({
+                    title: 'Warning',
+                    text: 'Incorrect OTP. Please check.',
+                    icon: 'warning'
+                });
+            }
+        });
+    });
+});
+
+
+
 
 
 
@@ -375,8 +596,7 @@ $("#searchwordsss").on("input", function () {
 
 
 $(document).ready(function () {
-    $('.add_new_cart_submit').on('click', function () {
-
+    $(document).on('click', ".add_new_cart_submit", function () {
         var product_main_id = $(this).closest("form").find('.product_main_id').val();
         var user_id = $('.user_id').val();
         var productqty = $(this).closest("form").find('.productqty').val();
@@ -401,13 +621,14 @@ $(document).ready(function () {
                     // Update modal content with product details
                     $('#add_new_cart_submit .product_name').text(response.product_name);
                     $('#add_new_cart_submit .he_para').text(response.product_price);
-                    $('#add_new_cart_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">₹' + response.mrp_price + '</span>');
+                    $('#add_new_cart_submit .he_para').html('₹' + response.offer_price + '  <span class="he_para1">₹' + response.mrp_price + '</span>');
+                    $('#add_new_cart_submit .product_image').attr('src', response.product_image);
 
                     if ($('#add_new_cart_submit').length > 0) {
                         $('#add_new_cart_submit').modal('show');
                         setTimeout(function () {
                             $('#add_new_cart_submit').modal('hide');
-                        }, 10000);
+                        }, 2000);
                     } else {
                         console.error('Modal not found!');
                     }
@@ -487,12 +708,12 @@ $(document).on("click", ".removes_carts", function () {
 
     swal.fire({
         title: "Are you sure?",
-        text: "You want to delete this Product in Cart..!",
+        text: "You want to remove this Product in Cart..!",
         icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, remove it!",
         cancelButtonText: "Cancel",
         allowOutsideClick: false,
         closeOnClickOutside: false,
@@ -543,12 +764,12 @@ $(document).on("click", ".removall_cart", function () {
 
     swal.fire({
         title: "Are you sure?",
-        text: "You want to delete all the cart products..!",
+        text: "You want to Remove all the cart products..!",
         icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, Remove it!",
         cancelButtonText: "Cancel",
         allowOutsideClick: false,
         closeOnClickOutside: false,
@@ -626,13 +847,14 @@ $(document).ready(function () {
                     // Update modal content with product details
                     $('#add_new_wishlist_submit .product_name').text(response.product_name);
                     $('#add_new_wishlist_submit .he_para').text(response.product_price);
-                    $('#add_new_wishlist_submit .he_para').html('₹' + response.offer_price + '<span class="he_para1">₹' + response.mrp_price + '</span>');
+                    $('#add_new_wishlist_submit .he_para').html('₹' + response.offer_price + '   <span class="he_para1">₹' + response.mrp_price + '</span>');
+                    $('#add_new_wishlist_submit .product_image').attr('src', response.product_image);
 
                     if ($('#add_new_wishlist_submit').length > 0) {
                         $('#add_new_wishlist_submit').modal('show');
                         setTimeout(function () {
                             $('#add_new_wishlist_submit').modal('hide');
-                        }, 10000);
+                        }, 2000);
                     } else {
                         console.error('Modal not found!');
                     }
@@ -671,12 +893,12 @@ $(document).on("click", ".removes_wishlist", function () {
 
     swal.fire({
             title: "Are you sure?",
-            text: "You want to delete this product from wishlist..!",
+            text: "You want to Remove this product from wishlist..!",
             icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, Remove it!",
             cancelButtonText: "Cancel",
             allowOutsideClick: false,
             closeOnClickOutside: false,
@@ -724,12 +946,12 @@ $(document).on("click", ".removall_wishlist", function () {
 
     swal.fire({
             title: "Are you sure?",
-            text: "You want to delete all this product from wishlist..!",
+            text: "You want to remove all this product from wishlist..!",
             icon: "question",
             showCancelButton: true, // Set showCancelButton to true
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, remove it!",
             cancelButtonText: "Cancel", // Text for the cancel button
             allowOutsideClick: false,
             closeOnClickOutside: false,
@@ -766,6 +988,51 @@ $(document).on("click", ".removall_wishlist", function () {
 });
 
 
+
+
+
+
+
+
+$(document).ready(function () {
+    $('.nav-link1').click(function () {
+        var categoryId = $(this).data('category');
+
+        // var checkedValues = $('.nav-link1:checked').map(function () {
+        //     return $(this).data('category');
+        // }).toArray();
+
+        if (categoryId === 'all') {
+            $.ajax({
+                url: '/getAllVariants',
+                type: 'GET',
+                success: function (response) {
+                    $('#productsContainer').html(response);
+                    $('.er').hide();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        } else {
+            $.ajax({
+                url: '/getCategory',
+                type: 'post',
+                data: {
+                    "categoryId": categoryId,
+                    // "checkedValues": checkedValues.length ? checkedValues : []
+                },
+                success: function (response) {
+                    $('#productsContainer').html(response);
+                    $('.er').hide();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+    });
+});
 
 
 
@@ -881,17 +1148,63 @@ $(document).ready(function () {
 //  price range filter
 
 
+//  price range filter
+
 $(document).ready(function () {
     $('.rabge').on('change', function () {
+        var checkedValues = $('.filtercheck:checked').map(function () {
+            return $(this).val();
+        }).toArray();
+
+        // Declare categoryId outside the click event
+        var categoryId;
+
+
+            categoryId = $(".nav-link.des_one1.active").data('category');
+
+
         var price_range = $('.price_range').serialize();
 
         $.ajax({
             url: '/price_range',
             type: 'post',
-            data: price_range,
+            data: {
+                checkedValues: checkedValues,
+                "min_num": $(".range-min").val(),
+                "max_num": $(".range-max").val(),
+                "categoryId": categoryId,
+            },
             success: function (response) {
-                $('#productsContainer').html(response)
-                $('.er').hide()
+                $('#productsContainer').html(response);
+                $('.er').hide();
+            },
+            error: function (error) {
+                // Handle error if needed
+            }
+        });
+    });
+});
+
+
+
+
+$(document).ready(function () {
+    $('#cancel_productses').on('click', function () {
+        var cancel = $('.cancel_product_class').serialize();
+
+        $.ajax({
+            url: '/cancelProductFucntion',
+            type: 'post',
+            data: cancel,
+            success: function (response) {
+                swal.fire(
+                    'Success',
+                    'cancel Product successfully',
+                    'success'
+                );
+                location.reload();
+                // $('#productsContainer').html(response)
+                // $('.er').hide()
             },
             error: function (error) {
 

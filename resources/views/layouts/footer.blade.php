@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary  ofers" hidden data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+<button type="button" class="btn btn-primary  ofers" hidden data-bs-toggle="modal" data-bs-target="#ofersModal"></button>
 
 {{-- <button type="button" class="btn btn-primary  ofers" data-bs-toggle="modal" data-bs-target="add_new_cart_submit"></button> --}}
 <!-- ========================== ADD TO CART  ================================== -->
@@ -13,13 +13,14 @@
                             <img src="/assets/images/succes.png" class="isod" alt="">
                             <p class="addes_csrtr">Item Added To Cart !</p>
                             <div class="weight">
-                                <img src="/assets/images/small.png" class="img-fluid" alt="">
+                                <img src="/assets/images/small.png" class="img-fluid product_image" id=""
+                                    alt="">
                                 <div class="pricre">
                                     <h5 class="product_name">Combo Smart</h5>
                                     <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span></h5>
                                 </div>
                             </div>
-                            <a href="/checkout" class=" btn home-btn3 poster">Proceed to Checkout</a>
+                            <a href="/mycart" class=" btn home-btn3 poster">Proceed to cart</a>
                             <a href="/" class="kalart">Back to Shopping</a>
                         </div>
                     </div>
@@ -28,6 +29,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -42,13 +44,13 @@
                             <img src="/assets/images/succes.png" class="isod" alt="">
                             <p class="addes_csrtr">Item Added To Wishlist !</p>
                             <div class="weight">
-                                <img src="/assets/images/small.png" class="img-fluid" alt="">
+                                <img src="/assets/images/small.png" class="img-fluid  product_image" alt="">
                                 <div class="pricre">
                                     <h5 class="product_name">Combo Smart</h5>
                                     <h5 class="he_para">₹349.00 <span class="he_para1">₹1128.00</span></h5>
                                 </div>
                             </div>
-                            <a href="/checkout" class=" btn home-btn3 poster">Proceed to Checkout</a>
+                            <a href="/mywishlist" class=" btn home-btn3 poster">Proceed to Wishlist</a>
                             <a href="/" class="kalart">Back to Shopping</a>
                         </div>
                     </div>
@@ -59,34 +61,61 @@
 </div>
 
 <!-- ==========================offer ================================== -->
-<div class="modal fade  offer_zone" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content sunber">
-            <div class="closed_opo">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body ">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <img src="/assets/images/comp.png" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-lg-6 text-center">
-                            <p class="tolog">Login to</p>
-                            <h5 class="rozha">Get 15% OFF Now</h5>
-                            <div class="ofer_full">
-                                <p class="code">Use code at checkout <a href="" class="btn home-btn6">GET MY
-                                        15% OFF</a> </p>
+
+@php
+    $userId = Auth::user()?->user_id;
+
+    $previousPurchaseCount = DB::table('product_orders')
+        ->where('user_id', $userId)
+        ->where('payment_status', 1)
+        ->count();
+
+@endphp
+
+@if (!$userId || $previousPurchaseCount == 0)
+
+    <div class="modal fade  offer_zone" id="ofersModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content sunber">
+                <div class="closed_opo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <div class="container">
+                        <div class="row align-items-center  leadese">
+                            <div class="col-lg-6">
+                                <img src="/assets/images/comp.png" class="img-fluid" alt="">
                             </div>
-                            <a href="" class="xsd btn home-btn7">Login</a>
+                            <div class="col-lg-6 text-center">
+                              @if (Auth::check())
+                                <p class="tolog"></p>
+                            @else
+                                <p class="tolog">Login to</p>
+                            @endif
+                                @if ($cou = App\Models\Coupon::first())
+                                    <h5 class="rozha">Get {{ $cou->discount }}% OFF on your first purchase</h5>
+                                @endif
+                                <div class="ofer_full">
+                                    <p class="code">Use code at checkout <button id="copyButton"
+                                            value="{{ $cou->codename }}" title="click to copying"
+                                            class="btn home-btn6">{{ $cou->codename }}</button> </p>
+                                </div>
+                                @if (Auth::check())
+                                    {{-- <a class="xsd btn home-btn7">{{ Auth::user()->name }}</a> --}}
+                                @else
+                                    <a class="xsd btn home-btn7"  data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">Login</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+@endif
 
 
 <footer class="footer_section">
@@ -104,8 +133,8 @@
                 <h5 class="foot_head">Quick Links</h5>
                 <ul class="footer_list">
                     <li> <a href="/" class="footer_anc"> Home </a></li>
-                    <li> <a href="/about" class="footer_anc"> About </a></li>
-                    <li> <a href="/allproducts" class="footer_anc"> Products </a></li>
+                    <li> <a href="/about" class="footer_anc"> About Us</a></li>
+                    <li> <a href="/allproducts" class="footer_anc"> All Categories </a></li>
                     <li> <a href="/contact" class="footer_anc"> Contact </a></li>
                     {{-- <li> <a href="/gallery" class="footer_anc"> Gallery </a></li> --}}
                 </ul>
@@ -142,12 +171,12 @@
                 <h5 class="foot_head1">Follow Us</h5>
 
                 <div class="footer-icon">
-                    <a href=" " target="_blank" class="art"><img src="/assets/images/fas.png"
+                    <a href="https://www.facebook.com/Home.Grow.CBE" target="_blank" class="art"><img src="/assets/images/fas.png"
                             class="img-fluid" alt=""></a>
-                    <a href="" target="_blank" class="art"><img src="/assets/images/ins1.png"
+                    <a href="https://www.instagram.com/Home.Grow.CBE" target="_blank" class="art"><img src="/assets/images/ins1.png"
                             class="img-fluid" alt=""></a>
-                    <a href="" target="_blank" class="art"><img src="/assets/images/you.png"
-                            class="img-fluid" alt=""></a>
+                    {{-- <a href="" target="_blank" class="art"><img src="/assets/images/you.png"
+                            class="img-fluid" alt=""></a> --}}
                 </div>
                 <h5 class="foot_head1">For Queries</h5>
                 <ul class="FOOT_NUMs">

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cart;
+use App\Models\Cart;
 use App\Models\city;
 use App\Models\product;
 use App\Models\product_varient;
+use App\Models\ProductSlot;
 use App\Models\state;
 use App\Models\User;
 use App\Models\user_addres;
@@ -84,6 +85,7 @@ class ajaxcontroller extends Controller
     public function add_adress(Request $request)
     {
         $user_id = $request->input("user_id");
+        $firstname = $request->input("firstname");
         $address = $request->input("address");
         $pin_state = $request->input("pin_state");
         $pin_district = $request->input("pin_district");
@@ -111,6 +113,7 @@ class ajaxcontroller extends Controller
         }
 
         $add_user->user_id = $user_id;
+        $add_user->address_first_name = $firstname;
         $add_user->address_line_one = $address;
         $add_user->state = $pin_state;
         $add_user->city = $pin_district;
@@ -123,7 +126,24 @@ class ajaxcontroller extends Controller
         $add_user->pincode = $pincode;
         $add_user->pincode_id = $pincodeId;
         // $add_user->landmark = $landmark;
+        $user = User::where('user_id', $user_id)->first();
+// dd($user);
+        if($user->user_default_address_id == null)
+        {
+            if ($add_user->save()) {
+                $userupdate = DB::table('users')
+                    ->where('user_id', $user_id,)
+                    ->update([
+                        'name' => $firstname,
+                        'user_default_address_id'=>$add_user->id
+                    ]);
+                return back()->with('success', 'User updated successfully');
+            } else {
+                return back()->with('error', 'Error updating user');
+            }
 
+
+        }
         // Save changes
         if ($add_user->save()) {
             if ($defaultAddress) {
@@ -132,6 +152,7 @@ class ajaxcontroller extends Controller
                 if ($user) {
                     $user->user_default_address_id = $add_user->id;
                     $user->save();
+
                 }
             }
 
@@ -245,7 +266,7 @@ class ajaxcontroller extends Controller
         $products = DB::table('product_varient')
         ->join('products', 'product_varient.product_id', '=', 'products.id')
         ->where('products.product_name', 'like', '%' . $searchWord . '%')
-        ->select('product_varient.*', 'products.product_name')
+        ->select('product_varient.*', 'products.product_name','products.product_image')
         ->get();
 
     return view('ajaxpages.search')->with('products', $products);
@@ -260,7 +281,7 @@ class ajaxcontroller extends Controller
         $prd_varient_id = $request->input("prd_varient_id");
 
 
-        $existingCart = cart::where('user_id', $user_id)
+        $existingCart = Cart::where('user_id', $user_id)
         ->where('product_varient_id', $prd_varient_id)
         ->first();
 
@@ -270,7 +291,7 @@ class ajaxcontroller extends Controller
 
             return response()->json(['error' => 'Already Added']);
         }else{
-            $cart = new cart();
+            $cart = new Cart();
 
             $cart->user_id = $user_id;
             $cart->product_id = $product_main_id;
@@ -286,6 +307,7 @@ class ajaxcontroller extends Controller
                 'product_name' => $product->product_name,
                 'mrp_price' => $product_varient->mrp_price,
                 'offer_price' => $product_varient->offer_price,
+                'product_image' => env('MAIN_URL') . 'images/' . $product->product_image,
                 ]);
             } else {
                 return response()->json(['error' => 'Failed to add to cart']);
@@ -356,6 +378,7 @@ class ajaxcontroller extends Controller
                 'product_name' => $product->product_name,
                 'mrp_price' => $product_varient->mrp_price,
                 'offer_price' => $product_varient->offer_price,
+                'product_image' => env('MAIN_URL') . 'images/' . $product->product_image,
                 ]);
             } else {
                 return response()->json(['error' => 'Failed to add to cart']);
@@ -395,6 +418,29 @@ class ajaxcontroller extends Controller
 
 
 
+
+
+    public function cancelProductFucntion(Request $request)
+    {
+
+
+        $productSlotId =   $request->product_slot_id;
+        $reasonForCancel = $request->reason_for_cancel;
+
+        $productSlot = ProductSlot::findOrFail($productSlotId);
+
+        $orderId = $productSlot->order_id;
+
+
+        $productSlot->update([
+            "is_cancelled" => 2,
+            "cancel_reason" => $reasonForCancel
+        ]);
+        if($productSlot){
+            return response()->json(['success' => 'Removed']);
+        }
+
+    }
 
 
 

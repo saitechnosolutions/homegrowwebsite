@@ -8,7 +8,7 @@
         </div>
     </section>
 
-    @if ($cart = App\Models\cart::where('user_id', Auth::user()->user_id)->get())
+    @if ($cart = App\Models\Cart::where('user_id', Auth::user()->user_id)->get())
         {{-- @dd($cart) --}}
         @if ($cart->count() == 0)
             <section class="mycarts_sec  deee">
@@ -26,9 +26,9 @@
                         <div class="col-lg-12 text-center">
                             <div class="emptyu">
                                 <img src="/assets/images/no.png" class="img-fluid " alt="">
-                                <p class="paresr">You don’t have any products in the cart page yet. <br>
-                                    <span class="paresr1"> You will find a lot of interesting products on our “Shop”
-                                        page.</span>
+                                <p class="paresr">Your cart is empty. Start shopping!<br>
+                                    <!--<span class="paresr1"> You will find a lot of interesting products on our “Shop”-->
+                                    <!--    page.</span>-->
                                 </p>
                             </div>
                         </div>
@@ -50,10 +50,13 @@
 
                                             <div class="coco">
                                                 <div class="car1">
-                                                    {{-- href="/single_products/{{ $car->product_id }}" --}}
-                                                    <a>
-                                                        <img src="/assets/images/my.jpg" class="img-fluid" alt="">
-                                                    </a>
+                                                    @if ($vrs = App\Models\product::where('id', $car->product_id)->first())
+                                                        <a
+                                                            href="/single_products/{{ $car->product_varient_id }}/{{ $car->product_id }}">
+                                                            <img src="{{ env('MAIN_URL') }}images/{{ $vrs->product_image }}"
+                                                                class="img-fluid" alt="">
+                                                        </a>
+                                                    @endif
                                                     <div class="ioio">
                                                         @if ($vrs = App\Models\product::where('id', $car->product_id)->first())
                                                             <h5>{{ $vrs->product_name }}</h5>
@@ -77,22 +80,26 @@
                                                     </div>
                                                 </div>
                                                 <div class="car2">
-                                                    @if ($productstock = App\Models\productstock::where('pro_ver_id', $car->product_varient_id)->first())
+                                                    @if ($productstock = App\Models\ProductStock::where('pro_ver_id', $car->product_varient_id)->first())
                                                         <input type="hidden" name="available_stock[]"
                                                             value="{{ $productstock->availablestock }}">
                                                     @endif
                                                     @if ($vrs1 = App\Models\product_varient::where('id', $car->product_varient_id)->first())
+
+
                                                         <input type="hidden" value="{{ $vrs1->product_id }}"
-                                                            name="productid[]">
+                                                            name="product_id[]">
                                                         <input type="hidden" value="{{ $vrs1->id }}"
-                                                            name="provarient_id[]">
+                                                            name="product_varient_id[]">
                                                         <input type="hidden" value="{{ $vrs1->product_gst }}"
                                                             name="gst[]">
                                                         <input type="hidden" id="price_offer_{{ $vrs1->offer_price }}"
-                                                            name="proprice[]">
+                                                            name="proprice[]" >
+                                                        <input type="hidden"
+                                                            name="ogproprice[]" value="{{$vrs1->offer_price}}">
                                                         <input type="hidden" id="mrprice" value="{{ $vrs1->mrp_price }}"
                                                             name="mrpprice[]">
-                                                        <input type="hidden" class="cart_qty" name="productqty[]">
+                                                        <input type="hidden" class="cart_qty" name="product_quantity[]">
                                                         <input type="hidden" class="totalamtcart" name="totalamt">
 
                                                         <h5 class="rubee" id="price-{{ $vrs1->offer_price }}">
@@ -102,7 +109,7 @@
                                                         <button type="button" class="btn_min1"
                                                             onclick="decreaseValue1('{{ $vrs1->offer_price }}')">-</button>
                                                         <input type="number" class="input_poo1"
-                                                            id="hair-{{ $vrs1->offer_price }}-number" value="1"
+                                                            id="hair-{{ $vrs1->offer_price }}-number" value="{{ $car->product_quantity }}"
                                                             min="1" max="{{ $productstock->availablestock }}"
                                                             readonly onchange="updatePrice('{{ $vrs1->offer_price }}')">
                                                         <button type="button" class="btn_plus1"

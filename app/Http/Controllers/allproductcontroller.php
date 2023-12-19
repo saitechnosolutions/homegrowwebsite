@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use App\Models\product_varient;
 use App\Models\productslot;
 use Illuminate\Http\Request;
@@ -14,7 +15,25 @@ class allproductcontroller extends Controller
     // YourController.php
             public function getAllVariants()
         {
-            $products = product_varient::all();
+
+            $allProducts = Product::select("id")->get()->toArray();
+
+            $productVariants = product_varient::get()->groupBy("product_id");
+
+            $products = collect();
+
+            foreach ($allProducts as $product) {
+                $productId = $product['id'];
+
+                // Check if the product has variants
+                if ($productVariants->has($productId)) {
+                    // Get the first product variant for the current product
+                    $firstProductVariant = $productVariants[$productId]->first();
+
+                    // Add it to the collection
+                    $products->push($firstProductVariant);
+                }
+            }
 
             return view('ajaxpages.hotdeal', ['products' => $products]);
         }
@@ -22,6 +41,8 @@ class allproductcontroller extends Controller
         {
             $categoryId = $request->input('categoryId');
             $filters = $request->input('checkedValues'); // Assuming checkedValues is an array
+
+
 
 
             $products = product_varient::where('categoryid', $categoryId);
@@ -51,134 +72,158 @@ class allproductcontroller extends Controller
                 }
             }
 
-            $products = $products->get();
+            $allProducts = Product::select("id")->where('category_id', $categoryId)->get()->toArray();
+
+            $products = $products->get()->groupBy("product_id");
+
+            $finalProducts = collect();
 
 
-            return view('ajaxpages.hotdeal', ['products' => $products]);
-        }
 
 
-        public function hotdeal(Request $request)
-        {
-            $checkboxValues = $request->input('option');
+            foreach ($allProducts as $product) {
+                $productId = $product['id'];
 
-            if (in_array('3', $checkboxValues) && in_array('1', $checkboxValues)) {
-                // Handle the case when both '3' and '1' are selected
-                $products = DB::table('product_varient')
-                    ->where('hot_deals', 1)
-                    ->orWhere(function ($query) {
-                        $query->join(
-                            DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
-                                    FROM product_slots
-                                    GROUP BY product_varient_id
-                                    HAVING count >= 2) as counts'),
-                            'product_varient.id', '=', 'counts.product_varient_id'
-                        );
-                    })
-                    ->get();
-            } elseif (in_array('1', $checkboxValues) && in_array('4', $checkboxValues)) {
-                // Handle the case when both '1' and '4' are selected
-                $products = DB::table('product_varient')
-                    ->join(
-                        DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
-                                FROM product_slots
-                                GROUP BY product_varient_id
-                                HAVING count >= 2) as counts'),
-                        'product_varient.id', '=', 'counts.product_varient_id'
-                    )
-                    ->orderBy('id', 'desc')
-                    ->limit(5)
-                    ->get();
-            } elseif (in_array('4', $checkboxValues) && in_array('3', $checkboxValues)) {
-                // Handle the case when both '4' and '3' are selected
-                $products = DB::table('product_varient')
-                    ->where('hot_deals', 1)
-                    ->orderBy('id', 'desc')
-                    ->limit(5)
-                    ->get();
-            } elseif (in_array('3', $checkboxValues)) {
-                // Handle the case when only '3' is selected
-                $products = DB::table('product_varient')->where('hot_deals', 1)->get();
-            } elseif (in_array('4', $checkboxValues)) {
-                // Handle the case when only '4' is selected
-                $products = DB::table('product_varient')->orderBy('id', 'desc')->limit(5)->get();
-            } elseif (in_array('1', $checkboxValues)) {
-                // Handle the case when only '1' is selected
-                $products = DB::table('product_varient')
-                    ->join(
-                        DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
-                                FROM product_slots
-                                GROUP BY product_varient_id
-                                HAVING count >= 2) as counts'),
-                        'product_varient.id', '=', 'counts.product_varient_id'
-                    )
-                    ->get();
-            } else {
-                // Handle the case when none of the checkboxes are selected
-                $products = DB::table('product_varient')->get();
+                // Check if the product has variants
+                if ($products->has($productId)) {
+                    // Get the first product variant for the current product
+                    $firstProductVariant = $products[$productId]->first();
+
+                    // Add it to the collection
+                    $finalProducts->push($firstProductVariant);
+                }
             }
 
-            if ($products->count() == 0) {
+            if ($finalProducts->count() == 0) {
                 return view('ajaxpages.nodata');
+                }
+
+            return view('ajaxpages.hotdeal', ['products' => $finalProducts]);
+        }
+
+
+    public function hotdeal(Request $request){
+
+        $checkboxValues = $request->input('option');
+
+
+        if (in_array('3', $checkboxValues)) {
+            $products = DB::table('product_varient')->where('hot_deals', 1)->get();
+        } elseif (in_array('4', $checkboxValues)) {
+            $products = DB::table('product_varient')->orderBy('id', 'desc')->limit(5)->get();
+        } elseif (in_array('1', $checkboxValues)) {
+            $products = DB::table('product_varient')
+                ->join(
+                    DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
+                            FROM product_slots
+                            GROUP BY product_varient_id
+                            HAVING count >= 2) as counts'),
+                    'product_varient.id', '=', 'counts.product_varient_id'
+                )
+                ->get();
+        } else {
+            $products = DB::table('product_varient')->get();
+        }
+
+        $finalProductIds = collect();
+        $result = collect();
+
+        foreach ($products as $product) {
+            $product_id = $product->product_id;
+
+            if (!$finalProductIds->contains($product_id)) {
+                $finalProductIds->push($product_id);
+                $result->push($product);
             }
-
-            return view('ajaxpages.hotdeal', ['products' => $products]);
         }
 
-
-
-
-
-
-
-    public function pricefilter(Request $request){
-
-        $min_num = $request->input("min_num");
-        $max_num = $request->input("max_num");
-
-        $products = product_varient::whereBetween('offer_price', [$min_num, $max_num])->get();
-        if ($products->count() == 0) {
-            return view('ajaxpages.nodata');
+        if ($result->count() == 0) {
+        return view('ajaxpages.nodata');
         }
 
-        return view('ajaxpages.hotdeal', ['products' => $products]);
+        return view('ajaxpages.hotdeal', ['products' => $result]);
+
     }
 
 
 
 
-// ==================12= 12 =2023
-
-    // public function hotdeal(Request $request){
-
-    //     $checkboxValues = $request->input('option');
 
 
-    //     if (in_array('3', $checkboxValues)) {
-    //         $products = DB::table('product_varient')->where('hot_deals', 1)->get();
-    //     } elseif (in_array('4', $checkboxValues)) {
-    //         $products = DB::table('product_varient')->orderBy('id', 'desc')->limit(5)->get();
-    //     } elseif (in_array('1', $checkboxValues)) {
-    //         $products = DB::table('product_varient')
-    //             ->join(
-    //                 DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
-    //                         FROM product_slots
-    //                         GROUP BY product_varient_id
-    //                         HAVING count >= 2) as counts'),
-    //                 'product_varient.id', '=', 'counts.product_varient_id'
-    //             )
-    //             ->get();
-    //     } else {
-    //         $products = DB::table('product_varient')->get();
-    //     }
+    public function pricefilter(Request $request)
+    {
+        // Get inputs from the request
+        $min_num = $request->input("min_num");
+        $max_num = $request->input("max_num");
+        $checkboxValues = $request->input('checkedValues');
+        $categoryId = $request->input('categoryId');
 
-    //     if ($products->count() == 0) {
-    //     return view('ajaxpages.nodata');
-    //     }
 
-    //     return view('ajaxpages.hotdeal', ['products' => $products]);
+       // Apply additional filters based on checkbox values
+        if ($checkboxValues !== null) {
+            if (in_array('3', $checkboxValues)) {
+                $products = product_varient::where('hot_deals', 1)->get();
+            } elseif (in_array('4', $checkboxValues)) {
+                $products = product_varient::orderBy('id', 'desc')->limit(5)->get();
+            } elseif (in_array('1', $checkboxValues)) {
+                $products = DB::table('product_varient')
+                    ->join(
+                        DB::raw('(SELECT product_varient_id, COUNT(product_varient_id) as count
+                                FROM product_slots
+                                GROUP BY product_varient_id
+                                HAVING count >= 2) as counts'),
+                        'product_varient.id', '=', 'counts.product_varient_id'
+                    )
+                    ->get();
+            }
+        } else {
+            $products = product_varient::get();
+        }
 
-    // }
+
+        // $products = Product::select("id")->get()->toArray();
+
+        // $productVariants = product_varient::get()->groupBy("product_id");
+        if (is_numeric($categoryId)) {
+            $products1 = product_varient::where('categoryid', $categoryId)->get();
+            $products = $products1->whereBetween('offer_price', [$min_num, $max_num]);
+        }
+
+
+        if ($min_num !== null && $max_num !== null) {
+            $products = $products->whereBetween('offer_price', [$min_num, $max_num]);
+        }
+
+        // $products = $products->whereBetween('offer_price', [$min_num, $max_num]);
+
+
+        $products = $products->whereBetween('offer_price', [$min_num, $max_num]);
+
+        $finalProductIds = collect();
+        $result = collect();
+
+        foreach ($products as $product) {
+            $product_id = $product->product_id;
+
+            if (!$finalProductIds->contains($product_id)) {
+                $finalProductIds->push($product_id);
+                $result->push($product);
+            }
+        }
+
+
+
+
+        // Check if there are no products
+        if ($result->count() == 0) {
+            return view('ajaxpages.nodata');
+        }
+
+        // Return the view with the filtered products
+        return view('ajaxpages.hotdeal', ['products' => $result]);
+    }
+
+
 
 
 
