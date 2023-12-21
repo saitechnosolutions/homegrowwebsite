@@ -274,10 +274,10 @@
                                             <input type="hidden" value="{{ $pr->id }}" name="prd_varient_id"
                                                 class="prd_varient_id">
 
-                                            @if ($var = App\Models\product_varient::where('id', $pr->product_id)->first())
-                                                <input type="hidden" name="product_main_id" value="{{ $var->id }}"
+                                            {{-- @if ($var = App\Models\product_varient::where('id', $pr->product_id)->first()) --}}
+                                                <input type="hidden" name="product_main_id" value="{{ $pr->product_id }}"
                                                     class="product_main_id">
-                                            @endif
+                                            {{-- @endif --}}
 
                                             <div class="ful_po">
                                                 <div class="prds_inr">

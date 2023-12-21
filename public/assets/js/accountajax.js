@@ -628,7 +628,7 @@ $(document).ready(function () {
                         $('#add_new_cart_submit').modal('show');
                         setTimeout(function () {
                             $('#add_new_cart_submit').modal('hide');
-                        }, 2000);
+                        }, 2000000000000000);
                     } else {
                         console.error('Modal not found!');
                     }
