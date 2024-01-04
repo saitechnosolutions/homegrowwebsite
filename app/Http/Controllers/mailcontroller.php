@@ -37,7 +37,7 @@ class mailcontroller extends Controller
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
                 $mail->setFrom('kiran915959@gmail.com', 'Home Grow');
-                $mail->addAddress('kirans.sts@gmail.com');
+                $mail->addAddress('support@homegrow.co.in');
                 $mail->isHTML(true);
 
                 $mail->Subject = "Home Grow - Enquiry";

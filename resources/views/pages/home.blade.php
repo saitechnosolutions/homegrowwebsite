@@ -131,7 +131,7 @@
                 @endphp
                 @if ($products)
                     @foreach ($products as $pr)
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-6">
                             <div class="product_one" data-aos="fade-up" data-aos-duration="800">
                                 <div class="las_pro">
                                     @if ($vrs = App\Models\product::where('id', $pr->product_id)->first())
@@ -219,29 +219,25 @@
                 <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
                     <img src="/assets/images/nut1.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">High Nutritional Value</h5>
-                    <p class="nut_para"> foods preserves for more
-                        natural vitamins and minarals</p>
+                    <p class="nut_para">A food rich in essential nutrients like vitamins, minerals, and proteins, contributing to overall health</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-up" data-aos-duration="800">
                     <img src="/assets/images/nut2.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">Preserves the
                         Environment</h5>
-                    <p class="nut_para"> foods preserves for more
-                        natural vitamins and minarals</p>
+                    <p class="nut_para">by minimizing resource depletion, reducing pollution, and fostering biodiversity</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
                     <img src="/assets/images/nut3.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">Certified Orgonic
                         Sources</h5>
-                    <p class="nut_para"> foods preserves for more
-                        natural vitamins and minarals</p>
+                    <p class="nut_para">Ingredients that have undergone rigorous verification processes by accredited certification bodies</p>
                 </div>
                 <div class="col-lg-3 nut_lu" data-aos="fade-down" data-aos-duration="800">
                     <img src="/assets/images/nut4.svg" class="img-fluid" alt="">
                     <h5 class="nut_head">No Chemical &
                         Pestisides</h5>
-                    <p class="nut_para"> foods preserves for more
-                        natural vitamins and minarals</p>
+                    <p class="nut_para">Signifies a commitment to avoiding synthetic substances in cultivation or production.</p>
                 </div>
             </div>
         </div>
@@ -273,11 +269,16 @@
                                             @endif
                                             <input type="hidden" value="{{ $pr->id }}" name="prd_varient_id"
                                                 class="prd_varient_id">
-
-                                            {{-- @if ($var = App\Models\product_varient::where('id', $pr->product_id)->first()) --}}
+                                                
+                                              {{-- @if ($var = App\Models\product_varient::where('id', $pr->product_id)->first()) --}}
                                                 <input type="hidden" name="product_main_id" value="{{ $pr->product_id }}"
                                                     class="product_main_id">
                                             {{-- @endif --}}
+
+                                            <!--@if ($var = App\Models\product_varient::where('id', $pr->product_id)->first())-->
+                                            <!--    <input type="hidden" name="product_main_id" value="{{ $var->id }}"-->
+                                            <!--        class="product_main_id">-->
+                                            <!--@endif-->
 
                                             <div class="ful_po">
                                                 <div class="prds_inr">
@@ -343,8 +344,8 @@
                                     <div class="first_testimonials">
                                         <div class="imgs">
                                             <div class="img111">
-                                                <img src="/assets/images/user.png" class="img-fluid" alt="">
-                                                <h5 class="ctns1">Bharani</h5>
+                                                <!--<img src="/assets/images/user.png" class="img-fluid" alt="">-->
+                                                <h5 class="ctns1">{{ $test->firstname }}</h5>
                                             </div>
                                             <ul class="restts">
                                                 <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>
@@ -380,8 +381,8 @@
                                     <div class="first_testimonials">
                                         <div class="imgs">
                                             <div class="img111">
-                                                <img src="/assets/images/user.png" class="img-fluid" alt="">
-                                                <h5 class="ctns1">Bharani</h5>
+                                                <!--<img src="/assets/images/user.png" class="img-fluid" alt="">-->
+                                                <h5 class="ctns1">{{ $test->firstname }}</h5>
                                             </div>
                                             <ul class="restts">
                                                 <li><i class="fa fa-star rest1" aria-hidden="true"></i></li>

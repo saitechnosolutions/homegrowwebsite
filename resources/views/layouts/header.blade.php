@@ -410,8 +410,7 @@
                                 {{-- forpin --}}
                                 <h5 class="wel_log">Login With Mobile Number <img src="/assets/images/pq1.png"
                                         class="img-fluid" width="25px" alt=""></h5>
-                                <p class="groce">Enter your email address to change
-                                    your password</p>
+                                <!--<p class="groce">Enter your Mobile Number to login</p>-->
                                 <form action="" class="log_mob_ni">
                                     <div class="row">
                                         <div class="col-lg-12 pt-5">

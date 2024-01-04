@@ -45,6 +45,18 @@
     {{-- <link rel="stylesheet" href="/assets/css/sweetalert2.min.css"> --}}
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Google analytics  -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC5RQ3CBWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JC5RQ3CBWK');
+    </script>
+
 </head>
 
 <body>

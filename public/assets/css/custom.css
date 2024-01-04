@@ -929,7 +929,7 @@
  .nut_head {
      color: #FFFFFF;
      font-weight: 600;
-     padding: 10px 15px ;
+     padding: 10px 35px ;
  }
 
  .nut_lu {
@@ -1818,6 +1818,50 @@
      transform-origin: bottom;
      transform: scaleX(1);
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ .home-btn9 {
+     background: #FFF5E7;
+     animation: btn 2s ease-in-out infinite;
+     font-size: 15px;
+     position: relative;
+     z-index: 1;
+     border-radius: 5px !important;
+     padding: 6px 25px;
+     font-weight: 700;
+     color: #000 !important;
+     border: 0px;
+ }
+
+ .home-btn9::before {
+     position: absolute;
+     content: "";
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     background: #fff;
+     border-radius: 5px;
+     transform-origin: top;
+     transition: transform 0.5s;
+     transform: scaleX(0);
+ }
+
+
+ .home-btn9:hover::before {
+     transform-origin: bottom;
+     transform: scaleX(1);
+ }
+ 
+ 
+ 
+ 
+ 
 
  .ofer_full .btn:hover {
      color: #ffffff !important;

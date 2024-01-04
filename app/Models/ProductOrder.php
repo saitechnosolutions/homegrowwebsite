@@ -12,7 +12,7 @@ class ProductOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable =  ["order_id", "date_ordered_on", "delivery_person_id", "is_delivery_assigned", "user_id", "payment_status", "current_status", "is_cancelled", "reason_for_cancel", "created_at", "updated_at","total_amount"];
+    protected $fillable =  ["order_id", "date_ordered_on", "delivery_person_id", "is_delivery_assigned", "user_id", "payment_status", "current_status", "is_cancelled", "reason_for_cancel", "created_at", "updated_at","total_amount","gst_amount","discount_amount","grand_total_amount"];
 
 
 

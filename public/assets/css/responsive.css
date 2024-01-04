@@ -1,711 +1,717 @@
 @media only screen and (max-width: 1900px) {
 
-    .home-btn1{
-        padding:7px 32px;
+.home-btn1{
+    padding:7px 32px;
+}
+
+}
+
+@media only screen and (max-width: 1400px) {
+    .input_poo {
+        width: 50px;
     }
 
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 11px 18px;
+        font-size: 13px;
     }
 
-    @media only screen and (max-width: 1400px) {
-        .input_poo {
-            width: 50px;
-        }
+    .mobile_testi {
+        display: none;
+    }
+}
 
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 11px 18px;
-            font-size: 13px;
-        }
 
-        .mobile_testi {
-            display: none;
-        }
+@media only screen and (max-width: 1200px) {
+    .input_poo {
+        width: 40px;
     }
 
-
-    @media only screen and (max-width: 1200px) {
-        .input_poo {
-            width: 40px;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 11px 0px;
-            font-size: 13px;
-        }
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 11px 0px;
+        font-size: 13px;
     }
+}
 
-    @media only screen and (min-width: 900px) and (max-width: 1025px) {
-        .follow-img {
-            background-image: url(../images/c1.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 30vh !important;
-            margin-top: -89px;
-        }
+@media only screen and (min-width: 900px) and (max-width: 1025px) {
+    .follow-img {
+        background-image: url(../images/c1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 30vh !important;
+        margin-top: -89px;
     }
+}
 
-    @media only screen and (max-width: 990px) {
-          .brack {
-            display: flex;
-            justify-content: center;
-        }
-        .home_grow {
-            overflow-x: hidden;
-        }
-
-        .mobile_testi {
-            display: block !important;
-        }
-
-        .input_poo {
-            width: 60px;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 11px 50px;
-            font-size: 13px;
-        }
-
-        .scroll-down-btn {
-            left: 51%;
-        }
-
-        .soloi {
-            text-align: center;
-        }
-
-        html {
-            overflow-x: hidden;
-        }
-
-        .home_full {
-            background-size: 100% 82% !important;
-            height: 75vh !important;
-        }
-
-        .tyty {
-            row-gap: 20px;
-        }
-
-        .qty_lit {
-            justify-content: center;
-            row-gap: 10px;
-        }
-
-        .lent {
-            text-align: center;
-            border-right: 0px;
-        }
-
-        .lent1 {
-            text-align: center;
-        }
-
-        .atrt {
-            text-align: center;
-            padding-left: 0px;
-        }
-
-        .prds_inr {
-            justify-content: center;
-        }
-
-        .sdfjk {
-            align-items: center;
-        }
-
-        .foot_head1 {
-            text-align: left;
-        }
-
-        .footer-icon {
-            text-align: left;
-        }
-
-        .foot_head1 {
-            text-align: left;
-        }
-
-        .FOOT_NUMs {
-            text-align: left;
-        }
-
-        .reddd {
-            font-size: 160px;
-        }
-
-        .heer {
-            font-size: 30px;
-        }
-
-        .heer1 {
-            font-size: 30px;
-        }
-
-        .rersesr {
-            bottom: -358px;
-        }
-
-        .gvfg {
-            row-gap: 20px;
-        }
-
-        /*.login-nav{*/
-        /*    display: block;*/
-
-        /*}*/
-        .login-nav {
-            justify-content: space-evenly;
-            padding: 20px 0px 0px 0px;
-            display: flex;
-        }
-
-        .login-nav1 {
-            width: 400px;
-            position: relative;
-            display: none !important;
-        }
-
-        .scr_full {
-            position: relative;
-            cursor: pointer;
-            top: -97px;
-            display: none;
-        }
-
-    }
-
-
-
-    @media only screen and (max-width: 990px) {
-        .logs_img {
-            display: none;
-        }
-
-        .restedq {
-            padding: 35px 30px;
-        }
-
-        .ali_in {
-            width: 120px !important;
-        }
-
-        .navbar {
-            justify-content: end;
-            padding: 39px 10px;
-        }
-
-        .darks-logo {
-            display: block;
-            width: 22%;
-            position: absolute;
-            z-index: 999;
-            left: 78px;
-            top: 22px !important;
-        }
-
-        .darks-logo {
-            display: block;
-        }
-
-        .white-logo {
-            display: none;
-        }
-
-        .introcbhd {
-            background: linear-gradient(181deg, #FFFFFF 71.93%, rgba(71, 71, 71, -1.719739) 107.58%, rgba(0, 0, 0, 0) 0.68%);
-
-        }
-
-        .testimonial_section {
-            display: none;
-        }
-
-        .mobile_testi {
-            display: block;
-        }
-
-        .add_to_carts .modal-content {
-            width: 75%;
-        }
-    }
-
-    @media only screen and (max-width: 776px) {
-        .rozha{
-            font-size: 25px;
-        }
-        .sdfjk{
-            row-gap:20px;
-        }
-        .input_poo {
-            width: 100%;
-        }
-
-        .ali_in {
-            width: 60px !important;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 11px 20px;
-            font-size: 16px;
-        }
-
-        .login-nav1 {
-            width: 200px;
-        }
-
-        .darks-logo {
-            width: 30%;
-        }
-
-        .scr_full {
-            display: none;
-        }
-
-        .coco {
-            flex-flow: wrap;
-            align-items: baseline;
-        }
-
-        .sticky-top {
-            z-index: 0;
-        }
-
-        .port .progress {
-            max-width: 85% !important;
-            left: 19px !important;
-        }
-
-        .delivery_section {
-            padding-top: 130px;
-            padding-bottom: 50px
-        }
-
-        .num_weerr {
-            padding: 50px 0;
-            row-gap: 50px;
-        }
-
-        .produs_img img {
-            height: 350px;
-            width: 100%;
-        }
-
-        .product_one:hover .prd_inp {
-            top: 87%;
-        }
-    }
-
-    @media only screen and (max-width: 576px) {
-        .drdrrrr {
-            padding-top: 15px;
-        }
-
-        .produs_img img {
-            height: 200px !important;
-            width: 100% !important;
-        }
-
-        .drdrrrr1 {
-            row-gap: 35px;
-        }
-
-        .prd_inp {
-            display: none;
-        }
-
-        .sunber {
-            padding: 15px 2px;
-        }
-
-        .alva img {
-            height: 350px;
-        }
-
-        .all_desc_section {
-            height: 300px;
-        }
-
-        .navbar {
-            padding: 25px 10px;
-        }
-
-        .follow-img {
-            background-image: url(../images/c1.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 58vh;
-            margin-top: -89px;
-        }
-
-        .cont_section {
-            position: relative;
-            overflow: hidden;
-            padding-top: 100px;
-            padding-bottom: 25px;
-            background-color: #FAFAFA;
-        }
-
-        .closed_opo {
-            background: #fff;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 100px;
-            position: absolute;
-            right: 0px;
-            top: -7px;
-            filter: drop-shadow(0px 3.9863011837005615px 5.315068244934082px #B3DEB3);
-        }
-
-        .input_poo {
-            width: 100%;
-        }
-
-        .ali_in {
-            width: 200px !important;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 11px 40px;
-            font-size: 16px;
-        }
-
-        .home_banner_section {
-            position: relative;
-            top: 26%;
-        }
-
-        .home_full {
-            height: 50vh !important;
-        }
-
-        .head_max_head1 {
-            font-size: 28px;
-        }
-
-        .head_max_head3 {
-            font-size: 34px;
-        }
-
-        .categories_section {
-            padding: 20px 0 40px 0;
-        }
-
-        .all_cat_section .nav-tabs {
-            justify-content: center;
-        }
-
-        .smar {
-            font-size: 21px;
-        }
-
-        .home-btn {
-            padding: 8px 8px;
-        }
-
-        .first_testimonials {
-            margin: 0px;
-        }
-
-        .add_to_carts .modal-content {
-            width: 100%;
-            margin: auto;
-            border-radius: 20px;
-        }
-
-        .categories_section {
-            margin-top: -70px;
-        }
-    }
-
-    @media only screen and (max-width: 430px) {
-          .produs_img img {
-            height: 180px !important;
-            width: 100% !important;
-        }
-
-        .sds11 {
-            gap: 10px;
-        }
-        .he_head{
-            font-size:14px;
-        }
-
-        .about_page_section {
-            padding: 30px 0;
-        }
-
-        .contact_section {
-            padding-bottom: 25px;
-        }
-
-        .orders {
-            margin-top: 10px;
-        }
-
-        .singproduct_btn {
-            padding: 7px 110px;
-        }
-
-        .pind {
-            padding: 0px;
-            font-size: 13px;
-        }
-
-        .just-validate-error-label {
-            font-size: 14px;
-        }
-
-        .logses_ful {
-            padding: 10px 15px;
-        }
-
-        .input_poo {
-            width: 100%;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            /*padding:11px 20px;*/
-            /*font-size: 16px;*/
-            padding: 15px 50px;
-            font-size: 12px;
-        }
-
-        .ali_in {
-            width: 110px !important;
-        }
-
-        .darks-logo {
-            display: block;
-            width: 43%;
-            position: absolute;
-            z-index: 999;
-            left: 10px;
-            top: 3px;
-        }
-
-        .darks-logo {
-            display: block;
-        }
-
-        .white-logo {
-            display: none;
-        }
-
-        .input_poo {
-            width: 109px;
-        }
-
-        .all1 {
-            left: 15%;
-        }
-
-        .login-nav1 {
-            position: relative;
-            top: -38px;
-            display: none !important;
-            right: -73px;
-        }
-
-        .over {
-            font-size: 18px;
-        }
-
-        .port .progress {
-            max-width: 77% !important;
-            left: 26px !important;
-        }
-
-        .darks-logo {
-            width: 39%;
-            left: 10px;
-        }
-
-        .combo_section {
-
-            padding: 50px 0 0px;
-        }
-
-        /* .introcbhd {
-            background: linear-gradient(180deg, #FFFFFF 65.93%, rgba(71, 71, 71, -0.719739) 598.58%, rgba(0, 0, 0, 0) 15.68%) !important;
-        } */
-        .ful_po {
-            display: flex;
-            justify-content: space-between;
-            background: #5ca904;
-            border-bottom-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
-
-        .home-btn {
-            padding: 8px 8px;
-            width: 175px;
-        }
-
-        .hot_section {
-            background: linear-gradient(180deg, rgba(255, 245, 232, 0) 2.04%, #FFF5E8 96.8%);
-            padding: 50px 0px 0px 0px;
-        }
-
-        .num_weerr {
-            padding: 50px 0;
-            row-gap: 25px;
-        }
-
-        .footer_section {
-            background: #670066;
-            padding: 70px 0px 20px 0px;
-        }
-
-        .first_testimonials {
-            margin: 10px !important;
-        }
-
-        .cont_section {
-            position: relative;
-            overflow: hidden;
-            padding-top: 25px;
-            padding-bottom: 0px;
-            background-color: #FAFAFA;
-        }
-
-        .rersesr {
-            bottom: -237px;
-        }
-
-        .follow-img {
-            background-image: url(../images/c1.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 32vh;
-            margin-top: -89px;
-        }
-
-        .closed_opo {
-            top: -8px;
-        }
-
-        .home_grow {
-            overflow-x: hidden;
-        }
-
-        .rems {
-            /*margin: 30px;*/
-            border-bottom: 1px solid #DEE2E7;
-            margin: 30px 0px 30px 12px;
-        }
-
-        .rubee {
-            font-weight: 600;
-            color: #670066;
-            /*text-align: end;*/
-            text-align: center;
-            padding: 10px;
-        }
-
-        .ful_crtr {
-            align-items: center;
-            padding: 10px 0;
-            justify-content: space-between;
-            row-gap: 10px;
-        }
-    }
-
-
-
-    .loger1 {
+@media only screen and (max-width: 990px) {
+      .brack {
         display: flex;
+        justify-content: center;
+    }
+    .home_grow {
+        overflow-x: hidden;
+    }
+
+    .mobile_testi {
+        display: block !important;
+    }
+
+    .input_poo {
+        width: 60px;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 11px 50px;
+        font-size: 13px;
+    }
+
+    .scroll-down-btn {
+        left: 51%;
+    }
+
+    .soloi {
+        text-align: center;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    .home_full {
+        background-size: 100% 82% !important;
+        height: 75vh !important;
+    }
+
+    .tyty {
+        row-gap: 20px;
+    }
+
+    .qty_lit {
+        justify-content: center;
+        row-gap: 10px;
+    }
+
+    .lent {
+        text-align: center;
+        border-right: 0px;
+    }
+
+    .lent1 {
+        text-align: center;
+    }
+
+    .atrt {
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    .prds_inr {
+        justify-content: center;
+    }
+
+    .sdfjk {
+        align-items: center;
+    }
+
+    .foot_head1 {
+        text-align: left;
+    }
+
+    .footer-icon {
+        text-align: left;
+    }
+
+    .foot_head1 {
+        text-align: left;
+    }
+
+    .FOOT_NUMs {
+        text-align: left;
+    }
+
+    .reddd {
+        font-size: 160px;
+    }
+
+    .heer {
+        font-size: 30px;
+    }
+
+    .heer1 {
+        font-size: 30px;
+    }
+
+    .rersesr {
+        bottom: -358px;
+    }
+
+    .gvfg {
+        row-gap: 20px;
+    }
+
+    /*.login-nav{*/
+    /*    display: block;*/
+
+    /*}*/
+    .login-nav {
         justify-content: space-evenly;
         padding: 20px 0px 0px 0px;
+        display: flex;
     }
 
-    @media only screen and (max-width: 400px) {
-        .rersesr {
-            bottom: -200px;
-        }
+    .login-nav1 {
+        width: 400px;
+        position: relative;
+        display: none !important;
+    }
 
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 15px 35px;
-            font-size: 12px;
-        }
+    .scr_full {
+        position: relative;
+        cursor: pointer;
+        top: -97px;
+        display: none;
+    }
 
-        .categories_section {
-            background: url(../images/dow.png);
-            background-size: 100%;
-            /* height: 40vh; */
-            position: relative;
-            margin-top: -81px;
-            z-index: 9;
-        }
+}
+
+
+
+@media only screen and (max-width: 990px) {
+    .logs_img {
+        display: none;
+    }
+
+    .restedq {
+        padding: 35px 30px;
+    }
+
+    .ali_in {
+        width: 120px !important;
+    }
+
+    .navbar {
+        justify-content: end;
+        padding: 39px 10px;
+    }
+
+    .darks-logo {
+        display: block;
+        width: 22%;
+        position: absolute;
+        z-index: 999;
+        left: 78px;
+        top: 22px !important;
+    }
+
+    .darks-logo {
+        display: block;
+    }
+
+    .white-logo {
+        display: none;
+    }
+
+    .introcbhd {
+        background: linear-gradient(181deg, #FFFFFF 71.93%, rgba(71, 71, 71, -1.719739) 107.58%, rgba(0, 0, 0, 0) 0.68%);
 
     }
 
-    @media only screen and (max-width: 380px) {
-        .rersesr {
-            bottom: -170px;
-        }
-
-        .categories_section {
-            background: url(../images/dow.png);
-            background-size: 100%;
-            /* height: 40vh; */
-            position: relative;
-            margin-top: -60px;
-            z-index: 9;
-        }
-
-        .home-btn {
-            padding: 8px 8px;
-            width: 175px;
-        }
-
-        .combo_section {
-
-            padding: 50px 0 0px;
-        }
-
+    .testimonial_section {
+        display: none;
     }
 
-    @media only screen and (max-width: 360px) {
-        .categories_section {
-            background: url(../images/dow.png);
-            background-size: 100%;
-            /* height: 40vh; */
-            position: relative;
-            margin-top: -50px;
-            z-index: 9;
-        }
-
-        .theme-btn1,
-        a.theme-btn1 {
-            padding: 17px 35px;
-            font-size: 9px;
-        }
+    .mobile_testi {
+        display: block;
     }
 
-    @media only screen and (max-width: 300px) {
-        .input_poo {
-            width: 70px;
-        }
-
-        .ali_in {
-            width: 70px !important;
-        }
-
-        .first_testimonials {
-            border-radius: 29.003px;
-            background: #FFF;
-            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 12.78278px 28.00037px 0px rgba(0, 0, 0, 0.10);
-            padding: 11px;
-            margin: 10px;
-        }
+    .add_to_carts .modal-content {
+        width: 75%;
     }
+}
+
+@media only screen and (max-width: 776px) {
+    .rozha{
+        font-size: 25px;
+    }
+    .sdfjk{
+        row-gap:20px;
+    }
+    .input_poo {
+        width: 100%;
+    }
+
+    .ali_in {
+        width: 60px !important;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 11px 20px;
+        font-size: 16px;
+    }
+
+    .login-nav1 {
+        width: 200px;
+    }
+
+    .darks-logo {
+        width: 30%;
+    }
+
+    .scr_full {
+        display: none;
+    }
+
+    .coco {
+        flex-flow: wrap;
+        align-items: baseline;
+    }
+
+    .sticky-top {
+        z-index: 0;
+    }
+
+    .port .progress {
+        max-width: 85% !important;
+        left: 19px !important;
+    }
+
+    .delivery_section {
+        padding-top: 130px;
+        padding-bottom: 50px
+    }
+
+    .num_weerr {
+        padding: 50px 0;
+        row-gap: 50px;
+    }
+
+    .produs_img img {
+        height: 350px;
+        width: 100%;
+    }
+
+    .product_one:hover .prd_inp {
+        top: 87%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .myhart_ale{
+        row-gap:20px;
+    }
+    .car1 a img{
+        height: 100px !important;
+    }
+    .drdrrrr {
+        padding-top: 15px;
+    }
+
+    .produs_img img {
+        height: 200px !important;
+        width: 100% !important;
+    }
+
+    .drdrrrr1 {
+        row-gap: 35px;
+    }
+
+    .prd_inp {
+        display: none;
+    }
+
+    .sunber {
+        padding: 15px 2px;
+    }
+
+    .alva img {
+        height: 350px;
+    }
+
+    .all_desc_section {
+        height: 300px;
+    }
+
+    .navbar {
+        padding: 25px 10px;
+    }
+
+    .follow-img {
+        background-image: url(../images/c1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 58vh;
+        margin-top: -89px;
+    }
+
+    .cont_section {
+        position: relative;
+        overflow: hidden;
+        padding-top: 100px;
+        padding-bottom: 25px;
+        background-color: #FAFAFA;
+    }
+
+    .closed_opo {
+        background: #fff;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        position: absolute;
+        right: 0px;
+        top: -7px;
+        filter: drop-shadow(0px 3.9863011837005615px 5.315068244934082px #B3DEB3);
+    }
+
+    .input_poo {
+        width: 100%;
+    }
+
+    .ali_in {
+        width: 200px !important;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 11px 40px;
+        font-size: 16px;
+    }
+
+    .home_banner_section {
+        position: relative;
+        top: 26%;
+    }
+
+    .home_full {
+        height: 50vh !important;
+    }
+
+    .head_max_head1 {
+        font-size: 28px;
+    }
+
+    .head_max_head3 {
+        font-size: 34px;
+    }
+
+    .categories_section {
+        padding: 20px 0 40px 0;
+    }
+
+    .all_cat_section .nav-tabs {
+        justify-content: center;
+    }
+
+    .smar {
+        font-size: 21px;
+    }
+
+    .home-btn {
+        padding: 8px 8px;
+    }
+
+    .first_testimonials {
+        margin: 0px;
+    }
+
+    .add_to_carts .modal-content {
+        width: 100%;
+        margin: auto;
+        border-radius: 20px;
+    }
+
+    .categories_section {
+        margin-top: -70px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+      .produs_img img {
+        height: 180px !important;
+        width: 100% !important;
+    }
+
+    .sds11 {
+        gap: 10px;
+    }
+    .he_head{
+        font-size:14px;
+    }
+
+    .about_page_section {
+        padding: 30px 0;
+    }
+
+    .contact_section {
+        padding-bottom: 25px;
+    }
+
+    .orders {
+        margin-top: 10px;
+    }
+
+    .singproduct_btn {
+        padding: 7px 110px;
+    }
+
+    .pind {
+        padding: 0px;
+        font-size: 13px;
+    }
+
+    .just-validate-error-label {
+        font-size: 14px;
+    }
+
+    .logses_ful {
+        padding: 10px 15px;
+    }
+
+    .input_poo {
+        width: 100%;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        /*padding:11px 20px;*/
+        /*font-size: 16px;*/
+        padding: 15px 50px;
+        font-size: 12px;
+    }
+
+    .ali_in {
+        width: 110px !important;
+    }
+
+    .darks-logo {
+        display: block;
+        width: 43%;
+        position: absolute;
+        z-index: 999;
+        left: 10px;
+        top: 3px;
+    }
+
+    .darks-logo {
+        display: block;
+    }
+
+    .white-logo {
+        display: none;
+    }
+
+    .input_poo {
+        width: 109px;
+    }
+
+    .all1 {
+        left: 15%;
+    }
+
+    .login-nav1 {
+        position: relative;
+        top: -38px;
+        display: none !important;
+        right: -73px;
+    }
+
+    .over {
+        font-size: 18px;
+    }
+
+    .port .progress {
+        max-width: 77% !important;
+        left: 26px !important;
+    }
+
+    .darks-logo {
+        width: 39%;
+        left: 10px;
+    }
+
+    .combo_section {
+
+        padding: 50px 0 0px;
+    }
+
+    /* .introcbhd {
+        background: linear-gradient(180deg, #FFFFFF 65.93%, rgba(71, 71, 71, -0.719739) 598.58%, rgba(0, 0, 0, 0) 15.68%) !important;
+    } */
+    .ful_po {
+        display: flex;
+        justify-content: space-between;
+        background: #5ca904;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .home-btn {
+        padding: 8px 8px;
+        width: 175px;
+    }
+
+    .hot_section {
+        background: linear-gradient(180deg, rgba(255, 245, 232, 0) 2.04%, #FFF5E8 96.8%);
+        padding: 50px 0px 0px 0px;
+    }
+
+    .num_weerr {
+        padding: 50px 0;
+        row-gap: 25px;
+    }
+
+    .footer_section {
+        background: #670066;
+        padding: 70px 0px 20px 0px;
+    }
+
+    .first_testimonials {
+        margin: 10px !important;
+    }
+
+    .cont_section {
+        position: relative;
+        overflow: hidden;
+        padding-top: 25px;
+        padding-bottom: 0px;
+        background-color: #FAFAFA;
+    }
+
+    .rersesr {
+        bottom: -237px;
+    }
+
+    .follow-img {
+        background-image: url(../images/c1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 32vh;
+        margin-top: -89px;
+    }
+
+    .closed_opo {
+        top: -8px;
+    }
+
+    .home_grow {
+        overflow-x: hidden;
+    }
+
+    .rems {
+        /*margin: 30px;*/
+        border-bottom: 1px solid #DEE2E7;
+        margin: 30px 0px 30px 12px;
+    }
+
+    .rubee {
+        font-weight: 600;
+        color: #670066;
+        /*text-align: end;*/
+        text-align: center;
+        padding: 10px;
+    }
+
+    .ful_crtr {
+        align-items: center;
+        padding: 10px 0;
+        justify-content: space-between;
+        row-gap: 10px;
+    }
+}
+
+
+
+.loger1 {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0px 0px 0px;
+}
+
+@media only screen and (max-width: 400px) {
+    .rersesr {
+        bottom: -200px;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 15px 35px;
+        font-size: 12px;
+    }
+
+    .categories_section {
+        background: url(../images/dow.png);
+        background-size: 100%;
+        /* height: 40vh; */
+        position: relative;
+        margin-top: -81px;
+        z-index: 9;
+    }
+
+}
+
+@media only screen and (max-width: 380px) {
+    .rersesr {
+        bottom: -170px;
+    }
+
+    .categories_section {
+        background: url(../images/dow.png);
+        background-size: 100%;
+        /* height: 40vh; */
+        position: relative;
+        margin-top: -60px;
+        z-index: 9;
+    }
+
+    .home-btn {
+        padding: 8px 8px;
+        width: 175px;
+    }
+
+    .combo_section {
+
+        padding: 50px 0 0px;
+    }
+
+}
+
+@media only screen and (max-width: 360px) {
+    .categories_section {
+        background: url(../images/dow.png);
+        background-size: 100%;
+        /* height: 40vh; */
+        position: relative;
+        margin-top: -50px;
+        z-index: 9;
+    }
+
+    .theme-btn1,
+    a.theme-btn1 {
+        padding: 17px 35px;
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .input_poo {
+        width: 70px;
+    }
+
+    .ali_in {
+        width: 70px !important;
+    }
+
+    .first_testimonials {
+        border-radius: 29.003px;
+        background: #FFF;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 12.78278px 28.00037px 0px rgba(0, 0, 0, 0.10);
+        padding: 11px;
+        margin: 10px;
+    }
+}

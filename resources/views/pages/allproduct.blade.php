@@ -127,44 +127,44 @@
 
 
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="regularHeadingSecond">
-                                <button class="accordion-button collapsed feat" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#regularCollapseSecond" aria-expanded="false"
-                                    aria-controls="regularCollapseSecond">
-                                    Price range
-                                </button>
-                            </h2>
-                            <div id="regularCollapseSecond" class="accordion-collapse collapse"
-                                aria-labelledby="regularHeadingSecond" data-bs-parent="#regularAccordionRobots">
-                                <div class="accordion-body">
-                                    <form class="price_range">
-                                        <div class="wrapper">
-                                            <div class="price-input">
-                                                <div class="field">
-                                                    <span>Min</span>
-                                                    <input type="number" class="input-min  fr" value="0" readonly>
-                                                </div>
-                                                <div class="separator">-</div>
-                                                <div class="field">
-                                                    <span>Max</span>
-                                                    <input type="number" class="input-max  fr" value="6000" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="slider">
-                                                <div class="progress"></div>
-                                            </div>
-                                            <div class="range-input">
-                                                <input type="range" class="range-min rabge" min="0" max="6000"
-                                                    name="min_num" value="0" step="100">
-                                                <input type="range" class="range-max rabge" min="0"
-                                                    max="6000" name="max_num" value="6000" step="100">
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <!--<div class="accordion-item">-->
+                        <!--    <h2 class="accordion-header" id="regularHeadingSecond">-->
+                        <!--        <button class="accordion-button collapsed feat" type="button" data-bs-toggle="collapse"-->
+                        <!--            data-bs-target="#regularCollapseSecond" aria-expanded="false"-->
+                        <!--            aria-controls="regularCollapseSecond">-->
+                        <!--            Price range-->
+                        <!--        </button>-->
+                        <!--    </h2>-->
+                        <!--    <div id="regularCollapseSecond" class="accordion-collapse collapse"-->
+                        <!--        aria-labelledby="regularHeadingSecond" data-bs-parent="#regularAccordionRobots">-->
+                        <!--        <div class="accordion-body">-->
+                        <!--            <form class="price_range">-->
+                        <!--                <div class="wrapper">-->
+                        <!--                    <div class="price-input">-->
+                        <!--                        <div class="field">-->
+                        <!--                            <span>Min</span>-->
+                        <!--                            <input type="number" class="input-min  fr" value="0" readonly>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="separator">-</div>-->
+                        <!--                        <div class="field">-->
+                        <!--                            <span>Max</span>-->
+                        <!--                            <input type="number" class="input-max  fr" value="6000" readonly>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="slider">-->
+                        <!--                        <div class="progress"></div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="range-input">-->
+                        <!--                        <input type="range" class="range-min rabge" min="0" max="6000"-->
+                        <!--                            name="min_num" value="0" step="100">-->
+                        <!--                        <input type="range" class="range-max rabge" min="0"-->
+                        <!--                            max="6000" name="max_num" value="6000" step="100">-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <!--            </form>-->
+                        <!--        </div>-->
+                        <!--    </div>-->
+                        <!--</div>-->
 
                     </div>
                 </div>

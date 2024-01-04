@@ -42,7 +42,7 @@
                     <h5 class="shop">My <span class="ct">Cart</span> </h5>
                     <form method="POST" action="/checkout">
                         @csrf
-                        <div class="row">
+                        <div class="row  myhart_ale">
                             <div class="col-lg-8  shopses-full">
                                 @foreach ($cart as $car)
                                     <div class="shopses">
@@ -124,12 +124,12 @@
                                     </div>
                                 @endforeach
                                 <div class="row ful_crtr">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3 col-6">
                                         <a href="/" class="btn  home-btn3"><i class="fa fa-arrow-left"
                                                 aria-hidden="true"></i>
                                             Back to shop</a>
                                     </div>
-                                    <div class="col-lg-3 text-end">
+                                    <div class="col-lg-3 col-6 text-end">
                                         <button type="button" data-id="{{ Auth::user()->user_id }}"
                                             class="btn removall_cart">Remove all</button>
                                     </div>

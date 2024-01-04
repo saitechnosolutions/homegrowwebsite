@@ -126,8 +126,9 @@
                     <img src="/assets/images/footer.svg" class="img-fluid" alt="">
                 </a>
 
-                <p class="foot_br">Best information about the company gies here but now lorem </p>
-                <p class="foot_br">Based in India</p>
+                <p class="foot_br">Home Grow is the definition of Health and Wellness! Founded in 2023, we like to say we are bringing joy to India, and it’s something we hope to be doing for years to come. But we offer more than just high-quality, delicious products. </p>
+                <a  href="https://play.google.com/store/apps/details?id=com.ecom.home_grow" target="_blank" class="btn home-btn9">Download App</a>
+                <!--<p class="foot_br">Based in India</p>-->
             </div>
             <div class="col-lg-3">
                 <h5 class="foot_head">Quick Links</h5>
