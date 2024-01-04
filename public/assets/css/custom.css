@@ -1230,14 +1230,14 @@
      row-gap: 56px;
      justify-content:center;
  }
- 
- 
+
+
  .menuo{
     display: flex;
     justify-content: center;
 }
 
- 
+
 
  .prd_inp {
      opacity: 0;
@@ -1591,7 +1591,7 @@
  .fp {
      font-weight: 700;
      font-size: 18px;
-      font-family: exo; 
+      font-family: exo;
      color: rgba(53, 53, 53, 1);
      letter-spacing: 3px;
  }
@@ -1606,7 +1606,7 @@
      padding-left:20px;
  }
  .foic{
-    padding-left:10px; 
+    padding-left:10px;
  }
 .foicp1{
     padding-left:10px;
@@ -1620,7 +1620,7 @@
  .fh2 {
      font-weight: 700;
      font-size: 55px;
-      font-family: exo; 
+      font-family: exo;
      color: rgba(53, 53, 53, 1);
  }
 
@@ -1818,12 +1818,12 @@
      transform-origin: bottom;
      transform: scaleX(1);
  }
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
  .home-btn9 {
      background: #FFF5E7;
      animation: btn 2s ease-in-out infinite;
@@ -1857,11 +1857,11 @@
      transform-origin: bottom;
      transform: scaleX(1);
  }
- 
- 
- 
- 
- 
+
+
+
+
+
 
  .ofer_full .btn:hover {
      color: #ffffff !important;
@@ -1908,7 +1908,9 @@
      color: #000 !important;
  }
 
-
+.checkoutform{
+    margin: auto !important;
+}
 
  .cresesd {
      color: #FA3434;

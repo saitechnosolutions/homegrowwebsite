@@ -9,7 +9,7 @@
     		document.getElementById("tid").value = d;
     	};
     </script>
-<?php 
+<?php
 // include("db.php");
 ?>
 </head>
@@ -73,6 +73,7 @@ div {
 				<!--	<td colspan="2"> Compulsory information</td>-->
 				<!--</tr>-->
 				<tr>
+                    {{-- @dd($order_details); --}}
 					<td>
 					    <input type="hidden" name="tid" id="tid" readonly />
 					    <input type="hidden" name="user_id" value="{{$order_details->user_id}}" readonly />
@@ -84,7 +85,7 @@ div {
 				</tr>
 				<tr>
 					<td>
-					    <label>Order ID</label> 
+					    <label>Order ID</label>
 					    <input type="text" name="order_id" value="{{$order_details->order_id}}" readonly/></td>
 				</tr>
 				<tr>
@@ -93,31 +94,34 @@ div {
 					    <input type="hidden" name="grand_total_amount" value="{{$order_details->grand_total_amount}}" readonly/></td>
 					    <input type="hidden" name="gst_amount" value="{{$order_details->gst_amount}}" readonly/></td>
 					    <input type="hidden" name="discount_amount" value="{{$order_details->discount_amount}}" readonly/></td>
+					    <input type="hidden" name="delivery_amt" value="{{$delivery_amt}}" readonly/></td>
 				</tr>
-				
+
 				<tr>
 				    <input type="hidden" name="currency" value="INR"/>
 					<td><input type="hidden" name="redirect_url" value="https://homegrow.co.in/payment_response_web"/></td>
 					<input type="hidden" name="cancel_url" value="https://homegrow.co.in/payment_response_web"/>
 					<input type="hidden" name="language" value="EN"/>
-					
+
 				</tr>
-			 	
+
 		        <tr>
 		        	<td><label>Customer Name</label>
-		        	    <input type="text" name="billing_name" value="{{$order_details->customer_name}}" readonly/>
+		        	    <input type="text" name="billing_name" value="{{$order_details->us_id}}" readonly/>
+		        	    {{-- <input type="text" name="billing_name" value="{{$order_details->customer_name}}" readonly/> --}}
+
 		        	    <input type="hidden" name="billing_address" value="{{$order_details->address}}"/>
 		        	    <input type="hidden" name="billing_city" value="{{$order_details->city}}"/>
 		        	    <input type="hidden" name="billing_state" value="{{$order_details->state}}"/>
-		        	    
+
 		        	    @php
                             $myArray = $order_details->slots[0]; // Your array
                             $serializedArray = json_encode($myArray); // Serialize array to JSON
                         @endphp
 		        	    <input type="hidden" name="product_slots" value="{{$serializedArray}}"/>
-		        	   
-		        	    
-		        	    
+
+
+
 		        	    <input type="hidden" name="proweight" value=""/>
 		        	    <input type="hidden" name="proname" value=""/>
 		        	    <input type="hidden" name="proqty" value=""/>
@@ -126,12 +130,12 @@ div {
 		        	    <input type="hidden" name="discount" value=""/>
 		        	    <input type="hidden" name="shippingamt" value=""/>
 		        	    <input type="hidden" name="paymethod" value=""/>
-		        	    
+
 		        	    <input type="hidden" name="billing_zip" value=""/>
 		        	    <input type="hidden" name="billing_country" value="India"/>
 		        	    </td>
-		        	    
-		        
+
+
 		        <tr>
 		        	<td><label>Phone Number</label>
 		        	    <input type="text" name="billing_tel" value="{{$order_details->phone_number}}" readonly/>
@@ -156,8 +160,8 @@ div {
 					    <input type="text" name="billing_zip" value="641108" readonly/>
 					</td>
 				</tr>
-		        
-		        
+
+
 		        <tr>
 		        	<td><input type="hidden" name="delivery_tel" value="{{$order_details->phone_number}}"/></td>
 		        </tr>
@@ -187,6 +191,6 @@ div {
 		        </tr>
 	      	</table>
 	      </form>
-	
+
 	</body>
 </html>

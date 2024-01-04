@@ -14,6 +14,7 @@ use App\Models\wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ajaxcontroller extends Controller
 {
@@ -25,6 +26,7 @@ class ajaxcontroller extends Controller
             $name = $request->input("first_name");
             $email = $request->input("email");
             $phone_number = $request->input("phone");
+            $Password = $request->input("Password");
 
             $user = User::where('user_id', $user_id)->first();
 
@@ -51,13 +53,28 @@ class ajaxcontroller extends Controller
                 $image = $request->file('image');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
 
-                if ($image->move(public_path('/assets/images/'), $filename)) {
+                $newDomain = 'https://api.homegrow.co.in/'; // Replace with your desired domain
+                $destinationPath = $newDomain . 'images/';
+
+                if ($image->move(public_path($destinationPath), $filename)) {
                     $user->profile_image = $filename;
+                    $user->save(); // Make sure to save the user model after updating the profile image
                 } else {
                     // Handle the case where the image upload fails
                     return response()->json(['error' => 'Error uploading image'], 500);
                 }
             }
+
+            if ($Password) {
+                DB::table('users')
+                    ->where('phone_number', $phone_number)
+                    ->update([
+                        "password" => Hash::make($Password)
+                    ]);
+
+                    return response()->json(['success' => 'User updated successfully']);
+            }
+
 
             // Update user properties
             $user->name = $name;
@@ -284,6 +301,10 @@ class ajaxcontroller extends Controller
         $existingCart = Cart::where('user_id', $user_id)
         ->where('product_varient_id', $prd_varient_id)
         ->first();
+
+        wishlist::where('user_id', $user_id)
+        ->where('product_varient_id', $prd_varient_id)
+        ->delete();
 
         if ($existingCart) {
             // $existingCart->product_quantity += $productqty;

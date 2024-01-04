@@ -240,6 +240,7 @@
                         @foreach ($prodetails['proprice'] as $key => $pro)
                             @php
                                 $totalAmount += (float) $pro * $prodetails['product_quantity'][$key];
+                                // @dd( $totalAmount);
                             @endphp
                         @endforeach
 
@@ -252,6 +253,13 @@
                                 $totalGst += ($prodetails['proprice'][$key] * (float) $gst * $prodetails['product_quantity'][$key]) / 100;
                             @endphp
                         @endforeach
+
+
+                        {{-- Without Tax --}}
+
+                        @php
+                            $totalAmount = $totalAmount - $totalGst;
+                        @endphp
 
                         @foreach ($prodetails['product_id'] as $key => $prod_id)
                             <input type="hidden" value="{{ $prod_id }}" class="prod_id" name="product_id[]">
@@ -278,7 +286,7 @@
                                             placeholder="Add Coupon" aria-label="Recipient's username"
                                             aria-describedby="basic-addon2">
                                         <input type="hidden" class="totalamt" name="totalamt"
-                                            value="{{ $totalAmount }}">
+                                            value="{{ round($totalAmount) }}">
                                         {{-- <input type="hidden" class="taxamt" value="{{ $prodetails['gst'] }}" name="taxamt"> --}}
                                         <div class="input-group-append">
                                             <button type="button" class="input-group-text coupon_btn"
@@ -292,12 +300,7 @@
                                 <div class="row  tere">
                                     <div class="col-lg-12  retfyy">
                                         <div class="bo_che">
-                                            <div class="sub_to1">
-                                                <h5 class="subtot1">Subtotal:</h5>
-                                                <input type="hidden" class="totalamt" value="{{ $totalAmount }}"
-                                                    name="">
-                                                <h5 class="subtot1 productamt">₹{{ number_format($totalAmount, 2) }}</h5>
-                                            </div>
+
                                             <div class="sub_to1">
                                                 <h5 class="subtot1">Discount:</h5>
                                                 <input type="hidden" class="discamnt" name="discount_amount"
@@ -306,11 +309,36 @@
                                                 <input type="hidden" value="0" class="discamnt">
                                             </div>
                                             <div class="sub_to1">
+                                                <h5 class="subtot1">Subtotal:</h5>
+                                                <input type="hidden" class="totalamt" value="{{ $totalAmount }}"
+                                                    name="">
+                                                <h5 class="subtot1 productamt">₹{{ number_format($totalAmount, 2) }}</h5>
+                                            </div>
+                                            <div class="sub_to1">
                                                 <h5 class="subtot1">Tax:</h5>
                                                 <input type="hidden" name="gst_amount" class="tax_amt_display"
                                                     value="{{ $totalGst }}" name="">
-                                                <h5 class="subtot1 text_gre textamt">+ ₹ {{ $totalGst }}</h5>
+                                                <h5 class="subtot1 text_gre textamt"> + ₹ {{ $totalGst }}</h5>
                                             </div>
+
+                                            <div class="sub_to1">
+                                                <h5 class="subtot1">Delivery Charge:</h5>
+                                                @php
+                                                    $del = App\Models\Delivery_Charge_Detail::first();
+                                                @endphp
+                                                @if ($totalAmount >= $del->minimum_price)
+                                                    <h5 class="subtot1 text_gre delivery_amt"> Free </h5>
+                                                    <input type="hidden" name="delivery_amt"
+                                                        class="delivery_amt_display" value="0">
+                                                @else
+                                                    <input type="hidden" name="delivery_amt"
+                                                        class="delivery_amt_display" value="{{ $del->delivery_charge }}"
+                                                        >
+                                                    <h5 class="subtot1 text_gre delivery_amt"> + ₹
+                                                        {{ $del->delivery_charge }}</h5>
+                                                @endif
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="bo_che1">

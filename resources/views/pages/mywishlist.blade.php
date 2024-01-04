@@ -96,13 +96,13 @@
                                                     {{-- value="{{ $wishlist->product_quantity }}" --}}
                                                     <div class="prds_inr">
                                                         <button class="btn_min1" type="button"
-                                                            onclick="decreaseValue1('{{ $vrs1->offer_price }}')">-</button>
+                                                            onclick="decreaseValue1('{{ $vrs1->mrp_price }}')">-</button>
                                                         <input type="number" class="input_poo1 productqty"
-                                                            name="productqty" id="hair-{{ $vrs1->offer_price }}-number"
+                                                            name="productqty" id="hair-{{ $vrs1->mrp_price }}-number"
                                                             value="1" min="1" max="100" readonly
-                                                            onchange="updatePrice('{{ $vrs1->offer_price }}')">
+                                                            onchange="updatePrice('{{ $vrs1->mrp_price }}')">
                                                         <button class="btn_plus1" type="button"
-                                                            onclick="increaseValue1('{{ $vrs1->offer_price }}')">+</button>
+                                                            onclick="increaseValue1('{{ $vrs1->mrp_price }}')">+</button>
                                                     </div>
                                                 </div>
                                             </div>

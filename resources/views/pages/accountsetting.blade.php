@@ -68,12 +68,12 @@
                                             oninput="checkPhoneNumberLength(this)" name="phone">
                                     </div>
                                 </div>
-                                <!--<div class="col-lg-12">-->
-                                <!--    <div class="form-group  pt-3">-->
-                                <!--        <label class="roboto_set">User Image</label>-->
-                                <!--        <input type="file" class="form-control clientsup_img" name="image"   accept="image/jpeg, image/png">-->
-                                <!--    </div>-->
-                                <!--</div>-->
+                                <div class="col-lg-12">
+                                   <div class="form-group  pt-3">
+                                       <label class="roboto_set">User Image</label>
+                                       <input type="file" class="form-control clientsup_img" name="image"   accept="image/jpeg, image/png">
+                                   </div>
+                               </div>
                                 <div class="col-lg-12 passwor_manage_acc">
                                     <div class="form-group  pt-3">
                                         <label class="roboto_set">Password <span class="text-danger">Min 8 characters with at least one numeric, one alphabet, and one symbol.</span></label>

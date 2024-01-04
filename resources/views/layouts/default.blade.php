@@ -50,11 +50,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC5RQ3CBWK"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-JC5RQ3CBWK');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JC5RQ3CBWK');
     </script>
 
 </head>
@@ -563,7 +566,7 @@
                 qtty = parseInt(qtty) + 1;
                 $('#qty' + idd).val(qtty);
                 totalamt = parseFloat(proprice) * parseFloat(qtty);
-                $('#totalamt' + idd).val(totalamt.toFixed(2));
+                // $('#totalamt' + idd).val(totalamt.toFixed(2));
             } else {
                 Toastify({
                     text: "Out Of Stock",
@@ -587,7 +590,7 @@
                 qtty1 = parseInt(qtty1) - 1;
                 $('#qty' + idd1).val(qtty1);
                 totalamt1 = parseFloat(proprice1) * parseFloat(qtty1);
-                $('#totalamt' + idd1).val(totalamt1.toFixed(2));
+                // $('#totalamt' + idd1).val(totalamt1.toFixed(2));
             }
         }
 
@@ -633,9 +636,15 @@
         function singletocheckout() {
             var totalamt = $('.totalamt').val();
             var discamnt = $('.discamnt').val();
+            var delivery_amt = $('.delivery_amt_display').val();
+            var tax_amt = $('.tax_amt_display').val();
 
             var netTotal = totalamt - discamnt;
 
+            var roundedNetTotal = Math.round(parseFloat(netTotal));
+            var roundedTaxAmt = Math.round(parseFloat(tax_amt));
+            console.log('roundedNetTotal',roundedNetTotal)
+            console.log('roundedTaxAmt',roundedTaxAmt)
             // var gstval = $('.tax_amt_display').val();
             // var taxAmount = (netTotal * gstval) / 100;
             //    var nn = $('.textamt').text('+₹ ' + taxAmount.toFixed(2));
@@ -643,7 +652,10 @@
 
             var gstval = $('.tax_amt_display').val();
             // console.log("nettotal",netTotal);
-            totalsamt = parseInt(netTotal) + parseInt(gstval);
+            // totalsamt = parseInt(netTotal) + parseInt(gstval);
+            totalsamt = roundedNetTotal + parseInt(delivery_amt) + roundedTaxAmt;
+
+
             // console.log("totallllll", totalsamt);
             // var paytamt = totalsamt + gstval;
             $('#proamt').text('₹ ' + totalsamt.toFixed(2));
@@ -905,20 +917,19 @@
 
 
     <script>
-           function updateTotalCartAmount (){
+        function updateTotalCartAmount() {
             let totalCartValue = 0;
-$('[name="ogproprice[]"]').each(function (index,element){
+            $('[name="ogproprice[]"]').each(function(index, element) {
 
-    totalCartValue += (element.value * $(".cart_qty")[index].value);
-    $(".totalamtcart").val(totalCartValue);
-    $("#totalAmount").html(`₹${totalCartValue}`)
-})
+                totalCartValue += (element.value * $(".cart_qty")[index].value);
+                $(".totalamtcart").val(totalCartValue);
+                $("#totalAmount").html(`₹${totalCartValue}`)
+            })
         }
 
-        $(function () {
+        $(function() {
             updateTotalCartAmount();
         })
-
     </script>
 
 
